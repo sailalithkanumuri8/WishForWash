@@ -42,35 +42,39 @@ function buildGlobeFx(globe) {
   // A thin highlight lying on the water surface; it rotates with the cursor.
   const sheen = svgEl('g', { class: 'globe-sheen' });
   sheen.appendChild(
-    svgEl('ellipse', {
-      cx,
-      cy,
-      rx: rx * 0.92,
-      ry: ry * 0.62,
+    svgEl('path', {
+      d: `M${cx - rx * 0.78} ${cy + ry * 0.18}A${rx * 0.8} ${ry * 0.72} 0 0 0 ${cx + rx * 0.78} ${cy + ry * 0.18}`,
       fill: 'none',
       stroke: 'url(#sheen-grad)',
-      'stroke-width': Math.max(4, ry * 0.08),
-      opacity: '0.85',
+      'stroke-width': Math.max(5, ry * 0.11),
+      'stroke-linecap': 'round',
+      opacity: '0.9',
     }),
   );
   svg.appendChild(sheen);
 
+  // The drop lands on open water to the right of the painted drop.
+  const landX = cx + rx * 0.44;
+  const landY = cy + ry * 0.12;
   const ripples = svgEl('g', { class: 'globe-ripples' });
   for (let i = 0; i < 3; i += 1) {
-    ripples.appendChild(svgEl('ellipse', { class: 'globe-ripple', cx, cy, rx: rx * 0.62, ry: ry * 0.5 }));
+    ripples.appendChild(
+      svgEl('ellipse', { class: 'globe-ripple', cx: landX, cy: landY, rx: rx * 0.26, ry: ry * 0.3 }),
+    );
   }
   svg.appendChild(ripples);
 
-  const dropH = Math.max(28, ry * 0.55);
+  const dropH = Math.max(30, ry * 0.62);
+  const w2 = dropH * 0.36;
   const drop = svgEl('path', {
     class: 'globe-drop',
-    d: `M${cx} ${cy - dropH}c-${dropH * 0.18} ${dropH * 0.42}-${dropH * 0.36} ${dropH * 0.58}-${dropH * 0.36} ${dropH * 0.8}a${dropH * 0.36} ${dropH * 0.36} 0 0 0 ${dropH * 0.72} 0c0-${dropH * 0.22}-${dropH * 0.18}-${dropH * 0.38}-${dropH * 0.36}-${dropH * 0.8}Z`,
+    d: `M${landX} ${landY - dropH}c-${w2 * 0.5} ${dropH * 0.42}-${w2} ${dropH * 0.58}-${w2} ${dropH * 0.8}a${w2} ${w2} 0 0 0 ${w2 * 2} 0c0-${dropH * 0.22}-${w2 * 0.5}-${dropH * 0.38}-${w2}-${dropH * 0.8}Z`,
     fill: '#d9ecfa',
     stroke: '#2f64a8',
     'stroke-width': '3',
   });
   // SVG user units map 1:1 to px in CSS transforms, so the fall scales with the art.
-  drop.style.setProperty('--drop-from', `${-(cy - dropH - h * 0.04)}px`);
+  drop.style.setProperty('--drop-from', `${-(cy - dropH - h * 0.06) * 0.7}px`);
   svg.appendChild(drop);
 
   (qs('.hero__globe-tilt', globe) || globe).appendChild(svg);

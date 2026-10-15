@@ -1317,7 +1317,7 @@ sup:has(> .cite) {
 .globe-ripple {
   fill: none;
   stroke: var(--wash-white);
-  stroke-width: 3;
+  stroke-width: 5;
   transform-box: fill-box;
   transform-origin: 50% 50%;
   opacity: 0;
@@ -1358,7 +1358,7 @@ sup:has(> .cite) {
     opacity: 0;
   }
   36% {
-    opacity: 0.85;
+    opacity: 1;
   }
   80%,
   100% {
