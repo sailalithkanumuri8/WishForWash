@@ -2231,13 +2231,13 @@ sup:has(> .cite) {
 
 .flips.is-enhanced .flip {
   perspective: 1200px;
-  min-height: 21rem;
 }
 
+/* Both faces share one grid cell, so the card is as tall as its longer face. */
 .flips.is-enhanced .flip__inner {
   position: relative;
-  display: block;
-  min-height: 100%;
+  grid-template: minmax(0, 1fr) / minmax(0, 1fr);
+  gap: 0;
   transform-style: preserve-3d;
   transition: transform 0.75s cubic-bezier(0.3, 0.7, 0.2, 1);
 }
@@ -2247,11 +2247,10 @@ sup:has(> .cite) {
 }
 
 .flips.is-enhanced .flip__face {
-  position: absolute;
-  inset: 0;
+  position: relative;
+  grid-area: 1 / 1;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-  overflow: hidden;
 }
 
 .flips.is-enhanced .flip__back {
