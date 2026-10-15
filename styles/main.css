@@ -4345,6 +4345,27 @@ sup:has(> .cite) {
   margin-top: 1.25rem;
 }
 
+/* No-JavaScript quiz: every question with its answer */
+.quiz__static {
+  display: grid;
+  gap: var(--space-4);
+  margin: var(--space-4) 0 0;
+  padding-left: 1.25rem;
+}
+
+.quiz__static-prompt {
+  font-weight: 700;
+}
+
+.quiz__static-options {
+  margin: var(--space-2) 0;
+  padding-left: 1.5rem;
+}
+
+.quiz__static-answer {
+  font-size: var(--fs-small);
+}
+
 /* ===== END TAKE ACTION SECTION ===== */
 
 /* ==========================================================================
