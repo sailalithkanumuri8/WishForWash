@@ -1614,7 +1614,6 @@ sup:has(> .cite) {
   color: var(--wash-ice);
 }
 
-.wash__intro,
 .causes__intro {
   max-width: 60ch;
   margin-top: var(--space-4);
@@ -1734,11 +1733,6 @@ sup:has(> .cite) {
   font-size: 3.25rem;
   font-weight: 700;
   line-height: 0.9;
-}
-
-.sdg__kicker {
-  margin-bottom: var(--space-2);
-  color: var(--wash-deep);
 }
 
 .sdg__title {
