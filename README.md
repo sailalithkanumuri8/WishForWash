@@ -116,6 +116,8 @@ Oct. 23. Add a row for each piece of peer or instructor feedback and the commit 
 | Oct. 15 | Pre-draft design review: map panel button invisible, campus strip pinned early, flip-card backs clipped | Fixed all three | `8b67928`, `64e15ae`, `169c4a6` |
 | Oct. 15 | Pre-draft PRD audit: lines over 70 characters; Map, Watch, Solutions had no exit cue | 70-character measure; exit cue on every section | `377d929`, `86a3a0f` |
 | Oct. 15 | Pre-draft copy review: unexplained acronyms (SDG, EWB-GT, JMP, GAWP), claims stronger than sources | Acronyms explained or removed; claims matched to sources | `86a3a0f`, `8b67928` |
+| Oct. 15 | Pre-draft QA pass: phone menu shrank after scrolling; widening or rotating jumped to the top; focus hidden in the campus strip; landscape phones got a cramped nav and map panel; late script brought the loader back | Fixed each | `08b66f4`, `11c8e5a`, `dbce803`, `6319506`, `19f378b`, `8aeae53`, `626aa9c` |
+| Oct. 15 | Pre-draft QA pass: no-JS forms put the email in the URL; transcript not keyboard-scrollable; jump links landed under the nav; small layout and Sources typos | Fixed each | `9bddb5f`, `d327275`, `cc2d354`, `de663e1`, `7e33bfc`, `5c11b52`, `c831202` |
 |  | *First-draft feedback goes here* |  |  |
 
 ## Credits
