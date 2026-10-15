@@ -1,0 +1,115 @@
+/* Wish for Wash design tokens: color, type and spacing.
+   Colors are sampled from the poster (see PRD "Visual design system"). */
+
+@font-face {
+  font-family: 'Pixelify Sans';
+  src: url('../assets/fonts/pixelify-sans-latin-700-normal.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pixelify Sans';
+  src: url('../assets/fonts/pixelify-sans-latin-500-normal.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../assets/fonts/montserrat-latin-wght-normal.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* ---- Color (poster palette) ---- */
+  --wash-blue: #5087c4; /* page background, default section */
+  --wash-deep: #2f64a8; /* alternating sections, footer, nav after scroll */
+  --wash-navy: #0e2a4f; /* body text on light surfaces, headings on aqua */
+  --wash-aqua: #55b6da; /* cards, map panel, chips */
+  --wash-ice: #d9ecfa; /* display headlines, hover tints */
+  --wash-foam: #8fd3f0; /* links, scroll bar, river lines, focus rings */
+  --wash-white: #ffffff; /* body text on blue, dividers */
+  --gt-gold: #b3a369; /* badges, "Join the Wish", completion states */
+  --earth-green: #7db77a; /* positive stats, "solved" states */
+
+  /* Derived surfaces (kept inside the palette) */
+  --wash-night: #0b2140; /* "lights down" in the Watch section */
+  --nav-solid: rgb(31 76 138 / 0.86); /* deep-to-navy blend under the blur */
+  --glass-dark: rgb(14 42 79 / 0.28);
+  --line-light: rgb(255 255 255 / 0.28);
+  --line-navy: rgb(14 42 79 / 0.18);
+  --shadow-soft: 0 18px 40px -18px rgb(9 27 54 / 0.55);
+  --shadow-card: 0 10px 30px -12px rgb(9 27 54 / 0.45);
+  --glow-gold: 0 10px 28px -6px rgb(179 163 105 / 0.65);
+  --glow-foam: 0 10px 28px -6px rgb(143 211 240 / 0.55);
+
+  /* ---- Type ---- */
+  --font-display: 'Pixelify Sans', 'Silkscreen', ui-monospace, monospace;
+  --font-wordmark: 'Wish Wordmark', var(--font-display);
+  --font-body: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+
+  /* Fluid sizes: mobile (375px) -> desktop (1440px) values from the PRD */
+  --fs-hero: clamp(3rem, 1.944rem + 4.507vw, 6rem); /* 48 -> 96 */
+  --fs-section: clamp(2.25rem, 1.81rem + 1.878vw, 3.5rem); /* 36 -> 56 */
+  --fs-heading: clamp(1.375rem, 1.243rem + 0.563vw, 1.75rem); /* 22 -> 28 */
+  --fs-body: clamp(1rem, 0.956rem + 0.188vw, 1.125rem); /* 16 -> 18 */
+  --fs-stat: clamp(3rem, 2.472rem + 2.254vw, 4.5rem); /* 48 -> 72 */
+  --fs-lede: clamp(1.1875rem, 1.06rem + 0.56vw, 1.5rem); /* 19 -> 24 */
+  --fs-small: 0.9375rem; /* 15 */
+  --fs-label: 0.8125rem; /* 13: labels, chips, tabs */
+  --lh-body: 1.6;
+  --lh-tight: 1.15;
+  --tracking-label: 0.06em;
+  --measure: 70ch;
+
+  /* ---- Space & layout ---- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+  --container: 1200px;
+  --gutter: 24px;
+  --page-pad: 16px; /* side padding on phones */
+  --section-pad: clamp(4.5rem, 3rem + 6vw, 8.5rem);
+  --nav-h: 72px;
+
+  /* ---- Shape ---- */
+  --radius-card: 32px;
+  --radius-md: 20px;
+  --radius-sm: 12px;
+  --radius-pill: 999px;
+
+  /* ---- Motion ---- */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 0.2s;
+  --dur-reveal: 0.75s;
+  --stagger: 0.08s;
+
+  /* ---- Layers ---- */
+  --z-bg: 0;
+  --z-content: 2;
+  --z-float: 40; /* back-to-top drop */
+  --z-nav: 50;
+  --z-menu: 60;
+  --z-dialog: 70;
+  --z-loader: 90;
+  --z-cursor: 100;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --page-pad: 32px;
+    --nav-h: 76px;
+  }
+}

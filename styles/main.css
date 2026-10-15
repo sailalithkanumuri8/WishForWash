@@ -1,0 +1,976 @@
+/* Wish for Wash: main stylesheet.
+   Order: base -> layout -> components -> navigation -> sections (in page order)
+   -> motion preferences. Tokens live in tokens.css. */
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-padding-top: var(--nav-h);
+  background: var(--wash-deep);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  font-weight: 400;
+  line-height: var(--lh-body);
+  color: var(--wash-white);
+  background: var(--wash-blue);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+}
+
+img,
+svg,
+video,
+canvas,
+iframe {
+  display: block;
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+ol,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+  padding: 0;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration-color: var(--wash-foam);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.18em;
+}
+
+a:hover {
+  text-decoration-thickness: 3px;
+}
+
+::selection {
+  background: var(--wash-foam);
+  color: var(--wash-navy);
+}
+
+:focus-visible {
+  outline: 3px solid var(--wash-foam);
+  outline-offset: 3px;
+}
+
+/* Light surfaces (aqua / ice cards) get a navy inner ring so focus stays visible. */
+.on-light :focus-visible {
+  outline-color: var(--wash-foam);
+  box-shadow: 0 0 0 3px var(--wash-navy);
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: fixed;
+  top: var(--space-3);
+  left: var(--space-3);
+  z-index: calc(var(--z-loader) + 1);
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius-pill);
+  background: var(--gt-gold);
+  color: var(--wash-navy);
+  font-weight: 700;
+  text-decoration: none;
+  transform: translateY(-160%);
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   Layout
+   ========================================================================== */
+
+.container {
+  width: min(100% - 2 * var(--page-pad), var(--container));
+  margin-inline: auto;
+}
+
+.grid-12 {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--gutter);
+}
+
+.section {
+  position: relative;
+  isolation: isolate;
+  padding-block: var(--section-pad);
+}
+
+.section > .container {
+  position: relative;
+  z-index: var(--z-content);
+}
+
+.section--blue {
+  background-color: var(--wash-blue);
+}
+
+.section--deep {
+  background-color: var(--wash-deep);
+}
+
+/* Section dividers: an SVG wave that rises out of each section's top edge. */
+.wave-divider {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 1px;
+  z-index: 1;
+  height: clamp(40px, 6vw, 88px);
+  transform: translateY(-100%);
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.wave-divider svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.section--blue > .wave-divider {
+  color: var(--wash-blue);
+}
+
+.section--deep > .wave-divider {
+  color: var(--wash-deep);
+}
+
+/* Bubble canvas sits behind section content (animation 7). */
+.bubbles {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   Typography components
+   ========================================================================== */
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.45rem 0.9rem;
+  border-radius: var(--radius-pill);
+  background: var(--wash-aqua);
+  color: var(--wash-navy);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+.section-head {
+  display: grid;
+  gap: var(--space-5);
+  justify-items: start;
+  margin-bottom: clamp(2.5rem, 2rem + 2vw, 4rem);
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-section);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: 0.005em;
+  color: var(--wash-ice);
+  max-width: 20ch;
+  text-wrap: balance;
+}
+
+.lede {
+  font-size: var(--fs-lede);
+  font-weight: 500;
+  line-height: 1.5;
+  max-width: 46ch;
+}
+
+/* On --wash-blue, running text sits inside a panel so it keeps 4.5:1 contrast. */
+.lede--panel {
+  padding: var(--space-5) var(--space-6);
+  border-radius: var(--radius-md);
+  background: var(--wash-deep);
+  box-shadow: var(--shadow-card);
+  font-size: var(--fs-body);
+  font-weight: 500;
+  line-height: var(--lh-body);
+  max-width: 60ch;
+}
+
+.prose {
+  max-width: var(--measure);
+}
+
+.prose p + p {
+  margin-top: var(--space-4);
+}
+
+/* Card titles: Montserrat 700, underlined like the poster cards.
+   The underline draws itself in when the card is revealed. */
+.card-title {
+  font-family: var(--font-body);
+  font-size: var(--fs-heading);
+  font-weight: 700;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+.card-title--underline {
+  display: inline;
+  padding-bottom: 0.12em;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 100% 3px;
+  transition: background-size 0.8s var(--ease-out);
+}
+
+.motion-ready .card-title--underline:not(.is-in) {
+  background-size: 0% 3px;
+}
+
+.label {
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+/* Citation superscripts: every number links to its entry in Sources. */
+sup:has(> .cite) {
+  line-height: 0;
+  font-size: 0.68em;
+  vertical-align: super;
+  white-space: nowrap;
+}
+
+.cite {
+  display: inline-block;
+  min-width: 1.4em;
+  padding: 0 0.2em;
+  margin-left: 0.08em;
+  border-radius: 0.4em;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-style: normal;
+  line-height: 1.5;
+  text-align: center;
+  text-decoration: none;
+  color: var(--wash-navy);
+  background: var(--wash-foam);
+}
+
+.cite + .cite {
+  margin-left: 0.15em;
+}
+
+.cite:hover {
+  background: var(--wash-ice);
+}
+
+.source-line {
+  font-size: var(--fs-small);
+  opacity: 1;
+}
+
+.source-line a {
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   Buttons, chips, cards
+   ========================================================================== */
+
+.btn {
+  --btn-shadow: none;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6em;
+  min-height: 48px;
+  padding: 0.8rem 1.6rem;
+  border: 2px solid transparent;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  box-shadow: var(--btn-shadow);
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn svg {
+  width: 1.15em;
+  height: 1.15em;
+  flex: none;
+}
+
+/* Primary = gold fill, navy text */
+.btn--primary {
+  background: var(--gt-gold);
+  color: var(--wash-navy);
+}
+
+.btn--primary:hover {
+  --btn-shadow: var(--glow-gold);
+  background: #c2b37c;
+}
+
+/* Secondary = white outline on blue (a light scrim keeps text at 4.5:1) */
+.btn--ghost {
+  background: var(--glass-dark);
+  border-color: var(--wash-white);
+  color: var(--wash-white);
+}
+
+.btn--ghost:hover {
+  --btn-shadow: var(--glow-foam);
+  background: rgb(14 42 79 / 0.42);
+}
+
+/* Navy button for use on aqua / ice cards */
+.btn--navy {
+  background: var(--wash-navy);
+  color: var(--wash-white);
+}
+
+.btn--navy:hover {
+  --btn-shadow: 0 10px 24px -8px rgb(14 42 79 / 0.6);
+  background: #163a68;
+}
+
+/* Outline button for light cards */
+.btn--outline-navy {
+  background: transparent;
+  border-color: var(--wash-navy);
+  color: var(--wash-navy);
+}
+
+.btn--outline-navy:hover {
+  background: rgb(14 42 79 / 0.08);
+}
+
+.btn--sm {
+  min-height: 40px;
+  padding: 0.55rem 1.1rem;
+  font-size: 0.9375rem;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  min-height: 36px;
+  padding: 0.45rem 0.95rem;
+  border-radius: var(--radius-pill);
+  border: 2px solid transparent;
+  background: var(--wash-aqua);
+  color: var(--wash-navy);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.chip svg {
+  width: 1.1em;
+  height: 1.1em;
+  flex: none;
+}
+
+.card {
+  position: relative;
+  border-radius: var(--radius-card);
+  padding: clamp(1.5rem, 1.1rem + 1.6vw, 2.25rem);
+}
+
+.card--aqua {
+  background: var(--wash-aqua);
+  color: var(--wash-navy);
+}
+
+.card--ice {
+  background: var(--wash-ice);
+  color: var(--wash-navy);
+}
+
+.card--deep {
+  background: var(--wash-deep);
+  color: var(--wash-white);
+}
+
+.card--navy {
+  background: var(--wash-navy);
+  color: var(--wash-white);
+}
+
+.card--aqua a,
+.card--ice a {
+  text-decoration-color: var(--wash-navy);
+}
+
+/* Lucide-style line icons: 2px stroke, round caps */
+.icon {
+  width: 1.5em;
+  height: 1.5em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex: none;
+}
+
+/* ==========================================================================
+   Loader (animation 1): a drop fills with water, then splashes into the hero
+   ========================================================================== */
+
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-loader);
+  display: none;
+  place-items: center;
+  background: var(--wash-blue);
+}
+
+/* Only shown when JS runs and this is a first visit with motion on. A CSS
+   failsafe hides it after 3s even if the script never finishes. */
+.js:not(.returning):not(.motion-off) .loader {
+  display: grid;
+  animation: loader-failsafe 0.4s 3s forwards;
+}
+
+.loader.is-done {
+  display: none !important;
+}
+
+@keyframes loader-failsafe {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.loader__drop {
+  width: 96px;
+  height: 128px;
+  overflow: visible;
+}
+
+/* ==========================================================================
+   Navigation (tab bar)
+   ========================================================================== */
+
+.site-header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: var(--z-nav);
+  height: var(--nav-h);
+  transition:
+    background-color 0.35s var(--ease-out),
+    box-shadow 0.35s var(--ease-out),
+    backdrop-filter 0.35s var(--ease-out);
+}
+
+.site-header.is-scrolled {
+  background-color: var(--nav-solid);
+  -webkit-backdrop-filter: blur(14px) saturate(1.25);
+  backdrop-filter: blur(14px) saturate(1.25);
+  box-shadow: 0 10px 30px -14px rgb(6 20 40 / 0.65);
+}
+
+/* Water-level scroll progress along the nav's top edge (animation 3) */
+.nav-progress {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 3px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.nav-progress__bar {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--wash-aqua), var(--wash-foam));
+  transform: scaleX(var(--progress, 0));
+  transform-origin: 0 50%;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  height: 100%;
+}
+
+.nav__logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex: none;
+  text-decoration: none;
+  color: var(--wash-ice);
+}
+
+.nav__logo-drop {
+  width: 30px;
+  height: 38px;
+  flex: none;
+}
+
+.nav__wordmark {
+  font-family: var(--font-wordmark);
+  font-size: 1.35rem;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.nav__tabs-wrap {
+  position: relative;
+  display: none;
+}
+
+.nav__tabs {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.15rem, 0.8vw, 0.9rem);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.nav__tab {
+  display: block;
+  padding: 0.7rem 0.55rem 0.85rem;
+  font-size: var(--fs-label);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  color: var(--wash-white);
+  opacity: 0.88;
+  transition: opacity var(--dur-fast) var(--ease-out);
+}
+
+.nav__tab:hover,
+.nav__tab[aria-current='true'] {
+  opacity: 1;
+}
+
+/* Wavy underline that slides to the active tab (animation 4) */
+.nav__wave {
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  height: 8px;
+  width: var(--wave-w, 0px);
+  transform: translateX(var(--wave-x, 0px));
+  opacity: var(--wave-o, 0);
+  color: var(--wash-foam);
+  background-color: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='8' viewBox='0 0 16 8'%3E%3Cpath d='M0 4c2 0 2-3 4-3s2 3 4 3 2-3 4-3 2 3 4 3' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E")
+    0 50% / 16px 8px repeat-x;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='8' viewBox='0 0 16 8'%3E%3Cpath d='M0 4c2 0 2-3 4-3s2 3 4 3 2-3 4-3 2 3 4 3' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E")
+    0 50% / 16px 8px repeat-x;
+  transition:
+    transform 0.5s var(--ease-out),
+    width 0.5s var(--ease-out),
+    opacity 0.3s var(--ease-out);
+  pointer-events: none;
+}
+
+.nav__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex: none;
+}
+
+.nav__join {
+  display: none;
+  overflow: hidden;
+}
+
+/* Gold shimmer sweeping across "Join the Wish" */
+.nav__join::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: linear-gradient(105deg, transparent 35%, rgb(255 255 255 / 0.55) 50%, transparent 65%);
+  background-size: 250% 100%;
+  background-position: 120% 0;
+  animation: shimmer 4.5s ease-in-out 2s infinite;
+  pointer-events: none;
+}
+
+@keyframes shimmer {
+  0%,
+  60% {
+    background-position: 120% 0;
+  }
+  100% {
+    background-position: -120% 0;
+  }
+}
+
+/* Motion on/off switch (visible in the nav) */
+.motion-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  padding: 0.35rem 0.4rem 0.35rem 0.75rem;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: var(--glass-dark);
+  color: var(--wash-white);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+.motion-toggle__track {
+  position: relative;
+  width: 40px;
+  height: 24px;
+  border-radius: var(--radius-pill);
+  background: rgb(255 255 255 / 0.3);
+  transition: background-color var(--dur-fast) var(--ease-out);
+}
+
+.motion-toggle__thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--wash-white);
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+.motion-toggle[aria-checked='true'] .motion-toggle__track {
+  background: var(--wash-aqua);
+}
+
+.motion-toggle[aria-checked='true'] .motion-toggle__thumb {
+  transform: translateX(16px);
+}
+
+.motion-toggle__state {
+  min-width: 2.2em;
+  text-align: left;
+}
+
+.nav__menu-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-width: 48px;
+  min-height: 44px;
+  padding: 0.35rem 0.9rem;
+  border: 2px solid var(--wash-white);
+  border-radius: var(--radius-pill);
+  background: var(--glass-dark);
+  color: var(--wash-white);
+  font-size: var(--fs-label);
+  font-weight: 700;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+.nav__menu-icon {
+  width: 18px;
+  height: 18px;
+}
+
+/* Mobile menu: a full-screen overlay that rises like a wave */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-menu);
+  display: flex;
+  flex-direction: column;
+  padding: calc(var(--nav-h) + var(--space-5)) var(--page-pad) var(--space-7);
+  overflow-y: auto;
+  background: var(--wash-deep);
+  color: var(--wash-white);
+  clip-path: inset(0 0 0 0);
+}
+
+.mobile-menu__wave {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 60px;
+  color: var(--wash-deep);
+  transform: translateY(-98%);
+  pointer-events: none;
+}
+
+.mobile-menu__list {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0 0 var(--space-6);
+  padding: 0;
+  list-style: none;
+}
+
+.mobile-menu__link {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  padding: 0.45rem 0;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 8vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--wash-ice);
+  text-decoration: none;
+}
+
+.mobile-menu__link span {
+  font-family: var(--font-body);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-label);
+  color: var(--wash-white);
+}
+
+.mobile-menu__link[aria-current='true'] {
+  color: var(--wash-white);
+  text-decoration: underline wavy var(--wash-foam) 3px;
+  text-underline-offset: 0.2em;
+}
+
+.mobile-menu__footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4);
+  margin-top: auto;
+}
+
+@media (min-width: 480px) {
+  .nav__join {
+    display: inline-flex;
+  }
+}
+
+@media (min-width: 768px) {
+  .nav__tabs-wrap {
+    display: block;
+  }
+
+  .nav__menu-btn,
+  .mobile-menu {
+    display: none !important;
+  }
+}
+
+/* Tighter nav between 768 and 1100px so six tabs + switch + pill fit. */
+@media (min-width: 768px) and (max-width: 1099px) {
+  .nav__wordmark,
+  .motion-toggle__label {
+    display: none;
+  }
+
+  .nav__join {
+    padding-inline: 1rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .motion-toggle__label {
+    display: none;
+  }
+}
+
+@media (max-width: 400px) {
+  .nav__wordmark {
+    font-size: 1.1rem;
+  }
+}
+
+/* Back to top: a floating drop that appears after the map */
+.back-to-top {
+  position: fixed;
+  right: clamp(16px, 2.5vw, 32px);
+  bottom: clamp(16px, 2.5vw, 32px);
+  z-index: var(--z-float);
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 64px;
+  color: var(--wash-navy);
+  text-decoration: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(16px);
+  transition:
+    opacity 0.35s var(--ease-out),
+    transform 0.35s var(--ease-out),
+    visibility 0s linear 0.35s;
+}
+
+.back-to-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition:
+    opacity 0.35s var(--ease-out),
+    transform 0.35s var(--ease-out),
+    visibility 0s;
+}
+
+.back-to-top svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  filter: drop-shadow(0 8px 14px rgb(9 27 54 / 0.45));
+}
+
+.back-to-top:hover svg {
+  transform: translateY(-3px);
+}
+
+.back-to-top:focus-visible {
+  border-radius: 50%;
+}
+
+/* ==========================================================================
+   SECTIONS
+   ========================================================================== */
+
+/* ===== MAP SECTION: owned by the map component (scripts/map.js) ===== */
+/* ===== END MAP SECTION ===== */
+
+/* ===== TAKE ACTION SECTION: owned by scripts/pledge-quiz.js ===== */
+/* ===== END TAKE ACTION SECTION ===== */
+
+/* ==========================================================================
+   Motion preferences
+   ========================================================================== */
+
+/* Motion off (system "reduce motion" or the nav switch): stop CSS loops and
+   make transitions instant. JS-driven motion is handled in scripts/motion.js. */
+.motion-off *,
+.motion-off *::before,
+.motion-off *::after {
+  animation-duration: 0.001ms !important;
+  animation-delay: 0s !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+  transition-delay: 0s !important;
+  scroll-behavior: auto !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .no-js *,
+  .no-js *::before,
+  .no-js *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

@@ -1,0 +1,916 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Wish for Wash | Clean Water Starts in Georgia</title>
+    <meta
+      name="description"
+      content="Wish for Wash, a Georgia Tech student initiative, shows how the global clean-water crisis (UN SDG 6) reaches Georgia and gives you one concrete way to help."
+    />
+    <meta name="theme-color" content="#2f64a8" />
+    <link rel="canonical" href="%SITE_URL%" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Wish for Wash" />
+    <meta property="og:title" content="Wish for Wash | Clean Water Starts in Georgia" />
+    <meta
+      property="og:description"
+      content="1 in 4 people still lack safe drinking water. See how the crisis shows up across Georgia, then take one step to fix it."
+    />
+    <meta property="og:url" content="%SITE_URL%" />
+    <meta property="og:image" content="%SITE_URL%og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="The pixel Wish for Wash wordmark beside two hands holding a water-filled globe." />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-48.png" sizes="48x48" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <script>
+      // Runs before paint: mark JS support, apply the saved motion preference
+      // and skip the loader for returning visitors.
+      (function () {
+        var d = document.documentElement;
+        d.classList.remove('no-js');
+        d.classList.add('js');
+        try {
+          var saved = localStorage.getItem('wfw-motion');
+          var off = saved ? saved === 'off' : window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          if (off) d.classList.add('motion-off');
+          if (localStorage.getItem('wfw-visited')) d.classList.add('returning');
+        } catch (e) {}
+      })();
+    </script>
+
+    <link rel="stylesheet" href="/styles/tokens.css" />
+    <link rel="stylesheet" href="/styles/main.css" />
+    <script type="module" src="/scripts/main.js"></script>
+  </head>
+
+  <body>
+    <!-- @render icons -->
+
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <!-- Loader (animation 1): first visit only, skipped when motion is off -->
+    <div class="loader" id="loader" aria-hidden="true">
+      <svg class="loader__drop" viewBox="0 0 96 128">
+        <defs>
+          <clipPath id="loader-clip">
+            <path d="M48 4C40 26 10 52 10 82a38 38 0 0 0 76 0C86 52 56 26 48 4Z" />
+          </clipPath>
+        </defs>
+        <g clip-path="url(#loader-clip)">
+          <rect class="loader__water" x="-40" y="0" width="176" height="128" fill="#8fd3f0" />
+          <path
+            class="loader__wave"
+            d="M-40 0c12 0 12-6 24-6s12 6 24 6 12-6 24-6 12 6 24 6 12-6 24-6 12 6 24 6 12-6 24-6 12 6 24 6v12h-168Z"
+            fill="#d9ecfa"
+          />
+        </g>
+        <path
+          class="loader__outline"
+          d="M48 4C40 26 10 52 10 82a38 38 0 0 0 76 0C86 52 56 26 48 4Z"
+          fill="none"
+          stroke="#d9ecfa"
+          stroke-width="4"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </div>
+
+    <header class="site-header" id="site-header">
+      <div class="nav-progress" aria-hidden="true"><span class="nav-progress__bar"></span></div>
+      <nav class="nav container" aria-label="Primary">
+        <a class="nav__logo" href="#home" aria-label="Wish for Wash, back to the top">
+          <svg class="nav__logo-drop" viewBox="0 0 30 38" aria-hidden="true">
+            <path d="M15 1C11.5 9 3 15.5 3 24.5a12 12 0 0 0 24 0C27 15.5 18.5 9 15 1Z" fill="#2f7fd6" stroke="#d9ecfa" stroke-width="2" />
+            <path d="M9.5 22.5c.4-3 2.1-5.4 4.2-7" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity=".85" />
+            <path d="M10.5 28.5c2.6 2.4 6.4 2.4 9 0" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" />
+          </svg>
+          <span class="nav__wordmark" aria-hidden="true">WISH FOR WASH</span>
+        </a>
+
+        <div class="nav__tabs-wrap">
+          <ul class="nav__tabs" id="nav-tabs">
+            <li><a class="nav__tab" href="#issue" data-section="issue">The Issue</a></li>
+            <li><a class="nav__tab" href="#map" data-section="map">Explore Georgia</a></li>
+            <li><a class="nav__tab" href="#watch" data-section="watch">Watch</a></li>
+            <li><a class="nav__tab" href="#solutions" data-section="solutions">Solutions</a></li>
+            <li><a class="nav__tab" href="#gt" data-section="gt">Georgia Tech</a></li>
+            <li><a class="nav__tab" href="#act" data-section="act">Take Action</a></li>
+          </ul>
+          <span class="nav__wave" aria-hidden="true"></span>
+        </div>
+
+        <div class="nav__actions">
+          <button class="motion-toggle" id="motion-toggle" type="button" role="switch" aria-checked="true" aria-label="Motion">
+            <span class="motion-toggle__label" aria-hidden="true">Motion</span>
+            <span class="motion-toggle__track" aria-hidden="true"><span class="motion-toggle__thumb"></span></span>
+            <span class="motion-toggle__state" aria-hidden="true">On</span>
+          </button>
+          <a class="btn btn--primary btn--sm nav__join" href="#act" data-magnetic>Join the Wish</a>
+          <button class="nav__menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="mobile-menu">
+            <svg class="icon nav__menu-icon" aria-hidden="true"><use href="#i-menu"></use></svg>
+            <span>Menu</span>
+          </button>
+        </div>
+      </nav>
+
+      <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Site menu" hidden>
+        <svg class="mobile-menu__wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M0 60V30c120-20 240-30 360-18s240 34 360 30 240-34 360-38 240 14 360 26v30Z" fill="currentColor" />
+        </svg>
+        <ul class="mobile-menu__list">
+          <li><a class="mobile-menu__link" href="#home" data-section="home"><span>00</span>Home</a></li>
+          <li><a class="mobile-menu__link" href="#issue" data-section="issue"><span>01</span>The Issue</a></li>
+          <li><a class="mobile-menu__link" href="#map" data-section="map"><span>02</span>Explore Georgia</a></li>
+          <li><a class="mobile-menu__link" href="#watch" data-section="watch"><span>03</span>Watch</a></li>
+          <li><a class="mobile-menu__link" href="#solutions" data-section="solutions"><span>04</span>Solutions</a></li>
+          <li><a class="mobile-menu__link" href="#gt" data-section="gt"><span>05</span>Georgia Tech</a></li>
+          <li><a class="mobile-menu__link" href="#act" data-section="act"><span>06</span>Take Action</a></li>
+        </ul>
+        <div class="mobile-menu__footer">
+          <a class="btn btn--primary" href="#act">Join the Wish</a>
+          <button class="btn btn--ghost" type="button" data-menu-close>Close menu</button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" tabindex="-1">
+      <!-- ================================================================
+           0. HERO (#home): hook
+           ================================================================ -->
+      <section id="home" class="section hero" aria-labelledby="hero-title">
+        <canvas class="bubbles" aria-hidden="true"></canvas>
+        <div class="container hero__inner">
+          <div class="hero__copy">
+            <p class="eyebrow hero__eyebrow" data-hero-intro>A Georgia Tech student initiative</p>
+            <h1 class="wordmark" id="hero-title"><span class="wordmark__text">WISH FOR WASH</span></h1>
+            <p class="hero__sub" data-hero-intro>
+              Clean water is essential for health, nature, and survival. Yet 1 in 4 people still lack safe drinking
+              water.<sup><a class="cite" href="#src-jmp"></a></sup> Let's change that, starting in Georgia.
+            </p>
+            <div class="hero__ctas" data-hero-intro>
+              <a class="btn btn--primary" href="#map">
+                <svg class="icon" aria-hidden="true"><use href="#i-map-pin"></use></svg>Explore Georgia
+              </a>
+              <a class="btn btn--ghost" href="#act">Take Action</a>
+            </div>
+          </div>
+
+          <div class="hero__art">
+            <img class="hero__gt" src="/assets/img/gt-logo.svg" alt="Georgia Tech" width="160" height="128" />
+            <div class="hero__globe" data-globe>
+              <img
+                class="hero__globe-img"
+                src="/assets/img/globe-in-hands.webp"
+                alt="Two hands cradling a glass globe of the Earth, filled with water, as a single drop lands on its surface."
+                width="1100"
+                height="1000"
+                fetchpriority="high"
+              />
+            </div>
+            <div class="hero__bottle" data-bottle>
+              <img
+                class="hero__bottle-img"
+                src="/assets/img/bottle.webp"
+                alt="The Wish for Wash reusable water bottle mock-up, light blue with a drop-shaped logo."
+                width="400"
+                height="560"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="hero__waves" aria-hidden="true">
+          <svg class="hero__wave hero__wave--back" viewBox="0 0 2880 160" preserveAspectRatio="none">
+            <path d="M0 80C240 30 480 30 720 80s480 50 720 0 480-50 720 0 480 50 720 0V160H0Z" />
+          </svg>
+          <svg class="hero__wave hero__wave--mid" viewBox="0 0 2880 160" preserveAspectRatio="none">
+            <path d="M0 96C180 56 360 56 540 96s360 40 540 0 360-40 540 0 360 40 540 0 360-40 540 0 180 20 180 20V160H0Z" />
+          </svg>
+          <svg class="hero__wave hero__wave--front" viewBox="0 0 2880 160" preserveAspectRatio="none">
+            <path d="M0 112C240 82 480 82 720 112s480 30 720 0 480-30 720 0 480 30 720 0V160H0Z" />
+          </svg>
+        </div>
+
+        <a class="scroll-cue" href="#issue">
+          <svg class="scroll-cue__drop" viewBox="0 0 24 32" aria-hidden="true">
+            <path d="M12 2C9 9 3 14 3 21a9 9 0 0 0 18 0c0-7-6-12-9-19Z" />
+          </svg>
+          <span>Scroll to dive in</span>
+        </a>
+      </section>
+
+      <!-- ================================================================
+           1. THE ISSUE (#issue): understand the scale (tone: urgent)
+           ================================================================ -->
+      <section id="issue" class="section section--deep issue" aria-labelledby="issue-title">
+        <canvas class="bubbles" aria-hidden="true"></canvas>
+        <div class="container">
+          <header class="section-head">
+            <p class="eyebrow" data-reveal>
+              <svg class="icon" aria-hidden="true"><use href="#i-droplet"></use></svg>The Issue
+            </p>
+            <h2 class="section-title" id="issue-title" data-split>1 in 4 people still can't count on safe water.</h2>
+            <p class="lede" data-reveal>
+              It's easy to picture the water crisis as someone else's problem. The newest global count says
+              otherwise: billions of people can't rely on the tap, toilet or sink most of us never think about.
+            </p>
+          </header>
+
+          <ul class="stats" role="list" data-reveal-group>
+            <li class="stat">
+              <p class="stat__value">
+                <span class="stat__num" data-count="2.1" data-decimals="1">2.1</span>
+                <span class="stat__unit">billion</span>
+              </p>
+              <p class="stat__label">
+                people lack safely managed drinking water<sup><a class="cite" href="#src-jmp"></a></sup>
+              </p>
+            </li>
+            <li class="stat">
+              <p class="stat__value">
+                <span class="stat__num" data-count="3.4" data-decimals="1">3.4</span>
+                <span class="stat__unit">billion</span>
+              </p>
+              <p class="stat__label">lack safely managed sanitation<sup><a class="cite" href="#src-jmp"></a></sup></p>
+            </li>
+            <li class="stat">
+              <p class="stat__value">
+                <span class="stat__num" data-count="1.7" data-decimals="1">1.7</span>
+                <span class="stat__unit">billion</span>
+              </p>
+              <p class="stat__label">
+                lack basic hygiene services at home<sup><a class="cite" href="#src-jmp"></a></sup>
+              </p>
+            </li>
+          </ul>
+          <p class="source-line issue__source" data-reveal>
+            Source:
+            <a href="https://www.who.int/news/item/26-08-2025-1-in-4-people-globally-still-lack-access-to-safe-drinking-water---who--unicef" target="_blank" rel="noopener">WHO/UNICEF Joint Monitoring Programme, 2025 update</a>
+          </p>
+
+          <div class="issue__grid">
+            <figure class="people" id="people-grid">
+              <div class="people__grid" aria-hidden="true"></div>
+              <figcaption class="people__caption">
+                <strong class="people__big">1 in 4</strong>
+                Out of every 100 people on Earth, about 25 can't count on safe drinking water at
+                home.<sup><a class="cite" href="#src-jmp"></a></sup>
+              </figcaption>
+            </figure>
+
+            <aside class="data-note card card--navy" data-reveal>
+              <h3 class="label data-note__title">
+                <svg class="icon" aria-hidden="true"><use href="#i-info"></use></svg>Data note
+              </h3>
+              <p>
+                Some of our earlier sources cited 26% and 46%.<sup><a class="cite" href="#src-owid"></a></sup> We
+                replaced those older figures with the 2025 JMP update, so every number on this site is current.
+              </p>
+            </aside>
+          </div>
+
+          <div class="wash" aria-labelledby="wash-title">
+            <h3 class="card-title card-title--underline wash__title" id="wash-title" data-reveal>What is WASH?</h3>
+            <p class="wash__intro" data-reveal>
+              WASH stands for water, sanitation and hygiene. Health experts group them because each one only works
+              when the others do.
+            </p>
+            <ul class="wash__list" role="list" data-reveal-group>
+              <li class="wash__item">
+                <svg class="wash__icon" viewBox="0 0 64 64" aria-hidden="true">
+                  <path class="draw" d="M32 6C26 18 14 27 14 40a18 18 0 0 0 36 0C50 27 38 18 32 6Z" />
+                  <path class="draw" d="M24 41c0 5 3.5 8.5 8 9" />
+                </svg>
+                <p class="wash__letter" aria-hidden="true">WA</p>
+                <h4 class="wash__name">Water</h4>
+                <p>Safe drinking water at home, there when you need it and free from contamination.</p>
+              </li>
+              <li class="wash__item">
+                <svg class="wash__icon" viewBox="0 0 64 64" aria-hidden="true">
+                  <path class="draw" d="M18 10h16v20H18z" />
+                  <path class="draw" d="M14 30h36c0 10-7 16-16 16h-4c-9 0-16-6-16-16Z" />
+                  <path class="draw" d="M24 46l-2 10h20l-2-10" />
+                </svg>
+                <p class="wash__letter" aria-hidden="true">S</p>
+                <h4 class="wash__name">Sanitation</h4>
+                <p>A toilet that keeps waste away from people, plus a system that safely treats it.</p>
+              </li>
+              <li class="wash__item">
+                <svg class="wash__icon" viewBox="0 0 64 64" aria-hidden="true">
+                  <path class="draw" d="M20 34V18a4 4 0 0 1 8 0v12" />
+                  <path class="draw" d="M28 28V14a4 4 0 0 1 8 0v14" />
+                  <path class="draw" d="M36 28V17a4 4 0 0 1 8 0v19c0 9-6 18-16 18-7 0-11-4-15-10l-5-8a4 4 0 0 1 7-4l5 6" />
+                  <path class="draw" d="M48 8c-1.5 3-4 5-4 7.5a4 4 0 0 0 8 0C52 13 49.5 11 48 8Z" />
+                </svg>
+                <p class="wash__letter" aria-hidden="true">H</p>
+                <h4 class="wash__name">Hygiene</h4>
+                <p>A place at home to wash your hands with soap and water.</p>
+              </li>
+            </ul>
+          </div>
+
+          <div class="causes" aria-labelledby="causes-title">
+            <h3 class="card-title card-title--underline causes__title" id="causes-title" data-reveal>Why it happens</h3>
+            <p class="causes__intro" data-reveal>
+              Our research points to four forces that keep safe water out of
+              reach:<sup><a class="cite" href="#src-coes-2018"></a></sup>
+            </p>
+            <ul class="causes__list" role="list" data-reveal-group>
+              <li class="cause card card--aqua on-light" data-tilt>
+                <svg class="icon cause__icon" aria-hidden="true"><use href="#i-users"></use></svg>
+                <h4 class="cause__title">Population growth</h4>
+                <p>More people share the same rivers and aquifers, and cities must treat more wastewater every year.</p>
+              </li>
+              <li class="cause card card--aqua on-light" data-tilt>
+                <svg class="icon cause__icon" aria-hidden="true"><use href="#i-wrench"></use></svg>
+                <h4 class="cause__title">Aging infrastructure</h4>
+                <p>Pipes and treatment plants wear out. When an old main breaks, safe water stops flowing.</p>
+              </li>
+              <li class="cause card card--aqua on-light" data-tilt>
+                <svg class="icon cause__icon" aria-hidden="true"><use href="#i-coins"></use></svg>
+                <h4 class="cause__title">Limited funding</h4>
+                <p>Water systems are expensive to build and maintain, so repairs often wait until something fails.</p>
+              </li>
+              <li class="cause card card--aqua on-light" data-tilt>
+                <svg class="icon cause__icon" aria-hidden="true"><use href="#i-settings-2"></use></svg>
+                <h4 class="cause__title">Weak water management</h4>
+                <p>Without shared data and planning, water gets overused, polluted or fought over.</p>
+              </li>
+            </ul>
+          </div>
+
+          <article class="sdg card card--ice on-light" aria-labelledby="sdg-title" data-reveal>
+            <div class="sdg__badge" aria-hidden="true">
+              <span class="sdg__num">6</span>
+              <svg class="icon" aria-hidden="true"><use href="#i-droplets"></use></svg>
+            </div>
+            <div class="sdg__body">
+              <p class="label sdg__kicker">UN Sustainable Development Goal 6</p>
+              <h3 class="card-title sdg__title" id="sdg-title">Clean water and sanitation for all by 2030</h3>
+              <p class="sdg__goal">
+                SDG 6 asks every country to ensure the availability and sustainable management of water and
+                sanitation for all.<sup><a class="cite" href="#src-un-sdg6"></a></sup>
+              </p>
+              <ul class="sdg__targets" role="list" aria-label="SDG 6 targets on this site">
+                <li class="chip chip--target"><strong>6.1</strong> Drinking water</li>
+                <li class="chip chip--target"><strong>6.2</strong> Sanitation and hygiene</li>
+                <li class="chip chip--target"><strong>6.3</strong> Water quality</li>
+                <li class="chip chip--target"><strong>6.4</strong> Water efficiency</li>
+              </ul>
+              <p class="sdg__ripple-intro">
+                Water ripples into other goals:<sup><a class="cite" href="#src-swrm-2017"></a></sup>
+              </p>
+              <ul class="sdg__ripples" role="list">
+                <li>
+                  <a class="ripple" href="https://sdgs.un.org/goals/goal3" target="_blank" rel="noopener">
+                    <span class="ripple__num">SDG 3</span>
+                    <span class="ripple__name">Good health</span>
+                    <span class="ripple__text">Safe water and toilets prevent disease.</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="ripple" href="https://sdgs.un.org/goals/goal11" target="_blank" rel="noopener">
+                    <span class="ripple__num">SDG 11</span>
+                    <span class="ripple__name">Sustainable cities</span>
+                    <span class="ripple__text">Growing cities need pipes and plants that last.</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="ripple" href="https://sdgs.un.org/goals/goal14" target="_blank" rel="noopener">
+                    <span class="ripple__num">SDG 14</span>
+                    <span class="ripple__name">Life below water</span>
+                    <span class="ripple__text">What washes off our streets flows to the sea.</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </article>
+
+          <a class="exit-cue" href="#map" data-reveal>
+            <span>Think this only happens far away? Look closer.</span>
+            <svg class="icon" aria-hidden="true"><use href="#i-arrow-down"></use></svg>
+          </a>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           2. EXPLORE GEORGIA (#map): feel it locally (tone: curious)
+           ================================================================ -->
+      <section id="map" class="section section--blue map" aria-labelledby="map-title">
+        <div class="wave-divider" aria-hidden="true">
+          <svg viewBox="0 0 1440 90" preserveAspectRatio="none"><path class="wave-divider__path" d="M0 90V46C160 18 320 10 480 30s320 50 480 44 320-40 480-50v120Z" fill="currentColor" /></svg>
+        </div>
+        <div class="container">
+          <header class="section-head">
+            <p class="eyebrow" data-reveal>
+              <svg class="icon" aria-hidden="true"><use href="#i-map-pin"></use></svg>Explore Georgia
+            </p>
+            <h2 class="section-title" id="map-title" data-split>The water crisis has a Georgia zip code.</h2>
+            <p class="lede lede--panel" data-reveal>
+              Every glass you fill on campus starts in the Chattahoochee River. Click each glowing drop to see how
+              water and sanitation challenges show up across Georgia, starting two miles from campus.
+            </p>
+          </header>
+
+          <!-- MAP:START (interactive map component, rendered from data/regions.json) -->
+          <div class="map-app" id="map-app"></div>
+          <!-- MAP:END -->
+        </div>
+      </section>
+
+      <!-- ================================================================
+           3. WATCH (#watch): emotional turn
+           ================================================================ -->
+      <section id="watch" class="section section--deep watch" aria-labelledby="watch-title">
+        <div class="wave-divider" aria-hidden="true">
+          <svg viewBox="0 0 1440 90" preserveAspectRatio="none"><path class="wave-divider__path" d="M0 90V40C180 60 360 70 540 50s360-44 540-40 240 24 360 30v100Z" fill="currentColor" /></svg>
+        </div>
+        <div class="watch__dim" aria-hidden="true"></div>
+        <canvas class="bubbles" aria-hidden="true"></canvas>
+        <div class="container watch__inner">
+          <header class="section-head watch__head">
+            <p class="eyebrow" data-reveal>
+              <svg class="icon" aria-hidden="true"><use href="#i-play"></use></svg>Watch
+            </p>
+            <h2 class="section-title" id="watch-title" data-split>See where the rain goes.</h2>
+            <div class="prose watch__framing" data-reveal>
+              <p>
+                We wanted you to see this, not just read it. The short film below comes from Georgia Tech's Office
+                of Sustainability and shows how campus already treats stormwater as a resource instead of waste.
+                Watch for three things: where the rain lands, how soil and plants clean it before it reaches a
+                creek, and what it would take to build the same ideas in neighborhoods across Georgia.
+              </p>
+            </div>
+          </header>
+
+          <figure class="video" data-video>
+            <div class="video__frame">
+              <a class="video__poster" href="https://sustain.gatech.edu/water/" target="_blank" rel="noopener" data-video-poster>
+                <span class="video__poster-art" aria-hidden="true"></span>
+                <span class="video__play" aria-hidden="true">
+                  <svg class="icon" aria-hidden="true"><use href="#i-play"></use></svg>
+                </span>
+                <span class="video__poster-text">
+                  <span class="label">Play video</span>
+                  <span class="video__poster-title" data-video-title>Georgia Tech campus water</span>
+                </span>
+              </a>
+            </div>
+            <figcaption class="video__caption" data-video-caption>
+              Video: Georgia Tech Office of Sustainability. Captions are on by default.
+            </figcaption>
+          </figure>
+
+          <details class="transcript" id="transcript">
+            <summary class="transcript__summary">
+              <svg class="icon" aria-hidden="true"><use href="#i-list"></use></svg>
+              <span>Read the transcript</span>
+            </summary>
+            <div class="transcript__body prose" data-transcript>
+              <p>The transcript will appear here.</p>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           4. SOLUTIONS (#solutions): show it is solvable (tone: inspiring)
+           ================================================================ -->
+      <section id="solutions" class="section section--blue solutions" aria-labelledby="solutions-title">
+        <div class="wave-divider" aria-hidden="true">
+          <svg viewBox="0 0 1440 90" preserveAspectRatio="none"><path class="wave-divider__path" d="M0 90V52C200 22 400 16 600 36s400 46 600 36 160-24 240-30v86Z" fill="currentColor" /></svg>
+        </div>
+        <div class="container">
+          <header class="section-head">
+            <p class="eyebrow" data-reveal>
+              <svg class="icon" aria-hidden="true"><use href="#i-lightbulb"></use></svg>Solutions
+            </p>
+            <h2 class="section-title" id="solutions-title" data-split>
+              Every one of these problems has a fix someone is already building.
+            </h2>
+            <p class="lede lede--panel" data-reveal>
+              Flip each card to see the fix and the proof behind it. None of these needs a miracle, just good
+              design and people willing to show up.
+            </p>
+          </header>
+
+          <ul class="flips" role="list" data-reveal-group>
+            <li class="flip" data-flip>
+              <div class="flip__inner">
+                <div class="flip__face flip__front on-light">
+                  <svg class="icon flip__icon" aria-hidden="true"><use href="#i-droplet"></use></svg>
+                  <p class="label flip__kicker">The problem</p>
+                  <h3 class="flip__title">Not enough clean water to go around</h3>
+                  <button class="flip__btn" type="button" aria-expanded="false" aria-controls="flip-back-1">
+                    <span>See the fix</span><svg class="icon" aria-hidden="true"><use href="#i-repeat"></use></svg>
+                  </button>
+                </div>
+                <div class="flip__face flip__back on-light" id="flip-back-1">
+                  <p class="label flip__kicker">The fix: wastewater recycling</p>
+                  <p class="flip__text">
+                    Treated wastewater can become a new, reliable water source for farms, industry and even
+                    drinking water.
+                  </p>
+                  <p class="flip__proof">
+                    <svg class="icon" aria-hidden="true"><use href="#i-badge-check"></use></svg>
+                    Proof: a peer-reviewed review in <em>npj Clean Water</em>.<sup><a class="cite" href="#src-npj-2020"></a></sup>
+                  </p>
+                  <p class="flip__source">Source: <a href="https://www.nature.com/articles/s41545-020-0069-3" target="_blank" rel="noopener">npj Clean Water (2020)</a></p>
+                  <button class="flip__btn flip__btn--back" type="button" aria-controls="flip-back-1">
+                    <svg class="icon" aria-hidden="true"><use href="#i-rotate-ccw"></use></svg><span>Back to the problem</span>
+                  </button>
+                </div>
+              </div>
+            </li>
+            <li class="flip" data-flip>
+              <div class="flip__inner">
+                <div class="flip__face flip__front on-light">
+                  <svg class="icon flip__icon" aria-hidden="true"><use href="#i-cloud-rain"></use></svg>
+                  <p class="label flip__kicker">The problem</p>
+                  <h3 class="flip__title">Stormwater rushing polluted runoff into creeks</h3>
+                  <button class="flip__btn" type="button" aria-expanded="false" aria-controls="flip-back-2">
+                    <span>See the fix</span><svg class="icon" aria-hidden="true"><use href="#i-repeat"></use></svg>
+                  </button>
+                </div>
+                <div class="flip__face flip__back on-light" id="flip-back-2">
+                  <p class="label flip__kicker">The fix: green infrastructure</p>
+                  <p class="flip__text">
+                    Bioswales, rain gardens and permeable surfaces soak up stormwater before it hits the creek.
+                  </p>
+                  <p class="flip__proof">
+                    <svg class="icon" aria-hidden="true"><use href="#i-badge-check"></use></svg>
+                    Proof: EPA expects planned green infrastructure in the Proctor Creek watershed to cut runoff and
+                    improve water quality.<sup><a class="cite" href="#src-epa-proctor"></a></sup>
+                  </p>
+                  <p class="flip__source">Source: <a href="https://www.epa.gov/sites/default/files/2020-05/documents/proctor_creek_watershed_monitoring_final_summary_report.pdf" target="_blank" rel="noopener">US EPA Region 4</a></p>
+                  <button class="flip__btn flip__btn--back" type="button" aria-controls="flip-back-2">
+                    <svg class="icon" aria-hidden="true"><use href="#i-rotate-ccw"></use></svg><span>Back to the problem</span>
+                  </button>
+                </div>
+              </div>
+            </li>
+            <li class="flip" data-flip>
+              <div class="flip__inner">
+                <div class="flip__face flip__front on-light">
+                  <svg class="icon flip__icon" aria-hidden="true"><use href="#i-test-tube"></use></svg>
+                  <p class="label flip__kicker">The problem</p>
+                  <h3 class="flip__title">Nobody knows what's in the water</h3>
+                  <button class="flip__btn" type="button" aria-expanded="false" aria-controls="flip-back-3">
+                    <span>See the fix</span><svg class="icon" aria-hidden="true"><use href="#i-repeat"></use></svg>
+                  </button>
+                </div>
+                <div class="flip__face flip__back on-light" id="flip-back-3">
+                  <p class="label flip__kicker">The fix: community monitoring</p>
+                  <p class="flip__text">
+                    Chattahoochee Riverkeeper trains volunteers to sample urban streams for bacteria.
+                  </p>
+                  <p class="flip__proof">
+                    <svg class="icon" aria-hidden="true"><use href="#i-badge-check"></use></svg>
+                    Proof: EPA placed its Proctor Creek study sites at those long-running volunteer stations so the
+                    data could be compared.<sup><a class="cite" href="#src-epa-proctor"></a></sup>
+                  </p>
+                  <p class="flip__source">Source: <a href="https://www.epa.gov/sites/default/files/2020-05/documents/proctor_creek_watershed_monitoring_final_summary_report.pdf" target="_blank" rel="noopener">US EPA Region 4</a></p>
+                  <button class="flip__btn flip__btn--back" type="button" aria-controls="flip-back-3">
+                    <svg class="icon" aria-hidden="true"><use href="#i-rotate-ccw"></use></svg><span>Back to the problem</span>
+                  </button>
+                </div>
+              </div>
+            </li>
+            <li class="flip" data-flip id="solution-irrigation">
+              <div class="flip__inner">
+                <div class="flip__face flip__front on-light">
+                  <svg class="icon flip__icon" aria-hidden="true"><use href="#i-sun"></use></svg>
+                  <p class="label flip__kicker">The problem</p>
+                  <h3 class="flip__title">Drought-year irrigation drains rivers</h3>
+                  <button class="flip__btn" type="button" aria-expanded="false" aria-controls="flip-back-4">
+                    <span>See the fix</span><svg class="icon" aria-hidden="true"><use href="#i-repeat"></use></svg>
+                  </button>
+                </div>
+                <div class="flip__face flip__back on-light" id="flip-back-4">
+                  <p class="label flip__kicker">The fix: smarter irrigation</p>
+                  <p class="flip__text">
+                    A $49.8 million grant is moving drought-year irrigation in southwest Georgia to about 242 deep
+                    aquifer wells, with aquifer and stream monitoring.<sup><a class="cite" href="#src-asu-2022"></a></sup>
+                  </p>
+                  <p class="flip__proof">
+                    <svg class="icon" aria-hidden="true"><use href="#i-badge-check"></use></svg>
+                    Proof: deeper wells take pressure off the streams farms and wildlife share.
+                  </p>
+                  <p class="flip__source">Source: <a href="https://www.asurams.edu/news/2022/grant_awi_2022.php" target="_blank" rel="noopener">Albany State University</a></p>
+                  <button class="flip__btn flip__btn--back" type="button" aria-controls="flip-back-4">
+                    <svg class="icon" aria-hidden="true"><use href="#i-rotate-ccw"></use></svg><span>Back to the problem</span>
+                  </button>
+                </div>
+              </div>
+            </li>
+            <li class="flip" data-flip>
+              <div class="flip__inner">
+                <div class="flip__face flip__front on-light">
+                  <svg class="icon flip__icon" aria-hidden="true"><use href="#i-toilet"></use></svg>
+                  <p class="label flip__kicker">The problem</p>
+                  <h3 class="flip__title">Sanitation that doesn't fit the community</h3>
+                  <button class="flip__btn" type="button" aria-expanded="false" aria-controls="flip-back-5">
+                    <span>See the fix</span><svg class="icon" aria-hidden="true"><use href="#i-repeat"></use></svg>
+                  </button>
+                </div>
+                <div class="flip__face flip__back on-light" id="flip-back-5">
+                  <p class="label flip__kicker">The fix: affordable sanitation design</p>
+                  <p class="flip__text">
+                    Georgia Tech students design low-cost sanitation around what a community actually needs.
+                  </p>
+                  <p class="flip__proof">
+                    <svg class="icon" aria-hidden="true"><use href="#i-badge-check"></use></svg>
+                    Proof: EWB-GT's Malawi "Sanitation Solutions" project placed third at the 2024 GAWP student design
+                    competition.<sup><a class="cite" href="#src-cee-gawp-2024"></a></sup>
+                  </p>
+                  <p class="flip__source">Source: <a href="https://ce.gatech.edu/news/2024/04/cee-students-continue-dominance-2024-georgia-association-water-professionals" target="_blank" rel="noopener">GT Civil and Environmental Engineering</a></p>
+                  <button class="flip__btn flip__btn--back" type="button" aria-controls="flip-back-5">
+                    <svg class="icon" aria-hidden="true"><use href="#i-rotate-ccw"></use></svg><span>Back to the problem</span>
+                  </button>
+                </div>
+              </div>
+            </li>
+          </ul>
+
+          <figure class="compare" data-reveal>
+            <div class="compare__stage" data-compare style="--pos: 50%">
+              <div class="compare__img compare__img--after" aria-hidden="true">
+                <!-- @include assets/svg/compare-after.svg -->
+              </div>
+              <div class="compare__img compare__img--before" aria-hidden="true">
+                <!-- @include assets/svg/compare-before.svg -->
+              </div>
+              <span class="compare__tag compare__tag--before" aria-hidden="true">Parking lot</span>
+              <span class="compare__tag compare__tag--after" aria-hidden="true">EcoCommons</span>
+              <div class="compare__handle" aria-hidden="true">
+                <svg viewBox="0 0 48 60">
+                  <path d="M24 2C18 15 6 24 6 38a18 18 0 0 0 36 0C42 24 30 15 24 2Z" />
+                  <path class="compare__arrows" d="M15 39l-4 0m0 0l3-3m-3 3l3 3M33 39h4m0 0l-3-3m3 3l-3 3" />
+                </svg>
+              </div>
+              <label class="visually-hidden" for="compare-range">Slide to compare a parking lot with the EcoCommons green space</label>
+              <input class="compare__range" id="compare-range" type="range" min="0" max="100" value="50" step="1" />
+            </div>
+            <figcaption class="compare__caption">
+              <strong>Drag the drop.</strong> The same storm on a parking lot and on the EcoCommons: asphalt sends
+              rain racing into storm drains, while soil, meadow and bioswales soak it in.
+              <span class="compare__credit">Illustration by Wish for Wash.</span>
+            </figcaption>
+          </figure>
+
+          <div class="pillars" aria-labelledby="pillars-title">
+            <h3 class="pillars__title" id="pillars-title" data-reveal>What we do</h3>
+            <ul class="pillars__list" role="list" data-reveal-group>
+              <li class="pillar card card--aqua on-light">
+                <svg class="icon pillar__icon" aria-hidden="true"><use href="#i-microscope"></use></svg>
+                <h4 class="card-title card-title--underline pillar__title">Research</h4>
+                <p>
+                  Using human-centered research to better understand water, sanitation, and hygiene challenges, and
+                  the people most affected by them.
+                </p>
+              </li>
+              <li class="pillar card card--aqua on-light">
+                <svg class="icon pillar__icon" aria-hidden="true"><use href="#i-pencil-ruler"></use></svg>
+                <h4 class="card-title card-title--underline pillar__title">Design &amp; Innovation</h4>
+                <p>
+                  Creating practical, affordable sanitation products and systems that are built around real
+                  community needs.
+                </p>
+              </li>
+              <li class="pillar card card--aqua on-light">
+                <svg class="icon pillar__icon" aria-hidden="true"><use href="#i-megaphone"></use></svg>
+                <h4 class="card-title card-title--underline pillar__title">Education &amp; Advocacy</h4>
+                <p>
+                  Making WASH more approachable through workshops, storytelling, and programs that bring more diverse
+                  voices into the field.
+                </p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           5. GEORGIA TECH (#gt): institutional alignment
+           ================================================================ -->
+      <section id="gt" class="section section--deep gt" aria-labelledby="gt-title">
+        <div class="wave-divider" aria-hidden="true">
+          <svg viewBox="0 0 1440 90" preserveAspectRatio="none"><path class="wave-divider__path" d="M0 90V36C140 56 300 66 460 48s340-42 520-36 320 38 460 40v42Z" fill="currentColor" /></svg>
+        </div>
+        <canvas class="bubbles" aria-hidden="true"></canvas>
+        <div class="container">
+          <header class="section-head">
+            <p class="eyebrow" data-reveal>
+              <svg class="icon" aria-hidden="true"><use href="#i-graduation-cap"></use></svg>Georgia Tech
+            </p>
+            <h2 class="section-title" id="gt-title" data-split>Georgia Tech is already a living water lab.</h2>
+            <p class="lede" data-reveal>
+              <a href="https://sustain.gatech.edu/sustainability-next-plan/" target="_blank" rel="noopener">Sustainability Next</a>,
+              Georgia Tech's 10-year sustainability roadmap, calls on GT to be a global sustainability thought leader
+              and to catalyze innovation through education and research.<sup><a class="cite" href="#src-gt-sn-2022"></a></sup>
+              Wish for Wash is students doing exactly that.
+            </p>
+          </header>
+        </div>
+
+        <div class="campus" data-campus>
+          <div class="campus__viewport">
+            <ul class="campus__track" role="list" aria-label="Campus water sites">
+              <li class="campus__card card card--ice on-light">
+                <p class="label campus__kicker">
+                  <svg class="icon" aria-hidden="true"><use href="#i-trees"></use></svg>EcoCommons
+                </p>
+                <p class="campus__stat"><span class="campus__num">80</span> acres</p>
+                <p>
+                  of planned green space designed to cut campus stormwater runoff by
+                  50%.<sup><a class="cite" href="#src-gt-water"></a></sup>
+                </p>
+              </li>
+              <li class="campus__card card card--ice on-light">
+                <p class="label campus__kicker">
+                  <svg class="icon" aria-hidden="true"><use href="#i-building-2"></use></svg>Kendeda Building
+                </p>
+                <p class="campus__stat">Rain in, clean water out</p>
+                <p>
+                  The building harvests rain and treats its wastewater on site.<sup><a class="cite" href="#src-gt-water"></a></sup>
+                </p>
+              </li>
+              <li class="campus__card card card--ice on-light">
+                <p class="label campus__kicker">
+                  <svg class="icon" aria-hidden="true"><use href="#i-droplets"></use></svg>Campus cisterns
+                </p>
+                <p class="campus__stat">Rain, reused</p>
+                <p>
+                  Cisterns across campus catch rainwater so it can be reused instead of running
+                  off.<sup><a class="cite" href="#src-gt-water"></a></sup>
+                </p>
+              </li>
+              <li class="campus__card card card--ice on-light">
+                <p class="label campus__kicker">
+                  <svg class="icon" aria-hidden="true"><use href="#i-layers"></use></svg>Stamps Field
+                </p>
+                <p class="campus__stat"><span class="campus__num">44,500</span> cubic feet</p>
+                <p>
+                  of water that infiltration cells under the field can release back into the
+                  ground.<sup><a class="cite" href="#src-gt-water"></a></sup>
+                </p>
+              </li>
+            </ul>
+          </div>
+          <p class="container campus__hint" aria-hidden="true">
+            <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"></use></svg>Swipe to see more campus sites
+          </p>
+        </div>
+
+        <div class="container">
+          <div class="plan" aria-labelledby="plan-title">
+            <h3 class="card-title card-title--underline plan__title" id="plan-title" data-reveal>How we line up with GT's plan</h3>
+            <ul class="badges" role="list" data-reveal-group>
+              <li>
+                <a class="badge badge--plan" href="https://sustain.gatech.edu/sustainability-next-plan/" target="_blank" rel="noopener">
+                  <span class="badge__seal" aria-hidden="true"><svg class="icon"><use href="#i-sprout"></use></svg></span>
+                  <span class="badge__name">Sustainability Next</span>
+                  <span class="badge__action">Read GT's 10-year plan</span>
+                </a>
+              </li>
+              <li>
+                <a class="badge" href="#pledge">
+                  <span class="badge__seal" aria-hidden="true"><svg class="icon"><use href="#i-sparkles"></use></svg></span>
+                  <span class="badge__name">Amplify impact</span>
+                  <span class="badge__action">Take the Wish Pledge</span>
+                </a>
+              </li>
+              <li>
+                <a class="badge" href="#map" data-world-link>
+                  <span class="badge__seal" aria-hidden="true"><svg class="icon"><use href="#i-globe"></use></svg></span>
+                  <span class="badge__name">Connect globally</span>
+                  <span class="badge__action">Zoom out to the world</span>
+                </a>
+              </li>
+              <li>
+                <a class="badge" href="#join">
+                  <span class="badge__seal" aria-hidden="true"><svg class="icon"><use href="#i-award"></use></svg></span>
+                  <span class="badge__name">Lead by example</span>
+                  <span class="badge__action">Join a design team</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <article class="story card card--aqua on-light" aria-labelledby="story-title" data-reveal>
+            <p class="label story__kicker">
+              <svg class="icon" aria-hidden="true"><use href="#i-heart-handshake"></use></svg>Student proof
+            </p>
+            <h3 class="card-title story__title" id="story-title">From a Georgia Tech lab to a village tap in Nepal</h3>
+            <p class="story__text">
+              Engineers Without Borders at Georgia Tech (EWB-GT) works with communities in Nepal on water and
+              sanitation projects designed with the people who will use them.<sup><a class="cite" href="#src-cee-nepal-2025"></a></sup>
+            </p>
+            <a class="btn btn--navy btn--sm" href="https://ce.gatech.edu/news/2025/11/georgia-tech-students-work-bring-clean-water-nepal" target="_blank" rel="noopener">
+              Read the Nepal story<svg class="icon" aria-hidden="true"><use href="#i-external-link"></use></svg>
+            </a>
+          </article>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           6. TAKE ACTION (#act): convert (tone: direct)
+           ================================================================ -->
+      <section id="act" class="section section--blue act" aria-labelledby="act-title">
+        <div class="wave-divider" aria-hidden="true">
+          <svg viewBox="0 0 1440 90" preserveAspectRatio="none"><path class="wave-divider__path" d="M0 90V50C180 24 360 14 540 32s360 48 540 44 240-30 360-40v94Z" fill="currentColor" /></svg>
+        </div>
+        <div class="container">
+          <header class="section-head">
+            <p class="eyebrow" data-reveal>
+              <svg class="icon" aria-hidden="true"><use href="#i-sparkles"></use></svg>Take Action
+            </p>
+            <h2 class="section-title" id="act-title" data-split>Make a wish. Then make it real.</h2>
+            <p class="lede lede--panel" data-reveal>
+              Pick a rung that fits your week. Every step counts, and they add up fast when we climb together.
+            </p>
+          </header>
+
+          <!-- ACT:START (action ladder, Wish Pledge, quiz, join form; scripts/pledge-quiz.js) -->
+          <div class="act-app" id="act-app"></div>
+          <!-- ACT:END -->
+        </div>
+      </section>
+    </main>
+
+    <!-- ================================================================
+         7. FOOTER (#about): credibility
+         ================================================================ -->
+    <footer class="site-footer">
+      <section id="about" class="section section--deep about" aria-labelledby="about-title">
+        <div class="wave-divider" aria-hidden="true">
+          <svg viewBox="0 0 1440 90" preserveAspectRatio="none"><path class="wave-divider__path" d="M0 90V44C200 64 400 70 600 52s360-40 540-40 200 18 300 26v98Z" fill="currentColor" /></svg>
+        </div>
+        <div class="container">
+          <div class="about__grid">
+            <div class="about__who">
+              <h2 class="about__title" id="about-title">About Wish for Wash</h2>
+              <p class="about__mission">
+                Wish for Wash is a Georgia Tech student initiative working toward safe water, sanitation and hygiene
+                for every community, starting with ours.
+              </p>
+              <p class="about__team">
+                Created by LMC 3403 Group 2 at Georgia Tech, Fall 2026: content, map, motion, video, and research and
+                QA leads working together.
+              </p>
+            </div>
+            <nav class="about__links" aria-label="Partner links">
+              <h3 class="label about__links-title">Learn more</h3>
+              <ul role="list">
+                <li><a href="https://sustain.gatech.edu/" target="_blank" rel="noopener">GT Office of Sustainability</a></li>
+                <li><a href="https://sustain.gatech.edu/sustainability-next-plan/" target="_blank" rel="noopener">Sustainability Next</a></li>
+                <li><a href="https://sdgs.un.org/goals/goal6" target="_blank" rel="noopener">UN SDG 6</a></li>
+                <li><a href="https://chattahoochee.org/" target="_blank" rel="noopener">Chattahoochee Riverkeeper</a></li>
+                <li><a href="https://www.instagram.com/ewb.usa.gt/" target="_blank" rel="noopener">EWB-GT on Instagram</a></li>
+              </ul>
+            </nav>
+          </div>
+
+          <details class="sources" id="sources">
+            <summary class="sources__summary">
+              <svg class="icon" aria-hidden="true"><use href="#i-list"></use></svg>
+              <span>Sources (%SOURCE_COUNT%)</span>
+            </summary>
+            <p class="sources__intro">
+              Every number on this site links here. We use peer-reviewed research, government and intergovernmental
+              agencies, universities, and wire or public news services; nonprofit pages appear only as places to get
+              involved. Sources checked Oct. 15, 2026.
+            </p>
+            <ol class="sources__list">
+              <!-- @sources -->
+            </ol>
+          </details>
+
+          <div class="signoff">
+            <svg class="signoff__wave" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
+              <path class="signoff__path signoff__path--a" d="M0 40c120-24 240-24 360 0s240 24 360 0 240-24 360 0 240 24 360 0" />
+              <path class="signoff__path signoff__path--b" d="M0 52c120-20 240-20 360 0s240 20 360 0 240-20 360 0 240 20 360 0" />
+            </svg>
+            <p class="signoff__text">Built with care at Georgia Tech, Fall 2026.</p>
+          </div>
+        </div>
+      </section>
+    </footer>
+
+    <a class="back-to-top" href="#home" id="back-to-top" aria-label="Back to top">
+      <svg viewBox="0 0 56 64" aria-hidden="true">
+        <path d="M28 2C21 17 6 28 6 43a22 22 0 0 0 44 0C50 28 35 17 28 2Z" fill="#8fd3f0" stroke="#0e2a4f" stroke-width="2.5" />
+        <path d="M28 46V30m0 0l-7 7m7-7l7 7" fill="none" stroke="#0e2a4f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </a>
+
+    <div class="cursor-layer" aria-hidden="true"></div>
+  </body>
+</html>

@@ -1,0 +1,186 @@
+[
+  {
+    "id": "jmp",
+    "type": "Intergovernmental",
+    "title": "1 in 4 people globally still lack access to safe drinking water",
+    "publisher": "World Health Organization and UNICEF Joint Monitoring Programme (JMP)",
+    "date": "Aug. 26, 2025",
+    "url": "https://www.who.int/news/item/26-08-2025-1-in-4-people-globally-still-lack-access-to-safe-drinking-water---who--unicef"
+  },
+  {
+    "id": "un-sdg6",
+    "type": "Intergovernmental",
+    "title": "Goal 6: Ensure availability and sustainable management of water and sanitation for all",
+    "publisher": "United Nations, Department of Economic and Social Affairs",
+    "url": "https://sdgs.un.org/goals/goal6"
+  },
+  {
+    "id": "swrm-2017",
+    "type": "Peer-reviewed",
+    "title": "Clean water and sanitation for all: interactions with other sustainable development goals",
+    "publisher": "Sustainable Water Resources Management (Springer)",
+    "date": "2017",
+    "url": "https://link.springer.com/article/10.1007/s40899-017-0117-4"
+  },
+  {
+    "id": "coes-2018",
+    "type": "Peer-reviewed",
+    "title": "Achieving universal access to clean water and sanitation in an era of water scarcity: strengthening contributions from academia",
+    "publisher": "Current Opinion in Environmental Sustainability",
+    "date": "2018",
+    "url": "https://www.sciencedirect.com/science/article/pii/S1877343518300113"
+  },
+  {
+    "id": "owid",
+    "type": "Data publication",
+    "title": "Clean Water and Sanitation",
+    "publisher": "Our World in Data",
+    "url": "https://ourworldindata.org/clean-water-sanitation"
+  },
+  {
+    "id": "ap-2024",
+    "type": "News (wire)",
+    "title": "Boil-water advisory lifted in Atlanta after water system problems",
+    "publisher": "Associated Press, syndicated by News4Jax",
+    "date": "June 6, 2024",
+    "url": "https://www.news4jax.com/news/2024/06/06/boil-water-advisory-lifted-in-atlanta-after-water-system-problems/"
+  },
+  {
+    "id": "cnn-2024",
+    "type": "News",
+    "title": "Atlanta water service expected to be restored to normal Wednesday morning following days of trouble, officials say",
+    "publisher": "CNN, syndicated by ABC17",
+    "date": "June 5, 2024",
+    "url": "https://abc17news.com/news/national-world/cnn-national/2024/06/05/atlanta-water-service-expected-to-be-restored-to-normal-wednesday-morning-following-days-of-trouble-officials-say/"
+  },
+  {
+    "id": "epa-proctor",
+    "type": "Government",
+    "title": "Proctor Creek Watershed Monitoring: Final Summary Report",
+    "publisher": "U.S. Environmental Protection Agency, Region 4",
+    "date": "2018",
+    "url": "https://www.epa.gov/sites/default/files/2020-05/documents/proctor_creek_watershed_monitoring_final_summary_report.pdf"
+  },
+  {
+    "id": "arc-wars",
+    "type": "Government",
+    "title": "Tri-State Water Wars: Background and History",
+    "publisher": "Atlanta Regional Commission",
+    "url": "https://atlantaregional.org/what-we-do/natural-resources/tri-state-water-wars-background-and-history/"
+  },
+  {
+    "id": "scotus-2021",
+    "type": "Government",
+    "title": "Florida v. Georgia, No. 142, Orig.",
+    "publisher": "Supreme Court of the United States",
+    "date": "Apr. 1, 2021",
+    "url": "https://www.supremecourt.gov/opinions/20pdf/22o142_m648.pdf"
+  },
+  {
+    "id": "arc-2023",
+    "type": "Government",
+    "title": "Statement and background information on the landmark Apalachicola-Chattahoochee-Flint agreement",
+    "publisher": "Atlanta Regional Commission",
+    "date": "Dec. 2023",
+    "url": "https://atlantaregional.org/news/natural-resources/arcstatement-and-background-information-on-the-landmark-apalachicola-chattahoochee-flint-agreement/"
+  },
+  {
+    "id": "singh-2016",
+    "type": "Peer-reviewed",
+    "authors": "Singh, Srivastava, Mitra and Abebe",
+    "title": "Climate variability and irrigation impacts on streamflows in a karst watershed",
+    "publisher": "Journal of Hydrology: Regional Studies 8:274-286",
+    "date": "2016",
+    "url": "https://doi.org/10.1016/j.ejrh.2016.07.001"
+  },
+  {
+    "id": "asu-2022",
+    "type": "University",
+    "title": "$49.8 million for agricultural water infrastructure",
+    "publisher": "Albany State University",
+    "date": "2022",
+    "url": "https://www.asurams.edu/news/2022/grant_awi_2022.php"
+  },
+  {
+    "id": "gpb-2024",
+    "type": "News (public media)",
+    "title": "State to lift ban on new irrigation wells",
+    "publisher": "Georgia Public Broadcasting",
+    "date": "Dec. 20, 2024",
+    "url": "https://www.gpb.org/news/2024/12/20/state-lift-ban-on-new-irrigation-wells"
+  },
+  {
+    "id": "usgs-2001",
+    "type": "Government",
+    "title": "Coastal ground water at risk: saltwater contamination at Brunswick, Georgia and Hilton Head Island, South Carolina",
+    "publisher": "U.S. Geological Survey",
+    "date": "2001",
+    "url": "https://www.usgs.gov/index.php/publications/coastal-ground-water-risk-saltwater-contamination-brunswick-georgia-and-hilton-head"
+  },
+  {
+    "id": "uga-septic",
+    "type": "University",
+    "title": "Wastewater professionals gather to talk septic",
+    "publisher": "University of Georgia River Basin Center",
+    "url": "https://rivercenter.uga.edu/rbc-affiliate-brings-wastewater-professionals-gather-to-talk-septic/"
+  },
+  {
+    "id": "npj-2020",
+    "type": "Peer-reviewed",
+    "title": "Contributions of recycled wastewater to clean water and sanitation Sustainable Development Goals",
+    "publisher": "npj Clean Water",
+    "date": "2020",
+    "url": "https://www.nature.com/articles/s41545-020-0069-3"
+  },
+  {
+    "id": "cee-gawp-2024",
+    "type": "University",
+    "title": "CEE students continue dominance at 2024 Georgia Association of Water Professionals competition",
+    "publisher": "Georgia Tech School of Civil and Environmental Engineering",
+    "date": "Apr. 2024",
+    "url": "https://ce.gatech.edu/news/2024/04/cee-students-continue-dominance-2024-georgia-association-water-professionals"
+  },
+  {
+    "id": "gt-water",
+    "type": "University",
+    "title": "Water",
+    "publisher": "Georgia Tech Office of Sustainability",
+    "url": "https://sustain.gatech.edu/water/"
+  },
+  {
+    "id": "gt-sn-plan",
+    "type": "University",
+    "title": "The Sustainability Next Plan Transforms Vision Into Reality",
+    "publisher": "Georgia Tech",
+    "url": "https://hg.gatech.edu/node/669810"
+  },
+  {
+    "id": "gt-sn-2022",
+    "type": "University",
+    "title": "Sustainability Next Task Force Delivers Vision and Launches Implementation",
+    "publisher": "Georgia Tech News Center",
+    "date": "Oct. 24, 2022",
+    "url": "https://www.gatech.edu/news/2022/10/24/sustainability-next-task-force-delivers-vision-and-launches-implementation"
+  },
+  {
+    "id": "cee-nepal-2025",
+    "type": "University",
+    "title": "Georgia Tech students work to bring clean water to Nepal",
+    "publisher": "Georgia Tech School of Civil and Environmental Engineering",
+    "date": "Nov. 2025",
+    "url": "https://ce.gatech.edu/news/2025/11/georgia-tech-students-work-bring-clean-water-nepal"
+  },
+  {
+    "id": "riverkeeper",
+    "type": "Get involved (not used as evidence)",
+    "title": "Water Quality Monitoring",
+    "publisher": "Chattahoochee Riverkeeper",
+    "url": "https://chattahoochee.org/our-work/water-quality-monitoring/"
+  },
+  {
+    "id": "ocean-central",
+    "type": "Design reference (not used as evidence)",
+    "title": "Ocean Central",
+    "url": "https://oceancentral.org/"
+  }
+]
