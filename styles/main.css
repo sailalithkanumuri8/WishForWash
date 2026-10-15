@@ -5027,6 +5027,7 @@ sup:has(> .cite) {
   font-size: var(--fs-heading);
   font-weight: 800;
   line-height: 1.2;
+  overflow-wrap: anywhere; /* a long one-word name can't push the card wider */
 }
 
 .pledge__done:focus-visible {
@@ -5185,6 +5186,13 @@ sup:has(> .cite) {
 .wish-card__sign {
   font-size: clamp(14px, 3.6cqi, 19.5px);
   font-weight: 800;
+  overflow-wrap: anywhere;
+}
+
+/* The site URL may break on narrow cards rather than spill past the edge. */
+.wish-card__foot span {
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .wish-card__foot {
