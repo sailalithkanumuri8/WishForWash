@@ -1,6 +1,16 @@
 /* Wish for Wash design tokens: color, type and spacing.
    Colors are sampled from the poster (see PRD "Visual design system"). */
 
+/* The poster's pixel wordmark as a tiny font (W I S H F O R A), built by
+   tools/build-wordmark-font.py from assets/svg/wordmark.svg. */
+@font-face {
+  font-family: 'Wish Wordmark';
+  src: url('../assets/fonts/wish-wordmark.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: block;
+}
+
 @font-face {
   font-family: 'Pixelify Sans';
   src: url('../assets/fonts/pixelify-sans-latin-700-normal.woff2') format('woff2');
