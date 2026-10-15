@@ -1056,7 +1056,27 @@ sup:has(> .cite) {
   transform: none;
 }
 
+/* The pledge and join forms need JavaScript (they submit nowhere without it, by
+   design: method="dialog"), so their buttons give way to a short note. */
+.no-js .pledge__submit,
+.no-js .join__submit {
+  display: none;
+}
+
+.act-fallback {
+  padding: 0.75rem 1rem;
+  border-radius: 14px;
+  background: var(--wash-white);
+  color: var(--wash-navy);
+  font-weight: 700;
+}
+
 @media (max-width: 767px) {
+  /* Without JavaScript the phone header wraps its tabs onto a second row. */
+  .no-js {
+    --nav-h: 112px;
+  }
+
   .no-js .site-header {
     height: auto;
     background-color: var(--nav-solid);

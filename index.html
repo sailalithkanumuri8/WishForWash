@@ -1030,7 +1030,7 @@
                   <p class="label act-kicker"><svg class="icon" aria-hidden="true"><use href="#i-clock"></use></svg>1 minute</p>
                   <h3 class="card-title card-title--underline act-title" id="pledge-title">The Wish Pledge</h3>
                   <p class="act-intro">Pick your promises and get a My Wish card to share.</p>
-                  <form class="pledge__form" id="pledge-form" novalidate>
+                  <form class="pledge__form" id="pledge-form" method="dialog" novalidate>
                     <fieldset class="pledge__fieldset" aria-describedby="pledge-hint">
                       <legend class="pledge__legend">This semester, I will:</legend>
                       <p class="pledge__hint" id="pledge-hint">Choose at least one.</p>
@@ -1116,6 +1116,7 @@
                     <button class="btn btn--navy pledge__submit" type="submit">
                       <svg class="icon" aria-hidden="true"><use href="#i-coins"></use></svg>Make my wish
                     </button>
+                    <noscript><p class="act-fallback">Turn on JavaScript to make your My Wish card.</p></noscript>
                   </form>
                 </div>
                 <div class="pledge__pane pledge__result" data-pledge-result hidden></div>
@@ -1184,7 +1185,7 @@
                 </div>
 
                 <div class="join__panel" data-join-panel>
-                  <form class="join__form" id="join-form" novalidate data-endpoint="">
+                  <form class="join__form" id="join-form" method="dialog" novalidate data-endpoint="">
                     <div class="field">
                       <label class="field__label" for="join-name">Name</label>
                       <input class="field__input" id="join-name" name="name" type="text" autocomplete="name" maxlength="60" required />
@@ -1209,6 +1210,7 @@
                     <button class="btn btn--primary join__submit" type="submit">
                       <svg class="icon" aria-hidden="true"><use href="#i-send"></use></svg>Join the Wish
                     </button>
+                    <noscript><p class="act-fallback">Turn on JavaScript to send this form, or join through GT Engage or Instagram above.</p></noscript>
                     <p class="act-status join__status" role="status" data-join-status></p>
                   </form>
                   <div class="join__done" data-join-done hidden></div>
