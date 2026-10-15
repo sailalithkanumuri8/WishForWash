@@ -29,6 +29,16 @@ const DECLUTTER_PX = 58;
 
 const sheetQuery = window.matchMedia('(max-width: 767px)');
 const overlayQuery = window.matchMedia('(min-width: 768px) and (max-width: 1199px)');
+// Phones on their side are too short for a bottom sheet: the panel becomes a
+// right-hand drawer instead (same query as the drawer rules in main.css).
+const drawerQuery = window.matchMedia('(max-height: 500px) and (min-width: 568px) and (max-width: 1199px)');
+
+/** How an open panel is shown: a bottom sheet, a side drawer, or inside the layout. */
+function panelMode() {
+  if (drawerQuery.matches) return 'drawer';
+  if (sheetQuery.matches) return 'sheet';
+  return 'inline';
+}
 
 let app;
 let stage;
@@ -151,7 +161,9 @@ function applyView() {
 
 // Where on the stage the open hotspot should sit, given where the panel goes.
 function focusPoint() {
-  if (sheetQuery.matches) return { fx: 0.5, fy: 0.3 };
+  const mode = panelMode();
+  if (mode === 'drawer') return { fx: 0.28, fy: 0.5 };
+  if (mode === 'sheet') return { fx: 0.5, fy: 0.3 };
   if (overlayQuery.matches) return { fx: 0.26, fy: 0.45 };
   return { fx: 0.5, fy: 0.45 };
 }
@@ -318,18 +330,19 @@ function open(id, { step = false } = {}) {
   if (!wasOpen) {
     panel.hidden = false;
     app.classList.add('is-open');
-    if (sheetQuery.matches) {
-      // Bring the map up under the nav so the zoomed hotspot shows above the sheet.
+    const mode = panelMode();
+    if (mode !== 'inline') {
+      // Bring the map up under the nav so the zoomed hotspot shows beside the panel.
       scrollToTarget(stage, { immediate: true });
-      // Sections are stacking contexts, so the fixed sheet lives on <body> while open.
+      // Sections are stacking contexts, so the fixed sheet or drawer lives on <body> while open.
       document.body.append(backdrop, panel);
       backdrop.hidden = false;
       lockScroll(true);
     }
     if (motionEnabled()) {
-      const from = sheetQuery.matches ? { yPercent: 100 } : { xPercent: 14, opacity: 0 };
+      const from = { sheet: { yPercent: 100 }, drawer: { xPercent: 100 }, inline: { xPercent: 14, opacity: 0 } }[mode];
       gsap.fromTo(card, from, { xPercent: 0, yPercent: 0, opacity: 1, duration: 0.55, ease: 'power3.out' });
-      if (sheetQuery.matches) gsap.fromTo(backdrop, { opacity: 0 }, { opacity: 1, duration: 0.4 });
+      if (mode !== 'inline') gsap.fromTo(backdrop, { opacity: 0 }, { opacity: 1, duration: 0.4 });
     }
     trap.activate(qs('#map-panel-title', panel));
   } else if (motionEnabled()) {
@@ -356,7 +369,7 @@ function close({ restoreFocus = true } = {}) {
   for (const li of pins.values()) li.classList.remove('is-active');
   refreshHot();
   app.classList.remove('is-open');
-  const wasSheet = !backdrop.hidden;
+  const wasModal = !backdrop.hidden; // a sheet or drawer
   const finish = () => {
     if (activeId) return; // reopened while closing: the new panel stays
     panel.hidden = true;
@@ -366,12 +379,13 @@ function close({ restoreFocus = true } = {}) {
     // Return a portaled sheet to its home in the map layout.
     if (panel.parentElement !== panelHome) panelHome.append(panel, backdrop);
   };
-  if (wasSheet) lockScroll(false);
+  if (wasModal) lockScroll(false);
   const card = qs('.map-panel__card', panel);
   if (motionEnabled() && card) {
-    const to = wasSheet ? { yPercent: 100 } : { xPercent: 14, autoAlpha: 0 };
+    let to = { xPercent: 14, autoAlpha: 0 };
+    if (wasModal) to = panelMode() === 'drawer' ? { xPercent: 100 } : { yPercent: 100 };
     gsap.to(card, { ...to, duration: 0.35, ease: 'power2.in', onComplete: finish });
-    if (wasSheet) gsap.to(backdrop, { autoAlpha: 0, duration: 0.3 });
+    if (wasModal) gsap.to(backdrop, { autoAlpha: 0, duration: 0.3 });
   } else {
     finish();
   }
@@ -625,10 +639,13 @@ export function initMap() {
   // Pause the idle loops (pulsing drops, shimmering rivers) when off-screen.
   observeVisibility(app, (visible) => app.classList.toggle('is-offscreen', !visible), '100px');
 
-  // Leaving the sheet breakpoint while open: release the scroll lock.
-  sheetQuery.addEventListener('change', () => {
-    if (activeId) close({ restoreFocus: false });
-  });
+  // Switching between sheet, drawer and inline while open (resize, rotation):
+  // close, which also releases the scroll lock.
+  for (const query of [sheetQuery, drawerQuery]) {
+    query.addEventListener('change', () => {
+      if (activeId) close({ restoreFocus: false });
+    });
+  }
 }
 
 /* --------------------------------------------------------------------------

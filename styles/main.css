@@ -4441,6 +4441,51 @@ sup:has(> .cite) {
   }
 }
 
+/* Phones on their side (short landscape): the panel is a right-hand drawer over a
+   dimmed page, since a bottom sheet would cover the map. Matches drawerQuery in map.js. */
+@media (max-height: 500px) and (min-width: 568px) and (max-width: 1199px) {
+  /* The whole map fits below the nav, left of where the drawer opens. */
+  .map-stage {
+    max-width: min(100%, calc((100svh - var(--nav-h) - 1rem) * 1000 / 1148));
+    margin-inline: 0;
+  }
+
+  /* stretch: the tablet rule's align-self: start would size the fixed drawer to its content. */
+  .map-panel {
+    position: fixed;
+    inset: 0 0 0 auto;
+    z-index: var(--z-dialog);
+    width: min(56vw, 440px);
+    height: auto;
+    margin: 0;
+    align-self: stretch;
+    justify-self: stretch;
+  }
+
+  .map-panel__card {
+    height: 100%;
+    max-height: none;
+    padding: 1rem max(1.25rem, env(safe-area-inset-right)) calc(1rem + env(safe-area-inset-bottom)) 1.25rem;
+    border-radius: 28px 0 0 28px;
+  }
+
+  .map-panel__grip {
+    display: none;
+  }
+
+  .map-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: calc(var(--z-dialog) - 1);
+    display: block;
+    background: rgb(11 33 64 / 0.3);
+  }
+
+  .map-backdrop[hidden] {
+    display: none;
+  }
+}
+
 /* Desktop: map left, explorer column right; the panel slides in beside the map. */
 @media (min-width: 1200px) {
   .map-layout {
