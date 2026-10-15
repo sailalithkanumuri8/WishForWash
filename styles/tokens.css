@@ -104,6 +104,8 @@
   --glow-foam: 0 10px 28px -6px rgb(143 211 240 / 0.55);
 
   /* ---- Type ---- */
+  /* Pixelify's fi/fl ligatures read as other letters ("five" looked like "Ave"),
+     so every rule that uses it sets font-variant-ligatures: no-common-ligatures. */
   --font-display: 'Pixelify Sans', 'Silkscreen', ui-monospace, monospace;
   --font-wordmark: 'Wish Wordmark', var(--font-display);
   --font-body: 'Montserrat', 'Montserrat Fallback', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
