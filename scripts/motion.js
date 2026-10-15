@@ -70,10 +70,14 @@ export function scrollToTarget(target, { immediate = false, offset, onComplete }
   if (!el) return;
   // Content may have just expanded (e.g. the Sources list); refresh Lenis's scroll limit first.
   lenis?.resize();
+  // A target still waiting to reveal sits lower (it rises as it fades in);
+  // measure where it will end up, not where it starts.
+  const revealing = el.closest('[data-reveal], [data-reveal-group] > *');
+  const shift = revealing ? Number(gsap.getProperty(revealing, 'y')) || 0 : 0;
   const top =
     el.id === 'home'
       ? 0
-      : Math.max(0, el.getBoundingClientRect().top + window.scrollY - (offset ?? navHeight()));
+      : Math.max(0, el.getBoundingClientRect().top - shift + window.scrollY - (offset ?? navHeight()));
   if (lenis && !immediate && motionEnabled()) {
     const distance = Math.abs(top - window.scrollY);
     lenis.scrollTo(top, {
