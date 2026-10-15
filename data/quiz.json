@@ -4,11 +4,21 @@
     {
       "id": "q1",
       "prompt": "About how many people lack safely managed drinking water?",
-      "options": ["210 million", "900 million", "2.1 billion", "5 billion"],
+      "options": [
+        "210 million",
+        "900 million",
+        "2.1 billion",
+        "5 billion"
+      ],
       "answer": 2,
-      "explain": "2.1 billion people, about 1 in 4, per the 2025 WHO/UNICEF update.",
-      "cite": ["jmp"],
-      "section": { "label": "The Issue", "href": "#issue" }
+      "explain": "2.1 billion: about 1 in 4, per the 2025 WHO/UNICEF update.",
+      "cite": [
+        "jmp"
+      ],
+      "section": {
+        "label": "The Issue",
+        "href": "#issue"
+      }
     },
     {
       "id": "q2",
@@ -21,17 +31,34 @@
       ],
       "answer": 1,
       "explain": "Mains from 1910 and 1930 broke; the last advisory lifted six days later.",
-      "cite": ["ap-2024", "cnn-2024"],
-      "section": { "label": "Explore Georgia", "href": "#map" }
+      "cite": [
+        "ap-2024",
+        "cnn-2024"
+      ],
+      "section": {
+        "label": "Explore Georgia",
+        "href": "#map"
+      }
     },
     {
       "id": "q3",
       "prompt": "Proctor Creek drains into which river, Atlanta's main water supply?",
-      "options": ["The Savannah", "The Flint", "The Chattahoochee", "The Altamaha"],
+      "options": [
+        "The Savannah",
+        "The Flint",
+        "The Chattahoochee",
+        "The Altamaha"
+      ],
       "answer": 2,
-      "explain": "Proctor Creek flows into the Chattahoochee, metro Atlanta's main water supply.",
-      "cite": ["epa-proctor", "arc-wars"],
-      "section": { "label": "Explore Georgia", "href": "#map" }
+      "explain": "It flows into the Chattahoochee, metro Atlanta's main water supply.",
+      "cite": [
+        "epa-proctor",
+        "arc-wars"
+      ],
+      "section": {
+        "label": "Explore Georgia",
+        "href": "#map"
+      }
     },
     {
       "id": "q4",
@@ -43,18 +70,33 @@
         "Desalinating seawater from the coast"
       ],
       "answer": 1,
-      "explain": "A $49.8 million grant funds about 242 deep wells, plus aquifer and stream monitoring.",
-      "cite": ["asu-2022"],
-      "section": { "label": "Solutions", "href": "#solutions" }
+      "explain": "A $49.8 million grant funds about 242 deep wells.",
+      "cite": [
+        "asu-2022"
+      ],
+      "section": {
+        "label": "Solutions",
+        "href": "#solutions"
+      }
     },
     {
       "id": "q5",
       "prompt": "Georgia Tech's EcoCommons is designed to cut stormwater runoff by how much?",
-      "options": ["10%", "25%", "50%", "90%"],
+      "options": [
+        "10%",
+        "25%",
+        "50%",
+        "90%"
+      ],
       "answer": 2,
-      "explain": "Its 80 acres of planned green space are designed to cut runoff by 50%.",
-      "cite": ["gt-water"],
-      "section": { "label": "Georgia Tech", "href": "#gt" }
+      "explain": "It's 80 acres of planned green space, designed to cut runoff 50%.",
+      "cite": [
+        "gt-water"
+      ],
+      "section": {
+        "label": "Georgia Tech",
+        "href": "#gt"
+      }
     }
   ],
   "personas": [
@@ -65,7 +107,10 @@
       "max": 2,
       "headline": "You're a Newcomer",
       "summary": "Georgia's water story is new to you, so start with the one-minute win.",
-      "next": { "label": "Take the Wish Pledge", "href": "#pledge" }
+      "next": {
+        "label": "Take the Wish Pledge",
+        "href": "#pledge"
+      }
     },
     {
       "id": "advocate",
@@ -73,7 +118,7 @@
       "min": 3,
       "max": 4,
       "headline": "You're an Advocate",
-      "summary": "You know the story well enough to tell it. Give it an afternoon, then share this site.",
+      "summary": "You know the story well enough to tell it. Give it an afternoon.",
       "next": {
         "label": "Volunteer with Water Watch",
         "href": "https://chattahoochee.org/volunteer/",
@@ -86,8 +131,11 @@
       "min": 5,
       "max": 5,
       "headline": "You're a Builder",
-      "summary": "You've got the facts down. Spend a semester designing the fix with a Wish for Wash team.",
-      "next": { "label": "Join a Wish for Wash team", "href": "#join" }
+      "summary": "You know the facts. Spend a semester designing the fix with us.",
+      "next": {
+        "label": "Join a Wish for Wash team",
+        "href": "#join"
+      }
     }
   ]
 }
