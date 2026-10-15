@@ -48,7 +48,10 @@ function renderSourceItem(src, n) {
   if (src.publisher) parts.push(`<span class="sources__pub">${escapeHtml(src.publisher)}</span>`);
   if (src.date) parts.push(escapeHtml(src.date));
   const type = src.type ? `<span class="sources__type">${escapeHtml(src.type)}</span>` : '';
-  const note = src.note ? ` <span class="sources__note">${escapeHtml(src.note)}</span>` : '';
+  const alt = src.altUrl
+    ? ` <a class="sources__alt" href="${escapeHtml(src.altUrl)}" target="_blank" rel="noopener">(${escapeHtml(src.altLabel || 'mirror')})</a>`
+    : '';
+  const note = `${alt}${src.note ? ` <span class="sources__note">${escapeHtml(src.note)}</span>` : ''}`;
   return `<li id="src-${escapeHtml(src.id)}" data-n="${n}">${type}${parts.join('. ')}.${note}</li>`;
 }
 

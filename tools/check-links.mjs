@@ -4,6 +4,7 @@
 // separately so a person can confirm them in a browser.
 
 import fs from 'node:fs';
+import { SITE_URL } from '../vite.config.js';
 
 const root = new URL('../', import.meta.url);
 const read = (rel) => fs.readFileSync(new URL(rel, root), 'utf8');
@@ -43,8 +44,19 @@ for (let i = 0; i < list.length; i += 6) {
 
 const ok = results.filter((r) => typeof r.status === 'number' && r.status < 400);
 const blocked = results.filter((r) => r.status === 403 || r.status === 429 || r.status === 999);
-const broken = results.filter((r) => !ok.includes(r) && !blocked.includes(r));
+// Some servers omit an intermediate certificate: browsers repair the chain, Node does not.
+const tls = results.filter((r) => typeof r.status === 'string' && r.status.includes('CERT'));
+// The site's own URL 404s until the first GitHub Pages deploy.
+const ownSite = results.filter((r) => r.url.startsWith(SITE_URL) && !ok.includes(r));
+const flagged = new Set([...ok, ...blocked, ...tls, ...ownSite]);
+const broken = results.filter((r) => !flagged.has(r));
 
-console.log(`${ok.length} OK, ${blocked.length} blocked bots (check by hand), ${broken.length} broken\n`);
-for (const r of [...broken, ...blocked]) console.log(`${String(r.status).padEnd(8)} ${r.url}`);
+console.log(
+  `${ok.length} OK, ${blocked.length} blocked bots (check by hand), ${tls.length} TLS-chain warnings (open in a browser), ` +
+    `${ownSite.length} not deployed yet, ${broken.length} broken\n`,
+);
+for (const r of broken) console.log(`BROKEN   ${String(r.status).padEnd(8)} ${r.url}`);
+for (const r of blocked) console.log(`BLOCKED  ${String(r.status).padEnd(8)} ${r.url}`);
+for (const r of tls) console.log(`TLS      ${r.url}`);
+for (const r of ownSite) console.log(`NOT YET  ${String(r.status).padEnd(8)} ${r.url}`);
 process.exitCode = broken.length ? 1 : 0;
