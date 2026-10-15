@@ -15,6 +15,11 @@ import { clamp, navHeight, qsa } from './utils.js';
 
 gsap.registerPlugin(ScrollTrigger);
 
+// Measure triggers top to bottom on every refresh. Modules register in import
+// order, not page order, and a trigger below a pin must be measured after that
+// pin adds its spacing or it fires early.
+ScrollTrigger.addEventListener('refreshInit', () => ScrollTrigger.sort());
+
 export { gsap, ScrollTrigger, SplitType };
 
 const modules = [];
