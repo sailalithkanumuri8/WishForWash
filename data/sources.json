@@ -182,5 +182,19 @@
     "type": "Design reference (not used as evidence)",
     "title": "Ocean Central",
     "url": "https://oceancentral.org/"
+  },
+  {
+    "id": "gt-engage-ewb",
+    "type": "Student organization",
+    "title": "Engineers Without Borders: organization page",
+    "publisher": "GT Engage, Georgia Tech",
+    "url": "https://gatech.campuslabs.com/engage/organization/engineers-without-borders"
+  },
+  {
+    "id": "gt-facilities",
+    "type": "Get involved (not used as evidence)",
+    "title": "Building Maintenance Requests",
+    "publisher": "Georgia Tech Facilities Management",
+    "url": "https://facilities.gatech.edu/building-maintenance/request-service"
   }
 ]

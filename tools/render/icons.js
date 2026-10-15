@@ -13,6 +13,7 @@ const LUCIDE = [
   'badge-check', 'award', 'info', 'milestone', 'heart-pulse', 'building', 'fish', 'factory',
   'tractor', 'test-tube', 'construction', 'scale', 'link', 'copy', 'menu', 'repeat', 'bubbles',
   'gauge', 'circle-check', 'circle-x', 'trees', 'pencil-ruler', 'hand-coins',
+  'send', 'circle-alert', 'pencil', 'hourglass', 'party-popper', 'qr-code',
 ];
 
 // Lucide no longer ships brand icons; this is a simple camera-glyph outline.

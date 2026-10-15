@@ -1,0 +1,93 @@
+{
+  "title": "How water-wise are you?",
+  "questions": [
+    {
+      "id": "q1",
+      "prompt": "About how many people lack safely managed drinking water?",
+      "options": ["210 million", "900 million", "2.1 billion", "5 billion"],
+      "answer": 2,
+      "explain": "2.1 billion people, about 1 in 4, per the 2025 WHO/UNICEF update.",
+      "cite": ["jmp"],
+      "section": { "label": "The Issue", "href": "#issue" }
+    },
+    {
+      "id": "q2",
+      "prompt": "Why did Midtown Atlanta lose safe tap water in June 2024?",
+      "options": [
+        "A drought drained Lake Lanier",
+        "Two century-old water mains broke",
+        "A chemical spill hit the river",
+        "A hurricane knocked out pumps"
+      ],
+      "answer": 1,
+      "explain": "Mains from 1910 and 1930 broke; the last advisory lifted six days later.",
+      "cite": ["ap-2024", "cnn-2024"],
+      "section": { "label": "Explore Georgia", "href": "#map" }
+    },
+    {
+      "id": "q3",
+      "prompt": "Proctor Creek drains into which river, Atlanta's main water supply?",
+      "options": ["The Savannah", "The Flint", "The Chattahoochee", "The Altamaha"],
+      "answer": 2,
+      "explain": "Proctor Creek flows into the Chattahoochee, metro Atlanta's main water supply.",
+      "cite": ["epa-proctor", "arc-wars"],
+      "section": { "label": "Explore Georgia", "href": "#map" }
+    },
+    {
+      "id": "q4",
+      "prompt": "How is southwest Georgia easing drought-year pressure on its streams?",
+      "options": [
+        "Piping in water from Lake Lanier",
+        "Moving irrigation to deep aquifer wells",
+        "Banning farming during droughts",
+        "Desalinating seawater from the coast"
+      ],
+      "answer": 1,
+      "explain": "A $49.8 million grant funds about 242 deep wells, plus stream monitoring.",
+      "cite": ["asu-2022"],
+      "section": { "label": "Solutions", "href": "#solutions" }
+    },
+    {
+      "id": "q5",
+      "prompt": "How much should the 80-acre EcoCommons cut campus stormwater runoff?",
+      "options": ["10%", "25%", "50%", "90%"],
+      "answer": 2,
+      "explain": "The EcoCommons is designed to cut campus stormwater runoff by 50%.",
+      "cite": ["gt-water"],
+      "section": { "label": "Georgia Tech", "href": "#gt" }
+    }
+  ],
+  "personas": [
+    {
+      "id": "newcomer",
+      "name": "Newcomer",
+      "min": 0,
+      "max": 2,
+      "headline": "You're a Newcomer",
+      "summary": "Georgia's water story is new to you, so start with the one-minute win.",
+      "next": { "label": "Take the Wish Pledge", "href": "#pledge" }
+    },
+    {
+      "id": "advocate",
+      "name": "Advocate",
+      "min": 3,
+      "max": 4,
+      "headline": "You're an Advocate",
+      "summary": "You know the story well enough to tell it. Give it an afternoon, then share this site.",
+      "next": {
+        "label": "Volunteer with Water Watch",
+        "href": "https://chattahoochee.org/our-work/water-quality-monitoring/",
+        "external": true
+      }
+    },
+    {
+      "id": "builder",
+      "name": "Builder",
+      "min": 5,
+      "max": 5,
+      "headline": "You're a Builder",
+      "summary": "You've got the facts down. Spend a semester designing the fix with a Wish for Wash team.",
+      "next": { "label": "Join a Wish for Wash team", "href": "#join" }
+    }
+  ]
+}
