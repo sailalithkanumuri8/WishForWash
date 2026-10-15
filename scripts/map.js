@@ -164,7 +164,12 @@ function focusPoint() {
   const mode = panelMode();
   if (mode === 'drawer') return { fx: 0.28, fy: 0.5 };
   if (mode === 'sheet') return { fx: 0.5, fy: 0.3 };
-  if (overlayQuery.matches) return { fx: 0.26, fy: 0.45 };
+  if (overlayQuery.matches) {
+    // Centre the hotspot in the part of the map the panel leaves uncovered.
+    const s = stage.getBoundingClientRect();
+    const open = Math.min(panel.getBoundingClientRect().left, s.right) - s.left;
+    return { fx: Math.min(0.5, Math.max(0.2, open / 2 / s.width)), fy: 0.45 };
+  }
   return { fx: 0.5, fy: 0.45 };
 }
 

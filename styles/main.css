@@ -4412,7 +4412,8 @@ sup:has(> .cite) {
   }
 }
 
-/* Tablets: the panel overlays the map's right half. */
+/* Tablets: the panel sits at the right edge, over as little of the map as the
+   width allows (portrait tablets: the right half; landscape: a sliver). */
 @media (min-width: 768px) and (max-width: 1199px) {
   .map-stage {
     max-width: min(100%, calc(min(82vh, 900px) * 1000 / 1148));
@@ -4435,9 +4436,8 @@ sup:has(> .cite) {
     grid-column: 1;
     justify-self: end;
     align-self: start;
-    width: calc(var(--stage-w) * 0.52);
+    width: min(100%, clamp(300px, 36vw, 380px));
     height: var(--stage-h);
-    margin-right: calc((100% - var(--stage-w)) / 2);
   }
 }
 
