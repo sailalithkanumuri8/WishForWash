@@ -263,9 +263,10 @@ function initPledge(app, siteUrl) {
         ui.coin.style.display = 'none';
       },
     });
+    // Opacity (not visibility) so the card and buttons stay in the accessibility tree.
     timeline
-      .set(ui.wish, { y: rise, autoAlpha: 0 })
-      .set(ui.actions, { autoAlpha: 0, y: 12 })
+      .set(ui.wish, { y: rise, opacity: 0 })
+      .set(ui.actions, { opacity: 0, y: 12 })
       .set(ui.coin, { visibility: 'visible', autoAlpha: 1, y: -fall, rotation: -25 })
       // The coin tumbles down into the water...
       .to(ui.coin, { y: 0, rotation: 15, duration: 0.6, ease: 'power2.in' }, 0)
@@ -296,8 +297,8 @@ function initPledge(app, siteUrl) {
 
     // ...and the My Wish card rises out of the water.
     timeline
-      .to(ui.wish, { y: 0, autoAlpha: 1, duration: 0.8, ease: 'power3.out' }, 0.72)
-      .to(ui.actions, { autoAlpha: 1, y: 0, duration: 0.4, ease: 'power2.out' }, 1.25)
+      .to(ui.wish, { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' }, 0.72)
+      .to(ui.actions, { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out' }, 1.25)
       .to(ui.pools, { autoAlpha: 0, duration: 0.45, ease: 'power1.out' }, 1.4);
   }
 
