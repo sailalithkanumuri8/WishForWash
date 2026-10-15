@@ -3051,6 +3051,1300 @@ sup:has(> .cite) {
 /* ===== END MAP SECTION ===== */
 
 /* ===== TAKE ACTION SECTION: owned by scripts/pledge-quiz.js ===== */
+
+/* The section sits on --wash-blue, so every line of running text lives inside
+   a card (ice/aqua with navy text, or navy/deep with white text). */
+
+.act-app {
+  display: grid;
+  gap: clamp(2rem, 1.4rem + 2.4vw, 3.5rem);
+}
+
+/* ---- Action ladder (animation 27: rungs fill with water as you scroll) ---- */
+
+.ladder {
+  display: grid;
+  gap: var(--gutter);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.rung {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  min-height: 210px;
+  overflow: hidden;
+  border-radius: var(--radius-card);
+  background: var(--wash-ice);
+  color: var(--wash-navy);
+  box-shadow: var(--shadow-card);
+}
+
+.rung__water {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.rung__wave {
+  animation: rung-drift 8s linear infinite;
+}
+
+.rung__wave--back {
+  fill: var(--wash-foam);
+  animation-duration: 12s;
+  animation-direction: reverse;
+}
+
+.rung__wave--front {
+  fill: var(--wash-aqua);
+}
+
+/* The wave paths are two periods wide, so sliding one period loops seamlessly. */
+@keyframes rung-drift {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100px);
+  }
+}
+
+.ladder:not(.is-onscreen) .rung__wave {
+  animation-play-state: paused;
+}
+
+.rung__body {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.85rem;
+  width: 100%;
+  padding: clamp(1.5rem, 1.25rem + 0.9vw, 2rem);
+}
+
+.rung__time {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  line-height: 1;
+}
+
+/* Numbers use the stats face (Montserrat 800) so "5" never reads as "S". */
+.rung__amount {
+  font-family: var(--font-body);
+  font-size: clamp(2.75rem, 2.3rem + 1.4vw, 3.5rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.rung__unit {
+  font-family: var(--font-body);
+  font-size: var(--fs-label);
+  font-weight: 800;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+.rung__text {
+  font-size: var(--fs-small);
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.rung__text a {
+  font-weight: 800;
+  text-decoration-color: var(--wash-navy);
+}
+
+.rung__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  min-height: 44px;
+  margin-top: auto;
+  padding: 0.55rem 1.15rem;
+  border-radius: var(--radius-pill);
+  background: var(--wash-navy);
+  color: var(--wash-white);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out);
+}
+
+.rung__link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px -10px rgb(14 42 79 / 0.75);
+}
+
+.rung__link .icon {
+  width: 1.1em;
+  height: 1.1em;
+}
+
+.rung__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: auto;
+}
+
+.rung__links .rung__link {
+  margin-top: 0;
+}
+
+.rung__link--outline {
+  border: 2px solid var(--wash-navy);
+  background: transparent;
+  color: var(--wash-navy);
+}
+
+.rung__link--outline:hover {
+  box-shadow: none;
+  background: rgb(14 42 79 / 0.08);
+}
+
+@media (min-width: 768px) {
+  .ladder {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Desktop: the rungs rise like steps, from one minute to one semester. */
+@media (min-width: 1200px) {
+  .ladder {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    align-items: end;
+  }
+
+  .rung--1 {
+    min-height: 270px;
+  }
+
+  .rung--2 {
+    min-height: 304px;
+  }
+
+  .rung--3 {
+    min-height: 338px;
+  }
+
+  .rung--4 {
+    min-height: 372px;
+  }
+}
+
+/* ---- Blocks: pledge, reward, quiz, share, join ---- */
+
+.act-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--gutter);
+}
+
+@media (min-width: 768px) {
+  .act-grid {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  }
+
+  .join {
+    grid-column: 1 / -1;
+  }
+}
+
+.act-kicker {
+  display: flex;
+  width: fit-content;
+  align-items: center;
+  gap: 0.45em;
+  margin-bottom: 0.9rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-pill);
+  background: var(--wash-navy);
+  color: var(--wash-white);
+}
+
+.act-kicker .icon {
+  width: 1.2em;
+  height: 1.2em;
+}
+
+.act-kicker--dark {
+  background: var(--wash-aqua);
+  color: var(--wash-navy);
+}
+
+.act-intro {
+  margin-top: 0.85rem;
+  max-width: 52ch;
+  font-weight: 500;
+}
+
+.act-status {
+  min-height: 1.6em;
+  margin-top: 0.75rem;
+  font-size: var(--fs-small);
+  font-weight: 700;
+}
+
+.act-status:empty {
+  margin-top: 0;
+  min-height: 0;
+}
+
+/* Form fields shared by the pledge and join forms */
+.field {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.field__label {
+  padding: 0;
+  font-weight: 700;
+}
+
+.field__optional {
+  font-weight: 500;
+}
+
+.field__input {
+  width: 100%;
+  min-height: 48px;
+  padding: 0.7rem 1rem;
+  border: 2px solid rgb(14 42 79 / 0.75);
+  border-radius: 14px;
+  background: var(--wash-white);
+  color: var(--wash-navy);
+  font-size: 1rem;
+}
+
+.field__input::placeholder {
+  color: #4a5d78;
+  opacity: 1;
+}
+
+.field__input:hover {
+  border-color: var(--wash-navy);
+}
+
+.field__input[aria-invalid='true'] {
+  border-color: var(--wash-navy);
+  border-width: 3px;
+  box-shadow: 0 0 0 4px rgb(179 163 105 / 0.75);
+}
+
+.field__hint {
+  font-size: var(--fs-small);
+}
+
+.field-error {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 0.6rem 0.85rem;
+  border-left: 4px solid var(--gt-gold);
+  border-radius: 10px;
+  background: var(--wash-white);
+  color: var(--wash-navy);
+  font-size: var(--fs-small);
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.field-error .icon {
+  width: 1.25em;
+  height: 1.25em;
+  margin-top: 0.05em;
+}
+
+/* ---- Wish Pledge ---- */
+
+.pledge__form {
+  display: grid;
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.pledge__fieldset,
+.join__interests {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.pledge__legend {
+  padding: 0;
+  font-size: 1.0625rem;
+  font-weight: 800;
+}
+
+.pledge__hint {
+  margin-top: 0.2rem;
+  font-size: var(--fs-small);
+}
+
+.pledge__options {
+  display: grid;
+  gap: 0.55rem;
+  margin: 0.9rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pledge__option {
+  display: grid;
+  justify-items: start;
+}
+
+/* Custom checkbox: a drop that fills with water when checked */
+.drop-check {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  width: 100%;
+  min-height: 52px;
+  padding: 0.55rem 1rem 0.55rem 0.8rem;
+  border: 2px solid transparent;
+  border-radius: 18px;
+  background: var(--wash-white);
+  cursor: pointer;
+  transition:
+    border-color var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out);
+}
+
+.drop-check:hover {
+  border-color: rgb(14 42 79 / 0.45);
+}
+
+.drop-check:has(:checked) {
+  border-color: var(--wash-navy);
+}
+
+.drop-check:has(:focus-visible) {
+  outline: 3px solid var(--wash-navy);
+  outline-offset: 3px;
+}
+
+.drop-check__input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.drop-check__box {
+  flex: none;
+  width: 26px;
+  height: 32px;
+}
+
+.drop-check__box svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.drop-check__water {
+  fill: var(--wash-aqua);
+  transform-box: fill-box;
+  transform: translateY(100%);
+  transition: transform 0.55s var(--ease-out);
+}
+
+.drop-check__outline {
+  fill: none;
+  stroke: var(--wash-navy);
+  stroke-width: 2;
+}
+
+.drop-check__tick {
+  fill: none;
+  stroke: var(--wash-navy);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 14;
+  stroke-dashoffset: 14;
+  transition: stroke-dashoffset 0.3s 0.2s var(--ease-out);
+}
+
+.drop-check__input:checked + .drop-check__box .drop-check__water {
+  transform: translateY(0);
+}
+
+.drop-check__input:checked + .drop-check__box .drop-check__tick {
+  stroke-dashoffset: 0;
+}
+
+.drop-check__text {
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.pledge__help {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  min-height: 44px;
+  margin-left: 3.35rem;
+  font-size: var(--fs-small);
+  font-weight: 700;
+  text-decoration-color: var(--wash-navy);
+}
+
+.pledge__help .icon {
+  width: 1.05em;
+  height: 1.05em;
+}
+
+.pledge__submit {
+  justify-self: start;
+}
+
+/* Result: the coin, the pool and the My Wish card (animation 28) */
+.pledge__done {
+  font-size: var(--fs-heading);
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.pledge__done:focus-visible {
+  outline-offset: 6px;
+}
+
+.pledge__scene {
+  position: relative;
+  display: grid;
+  place-items: center;
+  margin-top: 1.25rem;
+  padding: 0.5rem 0 0.25rem;
+  overflow: hidden;
+  border-radius: 24px;
+}
+
+.pledge__pool {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 90px;
+  pointer-events: none;
+}
+
+.pledge__pool--back {
+  z-index: 0;
+}
+
+.pledge__pool--front {
+  z-index: 2;
+}
+
+.pledge__coin {
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  bottom: 44px;
+  width: 44px;
+  height: 44px;
+  margin-left: -22px;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.pledge__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+/* The My Wish card: poster style. Sizes use container units so the card
+   scales as one piece and exports at a fixed 540 x 675 for the PNG. */
+.wish-card {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 440px);
+  margin: 0;
+  container-type: inline-size;
+  border-radius: 28px;
+  background:
+    radial-gradient(120% 70% at 85% 0%, rgb(217 236 250 / 0.28), transparent 60%),
+    var(--wash-blue);
+  box-shadow: 0 22px 44px -22px rgb(9 27 54 / 0.7);
+  overflow: hidden;
+}
+
+.wish-card__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 4.5cqi;
+  padding: 6.5cqi 6.5cqi 0;
+}
+
+.wish-card__brand {
+  display: flex;
+  width: fit-content;
+  align-items: center;
+  gap: 2.4cqi;
+  padding: 1.6cqi 3.6cqi 1.6cqi 2.4cqi;
+  border-radius: 999px;
+  background: var(--wash-navy);
+  color: var(--wash-ice);
+}
+
+.wish-card__logo {
+  width: clamp(18px, 5.6cqi, 30px);
+  height: auto;
+}
+
+.wish-card__wordmark {
+  font-family: var(--font-wordmark);
+  font-size: clamp(14px, 4.4cqi, 24px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.wish-card__title {
+  font-family: var(--font-display);
+  font-size: clamp(42px, 16cqi, 86px);
+  font-weight: 700;
+  line-height: 0.92;
+  letter-spacing: 0.02em;
+  color: var(--wash-ice);
+}
+
+.wish-card__box {
+  display: grid;
+  gap: 3cqi;
+  padding: 5cqi 5.5cqi;
+  border-radius: clamp(18px, 5cqi, 28px);
+  background: var(--wash-aqua);
+  color: var(--wash-navy);
+}
+
+.wish-card__lead {
+  font-size: clamp(14px, 3.6cqi, 19.5px);
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.wish-card__list {
+  display: grid;
+  gap: 2cqi;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: clamp(14px, 3.5cqi, 19px);
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.wish-card__list li {
+  position: relative;
+  padding-left: clamp(18px, 5cqi, 27px);
+}
+
+/* Drop bullets (plain CSS shapes so html2canvas can draw them) */
+.wish-card__list li::before {
+  content: '';
+  position: absolute;
+  left: 0.15em;
+  top: 0.32em;
+  width: 0.62em;
+  height: 0.62em;
+  border-radius: 0 50% 50% 50%;
+  background: var(--wash-navy);
+  transform: rotate(45deg);
+}
+
+.wish-card__sign {
+  font-size: clamp(14px, 3.6cqi, 19.5px);
+  font-weight: 800;
+}
+
+.wish-card__foot {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1cqi 4cqi;
+  margin: 1cqi -6.5cqi 0;
+  padding: 3.4cqi 6.5cqi;
+  background: var(--wash-navy);
+  color: var(--wash-white);
+  font-size: clamp(12px, 2.9cqi, 15.5px);
+  font-weight: 600;
+}
+
+.wish-card__waves {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Fixed-size copy used only for the PNG download (540 x 675 at 2x = 1080 x 1350) */
+.wish-export {
+  position: fixed;
+  left: -10000px;
+  top: 0;
+  width: 540px;
+  pointer-events: none;
+}
+
+.wish-export .wish-card {
+  display: flex;
+  flex-direction: column;
+  width: 540px;
+  min-height: 675px;
+  box-shadow: none;
+  border-radius: 32px;
+}
+
+/* Fixed sizes for the export so up to five promises fit in 540 x 675 */
+.wish-export .wish-card__inner {
+  flex: 1;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 34px 34px 0;
+}
+
+.wish-export .wish-card__title {
+  font-size: 72px;
+}
+
+.wish-export .wish-card__box {
+  gap: 14px;
+  padding: 24px 26px;
+}
+
+.wish-export .wish-card__lead,
+.wish-export .wish-card__sign {
+  font-size: 18px;
+}
+
+.wish-export .wish-card__list {
+  gap: 9px;
+  font-size: 18px;
+}
+
+.wish-export .wish-card__foot {
+  flex-wrap: nowrap;
+  margin: 0 -34px;
+  padding: 16px 34px;
+  font-size: 14px;
+}
+
+/* ---- Pledge reward: the bottle mock-up ---- */
+
+.reward {
+  display: grid;
+  align-content: center;
+  gap: 1.25rem;
+  margin: 0;
+  overflow: hidden;
+}
+
+.reward__art {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 240px;
+}
+
+.reward__glow {
+  position: absolute;
+  width: min(80%, 300px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgb(143 211 240 / 0.55), rgb(143 211 240 / 0) 70%);
+}
+
+.reward__img {
+  position: relative;
+  width: min(56%, 220px);
+  height: auto;
+  filter: drop-shadow(0 20px 26px rgb(9 27 54 / 0.5));
+  animation: reward-bob 5s ease-in-out infinite;
+}
+
+.reward:not(.is-onscreen) .reward__img {
+  animation-play-state: paused;
+}
+
+@keyframes reward-bob {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-3deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(3deg);
+  }
+}
+
+.reward__caption {
+  display: grid;
+  justify-items: center;
+  gap: 0.6rem;
+  text-align: center;
+}
+
+.reward__kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-pill);
+  background: var(--wash-aqua);
+  color: var(--wash-navy);
+}
+
+.reward__kicker .icon {
+  width: 1.2em;
+  height: 1.2em;
+}
+
+.reward__caption p:not(.reward__kicker) {
+  max-width: 34ch;
+}
+
+.reward__note {
+  font-size: var(--fs-small);
+}
+
+/* ---- Quiz ---- */
+
+.quiz__app {
+  margin-top: 1.5rem;
+}
+
+.quiz__fallback {
+  padding: 0.85rem 1rem;
+  border-radius: 14px;
+  background: var(--wash-white);
+  font-weight: 700;
+}
+
+.quiz__progress {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.quiz__count {
+  font-size: var(--fs-small);
+  font-weight: 800;
+}
+
+.quiz__dots {
+  display: flex;
+  gap: 0.45rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.quiz__dot svg {
+  width: 16px;
+  height: 20px;
+  overflow: visible;
+}
+
+.quiz__dot path {
+  fill: transparent;
+  stroke: var(--wash-navy);
+  stroke-width: 2;
+  opacity: 0.45;
+}
+
+.quiz__dot.is-current path {
+  opacity: 1;
+  stroke-width: 2.6;
+}
+
+.quiz__dot.is-right path {
+  fill: var(--earth-green);
+  opacity: 1;
+}
+
+.quiz__dot.is-wrong path {
+  fill: var(--wash-white);
+  stroke-dasharray: 3 2.5;
+  opacity: 1;
+}
+
+.quiz__q {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.quiz__prompt {
+  padding: 0;
+  font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem);
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+.quiz__options {
+  display: grid;
+  gap: 0.6rem;
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.quiz__opt {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  min-height: 52px;
+  padding: 0.6rem 1rem 0.6rem 0.7rem;
+  border: 2px solid rgb(14 42 79 / 0.3);
+  border-radius: 18px;
+  background: var(--wash-white);
+  font-weight: 600;
+  line-height: 1.3;
+  cursor: pointer;
+  transition:
+    border-color var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out);
+}
+
+.quiz__opt:hover {
+  border-color: var(--wash-navy);
+}
+
+.quiz__opt:has(:checked) {
+  border-color: var(--wash-navy);
+  background: #eef7fd;
+}
+
+.quiz__opt:has(:focus-visible) {
+  outline: 3px solid var(--wash-navy);
+  outline-offset: 3px;
+}
+
+.quiz__opt:has(:disabled) {
+  cursor: default;
+}
+
+.quiz__radio {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: inherit;
+}
+
+.quiz__letter {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border: 2px solid var(--wash-navy);
+  border-radius: 50%;
+  font-size: 0.875rem;
+  font-weight: 800;
+}
+
+.quiz__opt:has(:checked) .quiz__letter {
+  background: var(--wash-navy);
+  color: var(--wash-white);
+}
+
+.quiz__opt-text {
+  flex: 1;
+}
+
+.quiz__tag {
+  flex: none;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+.quiz__tag:empty {
+  display: none;
+}
+
+.quiz__mark {
+  display: none;
+  width: 1.6em;
+  height: 1.6em;
+}
+
+/* Graded states use icons and labels, not color alone */
+.quiz__opt.is-correct,
+.quiz__opt.is-answer {
+  border-color: var(--wash-navy);
+  background: var(--earth-green);
+}
+
+.quiz__opt.is-correct .quiz__mark--right,
+.quiz__opt.is-answer .quiz__mark--right,
+.quiz__opt.is-wrong .quiz__mark--wrong {
+  display: block;
+}
+
+.quiz__opt.is-wrong {
+  border-style: dashed;
+  border-color: var(--wash-navy);
+  background: var(--wash-white);
+}
+
+.quiz__opt.is-shaking {
+  animation: quiz-shake 0.45s ease-in-out;
+}
+
+@keyframes quiz-shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-6px);
+  }
+  40% {
+    transform: translateX(6px);
+  }
+  60% {
+    transform: translateX(-4px);
+  }
+  80% {
+    transform: translateX(3px);
+  }
+}
+
+/* Right answers burst like bubbles */
+.quiz__bubble {
+  position: absolute;
+  top: 50%;
+  right: 1.1rem;
+  width: var(--s, 10px);
+  height: var(--s, 10px);
+  border: 2px solid var(--wash-navy);
+  border-radius: 50%;
+  background: rgb(255 255 255 / 0.75);
+  pointer-events: none;
+  animation: bubble-burst 0.7s var(--ease-out) forwards;
+}
+
+@keyframes bubble-burst {
+  from {
+    transform: translate(50%, -50%) scale(0.3);
+    opacity: 1;
+  }
+  to {
+    transform: translate(calc(50% + var(--dx, 0px)), calc(-50% + var(--dy, 0px))) scale(1);
+    opacity: 0;
+  }
+}
+
+.quiz__error {
+  margin-top: 1rem;
+}
+
+.quiz__feedback {
+  margin-top: 1rem;
+  padding: 1rem 1.15rem;
+  border-left: 6px solid var(--wash-navy);
+  border-radius: 16px;
+  background: var(--wash-white);
+}
+
+.quiz__feedback.is-right {
+  border-left-color: var(--earth-green);
+}
+
+.quiz__feedback:focus-visible {
+  outline: 3px solid var(--wash-navy);
+  outline-offset: 3px;
+}
+
+.quiz__feedback-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 800;
+}
+
+.quiz__feedback-title .icon {
+  width: 1.4em;
+  height: 1.4em;
+}
+
+.quiz__feedback p + p {
+  margin-top: 0.4rem;
+  font-size: var(--fs-small);
+}
+
+.quiz__from a {
+  font-weight: 700;
+  text-decoration-color: var(--wash-navy);
+}
+
+.quiz__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.quiz__result-kicker {
+  display: inline-block;
+}
+
+.quiz__score {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  margin-top: 0.4rem;
+}
+
+.quiz__score-num {
+  font-family: var(--font-body);
+  font-size: clamp(3rem, 2.47rem + 2.25vw, 4.5rem);
+  font-weight: 800;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+}
+
+.quiz__score-of {
+  font-weight: 800;
+}
+
+.quiz__persona {
+  margin-top: 0.75rem;
+  font-size: var(--fs-heading);
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.quiz__persona:focus-visible {
+  outline-offset: 6px;
+}
+
+.quiz__summary {
+  margin-top: 0.5rem;
+  max-width: 46ch;
+}
+
+.quiz__result-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+/* ---- Share: poster-style QR card ---- */
+
+.share {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.qr {
+  display: grid;
+  justify-items: center;
+  gap: 0.7rem;
+  align-self: center;
+  margin: 1.5rem 0 1.25rem;
+}
+
+.qr__frame {
+  padding: 14px;
+  border-radius: 24px;
+  background: var(--wash-white);
+  box-shadow: var(--shadow-card);
+}
+
+.qr__code {
+  width: clamp(150px, 42vw, 196px);
+  height: auto;
+}
+
+.qr__caption {
+  font-size: var(--fs-label);
+  font-weight: 800;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+.share__btn {
+  align-self: center;
+}
+
+.share__status {
+  align-self: stretch;
+  text-align: center;
+}
+
+/* ---- Join ---- */
+
+.join {
+  display: grid;
+  gap: clamp(1.75rem, 1.2rem + 2vw, 3rem);
+}
+
+@media (min-width: 1024px) {
+  .join {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    align-items: start;
+  }
+}
+
+.join__social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.join__social .btn {
+  white-space: normal;
+}
+
+@media (max-width: 479px) {
+  .join__social .btn {
+    width: 100%;
+  }
+}
+
+.join__panel {
+  padding: clamp(1.25rem, 1rem + 1vw, 1.85rem);
+  border: 1px solid rgb(255 255 255 / 0.16);
+  border-radius: 24px;
+  background: rgb(255 255 255 / 0.05);
+}
+
+.join__form {
+  display: grid;
+  gap: 1.15rem;
+}
+
+.join .field__input {
+  border-color: var(--wash-white);
+}
+
+.join__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.6rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.join__chip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--wash-foam);
+  border-radius: var(--radius-pill);
+  color: var(--wash-white);
+  font-size: var(--fs-small);
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out);
+}
+
+.join__chip input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.join__chip:hover {
+  background: rgb(143 211 240 / 0.15);
+}
+
+.join__chip:has(:checked) {
+  border-color: var(--wash-aqua);
+  background: var(--wash-aqua);
+  color: var(--wash-navy);
+}
+
+/* A check mark shows the selection without relying on color */
+.join__chip:has(:checked) span::before {
+  content: '\2713\00a0';
+  font-weight: 800;
+}
+
+.join__chip:has(:focus-visible) {
+  outline: 3px solid var(--wash-foam);
+  outline-offset: 3px;
+}
+
+.join__submit {
+  justify-self: start;
+}
+
+.join__done-title {
+  font-size: var(--fs-heading);
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.join__done-title:focus-visible {
+  outline-offset: 6px;
+}
+
+.join__done > p {
+  margin-top: 0.75rem;
+}
+
+.join__steps {
+  display: grid;
+  gap: 0.7rem;
+  margin: 1rem 0 1.25rem;
+  padding-left: 1.4rem;
+}
+
+.join__steps li::marker {
+  font-weight: 800;
+  color: var(--wash-foam);
+}
+
+.join__done .btn {
+  margin-top: 1.25rem;
+}
+
 /* ===== END TAKE ACTION SECTION ===== */
 
 /* ==========================================================================

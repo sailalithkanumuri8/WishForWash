@@ -937,7 +937,271 @@
           </header>
 
           <!-- ACT:START (action ladder, Wish Pledge, quiz, join form; scripts/pledge-quiz.js) -->
-          <div class="act-app" id="act-app"></div>
+          <div class="act-app" id="act-app" data-site-url="%SITE_URL%">
+            <!-- Action ladder: four rungs by time commitment (animation 27 fills them with water) -->
+            <ol class="ladder" role="list" aria-label="Action ladder, by time commitment" data-ladder data-reveal-group>
+              <li class="rung rung--1 on-light">
+                <svg class="rung__water" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                  <defs><clipPath id="rung-clip-1"><rect width="100" height="100" /></clipPath></defs>
+                  <g clip-path="url(#rung-clip-1)">
+                    <g class="rung__level">
+                      <path class="rung__wave rung__wave--back" d="M0 6Q25 14 50 6T100 6T150 6T200 6V100H0Z" />
+                      <path class="rung__wave rung__wave--front" d="M0 9Q25 1 50 9T100 9T150 9T200 9V100H0Z" />
+                    </g>
+                  </g>
+                </svg>
+                <div class="rung__body">
+                  <h3 class="rung__time"><span class="rung__amount">1</span> <span class="rung__unit">minute</span></h3>
+                  <p class="rung__text">Take the Wish Pledge: refill your bottle, report campus leaks, take shorter showers.</p>
+                  <a class="rung__link" href="#pledge">Pledge now<svg class="icon" aria-hidden="true"><use href="#i-arrow-right"></use></svg></a>
+                </div>
+              </li>
+              <li class="rung rung--2 on-light">
+                <svg class="rung__water" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                  <defs><clipPath id="rung-clip-2"><rect width="100" height="100" /></clipPath></defs>
+                  <g clip-path="url(#rung-clip-2)">
+                    <g class="rung__level">
+                      <path class="rung__wave rung__wave--back" d="M0 6Q25 14 50 6T100 6T150 6T200 6V100H0Z" />
+                      <path class="rung__wave rung__wave--front" d="M0 9Q25 1 50 9T100 9T150 9T200 9V100H0Z" />
+                    </g>
+                  </g>
+                </svg>
+                <div class="rung__body">
+                  <h3 class="rung__time"><span class="rung__amount">5</span> <span class="rung__unit">minutes</span></h3>
+                  <p class="rung__text">Take the "How water-wise are you?" quiz and share the site.</p>
+                  <a class="rung__link" href="#quiz">Start quiz<svg class="icon" aria-hidden="true"><use href="#i-arrow-right"></use></svg></a>
+                </div>
+              </li>
+              <li class="rung rung--3 on-light">
+                <svg class="rung__water" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                  <defs><clipPath id="rung-clip-3"><rect width="100" height="100" /></clipPath></defs>
+                  <g clip-path="url(#rung-clip-3)">
+                    <g class="rung__level">
+                      <path class="rung__wave rung__wave--back" d="M0 6Q25 14 50 6T100 6T150 6T200 6V100H0Z" />
+                      <path class="rung__wave rung__wave--front" d="M0 9Q25 1 50 9T100 9T150 9T200 9V100H0Z" />
+                    </g>
+                  </g>
+                </svg>
+                <div class="rung__body">
+                  <h3 class="rung__time"><span class="rung__amount">1</span> <span class="rung__unit">afternoon</span></h3>
+                  <p class="rung__text">Come to a Wish for Wash workshop or volunteer with Neighborhood Water Watch.</p>
+                  <a class="rung__link" href="https://chattahoochee.org/our-work/water-quality-monitoring/" target="_blank" rel="noopener">Water Watch<svg class="icon" aria-hidden="true"><use href="#i-external-link"></use></svg></a>
+                </div>
+              </li>
+              <li class="rung rung--4 on-light">
+                <svg class="rung__water" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                  <defs><clipPath id="rung-clip-4"><rect width="100" height="100" /></clipPath></defs>
+                  <g clip-path="url(#rung-clip-4)">
+                    <g class="rung__level">
+                      <path class="rung__wave rung__wave--back" d="M0 6Q25 14 50 6T100 6T150 6T200 6V100H0Z" />
+                      <path class="rung__wave rung__wave--front" d="M0 9Q25 1 50 9T100 9T150 9T200 9V100H0Z" />
+                    </g>
+                  </g>
+                </svg>
+                <div class="rung__body">
+                  <h3 class="rung__time"><span class="rung__amount">1</span> <span class="rung__unit">semester</span></h3>
+                  <p class="rung__text">Join a Wish for Wash research or design team, EWB-GT, or GT's SDG Week.</p>
+                  <p class="rung__links">
+                    <a class="rung__link" href="#join">Join us<svg class="icon" aria-hidden="true"><use href="#i-arrow-right"></use></svg></a>
+                    <a class="rung__link rung__link--outline" href="https://sustain.gatech.edu/sdg-week/" target="_blank" rel="noopener">SDG Week<svg class="icon" aria-hidden="true"><use href="#i-external-link"></use></svg></a>
+                  </p>
+                </div>
+              </li>
+            </ol>
+
+            <div class="act-grid">
+              <!-- Wish Pledge (animation 28); the result pane is built by scripts/pledge-quiz.js -->
+              <article class="pledge card card--ice on-light" id="pledge" aria-labelledby="pledge-title" data-reveal>
+                <div class="pledge__pane" data-pledge-form-pane>
+                  <p class="label act-kicker"><svg class="icon" aria-hidden="true"><use href="#i-clock"></use></svg>1 minute</p>
+                  <h3 class="card-title card-title--underline act-title" id="pledge-title">The Wish Pledge</h3>
+                  <p class="act-intro">Pick your promises and get a My Wish card to share.</p>
+                  <form class="pledge__form" id="pledge-form" novalidate>
+                    <fieldset class="pledge__fieldset" aria-describedby="pledge-hint">
+                      <legend class="pledge__legend">This semester, I will:</legend>
+                      <p class="pledge__hint" id="pledge-hint">Choose at least one.</p>
+                      <ul class="pledge__options" role="list">
+                        <li class="pledge__option">
+                          <label class="drop-check">
+                            <input class="drop-check__input" type="checkbox" name="commitment" value="refill" data-card="Refill instead of buying bottled water" />
+                            <span class="drop-check__box" aria-hidden="true">
+                              <svg viewBox="0 0 24 30" focusable="false">
+                                <defs><clipPath id="drop-clip-1"><path d="M12 1.6C9.3 7.8 3.2 12.2 3.2 19a8.8 8.8 0 0 0 17.6 0c0-6.8-6.1-11.2-8.8-17.4Z" /></clipPath></defs>
+                                <g clip-path="url(#drop-clip-1)"><rect class="drop-check__water" x="0" y="0" width="24" height="30" /></g>
+                                <path class="drop-check__outline" d="M12 1.6C9.3 7.8 3.2 12.2 3.2 19a8.8 8.8 0 0 0 17.6 0c0-6.8-6.1-11.2-8.8-17.4Z" />
+                                <path class="drop-check__tick" d="M7.6 19.4l2.9 2.9 5.9-6.3" />
+                              </svg>
+                            </span>
+                            <span class="drop-check__text">Refill a reusable bottle instead of buying bottled water</span>
+                          </label>
+                        </li>
+                        <li class="pledge__option">
+                          <label class="drop-check">
+                            <input class="drop-check__input" type="checkbox" name="commitment" value="leaks" data-card="Report campus leaks to GT Facilities" />
+                            <span class="drop-check__box" aria-hidden="true">
+                              <svg viewBox="0 0 24 30" focusable="false">
+                                <defs><clipPath id="drop-clip-2"><path d="M12 1.6C9.3 7.8 3.2 12.2 3.2 19a8.8 8.8 0 0 0 17.6 0c0-6.8-6.1-11.2-8.8-17.4Z" /></clipPath></defs>
+                                <g clip-path="url(#drop-clip-2)"><rect class="drop-check__water" x="0" y="0" width="24" height="30" /></g>
+                                <path class="drop-check__outline" d="M12 1.6C9.3 7.8 3.2 12.2 3.2 19a8.8 8.8 0 0 0 17.6 0c0-6.8-6.1-11.2-8.8-17.4Z" />
+                                <path class="drop-check__tick" d="M7.6 19.4l2.9 2.9 5.9-6.3" />
+                              </svg>
+                            </span>
+                            <span class="drop-check__text">Report campus leaks to GT Facilities</span>
+                          </label>
+                          <a class="pledge__help" href="https://facilities.gatech.edu/building-maintenance/request-service" target="_blank" rel="noopener">How to report a leak<svg class="icon" aria-hidden="true"><use href="#i-external-link"></use></svg></a>
+                        </li>
+                        <li class="pledge__option">
+                          <label class="drop-check">
+                            <input class="drop-check__input" type="checkbox" name="commitment" value="showers" data-card="Take shorter showers" />
+                            <span class="drop-check__box" aria-hidden="true">
+                              <svg viewBox="0 0 24 30" focusable="false">
+                                <defs><clipPath id="drop-clip-3"><path d="M12 1.6C9.3 7.8 3.2 12.2 3.2 19a8.8 8.8 0 0 0 17.6 0c0-6.8-6.1-11.2-8.8-17.4Z" /></clipPath></defs>
+                                <g clip-path="url(#drop-clip-3)"><rect class="drop-check__water" x="0" y="0" width="24" height="30" /></g>
+                                <path class="drop-check__outline" d="M12 1.6C9.3 7.8 3.2 12.2 3.2 19a8.8 8.8 0 0 0 17.6 0c0-6.8-6.1-11.2-8.8-17.4Z" />
+                                <path class="drop-check__tick" d="M7.6 19.4l2.9 2.9 5.9-6.3" />
+                              </svg>
+                            </span>
+                            <span class="drop-check__text">Take shorter showers</span>
+                          </label>
+                        </li>
+                        <li class="pledge__option">
+                          <label class="drop-check">
+                            <input class="drop-check__input" type="checkbox" name="commitment" value="source" data-card="Learn where my tap water comes from" />
+                            <span class="drop-check__box" aria-hidden="true">
+                              <svg viewBox="0 0 24 30" focusable="false">
+                                <defs><clipPath id="drop-clip-4"><path d="M12 1.6C9.3 7.8 3.2 12.2 3.2 19a8.8 8.8 0 0 0 17.6 0c0-6.8-6.1-11.2-8.8-17.4Z" /></clipPath></defs>
+                                <g clip-path="url(#drop-clip-4)"><rect class="drop-check__water" x="0" y="0" width="24" height="30" /></g>
+                                <path class="drop-check__outline" d="M12 1.6C9.3 7.8 3.2 12.2 3.2 19a8.8 8.8 0 0 0 17.6 0c0-6.8-6.1-11.2-8.8-17.4Z" />
+                                <path class="drop-check__tick" d="M7.6 19.4l2.9 2.9 5.9-6.3" />
+                              </svg>
+                            </span>
+                            <span class="drop-check__text">Learn where my tap water comes from</span>
+                          </label>
+                        </li>
+                        <li class="pledge__option">
+                          <label class="drop-check">
+                            <input class="drop-check__input" type="checkbox" name="commitment" value="share" data-card="Share Georgia's water story" />
+                            <span class="drop-check__box" aria-hidden="true">
+                              <svg viewBox="0 0 24 30" focusable="false">
+                                <defs><clipPath id="drop-clip-5"><path d="M12 1.6C9.3 7.8 3.2 12.2 3.2 19a8.8 8.8 0 0 0 17.6 0c0-6.8-6.1-11.2-8.8-17.4Z" /></clipPath></defs>
+                                <g clip-path="url(#drop-clip-5)"><rect class="drop-check__water" x="0" y="0" width="24" height="30" /></g>
+                                <path class="drop-check__outline" d="M12 1.6C9.3 7.8 3.2 12.2 3.2 19a8.8 8.8 0 0 0 17.6 0c0-6.8-6.1-11.2-8.8-17.4Z" />
+                                <path class="drop-check__tick" d="M7.6 19.4l2.9 2.9 5.9-6.3" />
+                              </svg>
+                            </span>
+                            <span class="drop-check__text">Share Georgia's water story with a friend</span>
+                          </label>
+                        </li>
+                      </ul>
+                    </fieldset>
+                    <p class="field-error" id="pledge-error" hidden></p>
+                    <div class="field">
+                      <label class="field__label" for="pledge-name">First name for your card <span class="field__optional">(optional)</span></label>
+                      <input class="field__input" id="pledge-name" name="name" type="text" autocomplete="given-name" maxlength="30" spellcheck="false" />
+                    </div>
+                    <button class="btn btn--navy pledge__submit" type="submit">
+                      <svg class="icon" aria-hidden="true"><use href="#i-coins"></use></svg>Make my wish
+                    </button>
+                  </form>
+                </div>
+                <div class="pledge__pane pledge__result" data-pledge-result hidden></div>
+              </article>
+
+              <!-- Bottle mock-up: pledge reward concept, not for sale -->
+              <figure class="reward card card--deep" data-reveal>
+                <div class="reward__art">
+                  <span class="reward__glow" aria-hidden="true"></span>
+                  <img
+                    class="reward__img"
+                    src="/assets/img/bottle.webp"
+                    alt="The Wish for Wash reusable water bottle mock-up: a light blue bottle with a drop-shaped logo."
+                    width="404"
+                    height="680"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <figcaption class="reward__caption">
+                  <p class="label reward__kicker"><svg class="icon" aria-hidden="true"><use href="#i-sparkles"></use></svg>Pledge reward concept</p>
+                  <p>The reusable bottle from our poster, imagined as a thank-you for pledgers.</p>
+                  <p class="reward__note"><strong>Concept only, not for sale.</strong></p>
+                </figcaption>
+              </figure>
+
+              <!-- "How water-wise are you?" quiz: questions come from data/quiz.json -->
+              <article class="quiz card card--ice on-light" id="quiz" aria-labelledby="quiz-title" data-reveal>
+                <p class="label act-kicker"><svg class="icon" aria-hidden="true"><use href="#i-clock"></use></svg>5 minutes</p>
+                <h3 class="card-title card-title--underline act-title" id="quiz-title">How water-wise are you?</h3>
+                <p class="act-intro">Five questions from this page. Get your score, persona and next step.</p>
+                <div class="quiz__app" data-quiz><p class="quiz__fallback">Turn on JavaScript to take the quiz.</p></div>
+              </article>
+
+              <!-- Share the site: poster-style QR card -->
+              <aside class="share card card--aqua on-light" id="share" aria-labelledby="share-title" data-reveal>
+                <h3 class="card-title card-title--underline act-title" id="share-title">Pass it on</h3>
+                <p class="act-intro">Send Wish for Wash to one friend.</p>
+                <figure class="qr">
+                  <div class="qr__frame"><!-- @render qr --></div>
+                  <figcaption class="qr__caption">Scan to share</figcaption>
+                </figure>
+                <button class="btn btn--navy share__btn" type="button" data-share>
+                  <svg class="icon" aria-hidden="true"><use href="#i-share-2"></use></svg>Share this site
+                </button>
+                <p class="act-status share__status" role="status" data-share-status></p>
+              </aside>
+
+              <!-- Join form; the confirmation is built by scripts/pledge-quiz.js -->
+              <article class="join card card--navy" id="join" aria-labelledby="join-title" data-reveal>
+                <div class="join__intro">
+                  <p class="label act-kicker act-kicker--dark"><svg class="icon" aria-hidden="true"><use href="#i-hourglass"></use></svg>1 semester</p>
+                  <h3 class="card-title card-title--underline act-title" id="join-title">Join the Wish</h3>
+                  <p class="act-intro">
+                    Wish for Wash is a project team inside Engineers Without Borders at Georgia Tech (EWB-GT). New
+                    members apply each fall and spring.<sup><a class="cite" href="#src-ewb-gt-engage"></a></sup>
+                  </p>
+                  <div class="join__social">
+                    <a class="btn btn--primary" href="https://www.instagram.com/ewb.usa.gt/" target="_blank" rel="noopener">
+                      <svg class="icon" aria-hidden="true"><use href="#i-instagram"></use></svg>Follow EWB-GT on Instagram
+                    </a>
+                    <a class="btn btn--ghost" href="https://gatech.campuslabs.com/engage/organization/engineers-without-borders" target="_blank" rel="noopener">
+                      EWB-GT on GT Engage<svg class="icon" aria-hidden="true"><use href="#i-external-link"></use></svg>
+                    </a>
+                  </div>
+                </div>
+
+                <div class="join__panel" data-join-panel>
+                  <form class="join__form" id="join-form" novalidate data-endpoint="">
+                    <div class="field">
+                      <label class="field__label" for="join-name">Name</label>
+                      <input class="field__input" id="join-name" name="name" type="text" autocomplete="name" maxlength="60" required />
+                      <p class="field-error" id="join-name-error" hidden></p>
+                    </div>
+                    <div class="field">
+                      <label class="field__label" for="join-email">GT email</label>
+                      <input class="field__input" id="join-email" name="email" type="email" autocomplete="email" inputmode="email" spellcheck="false" placeholder="gburdell3@gatech.edu" required aria-describedby="join-email-hint" />
+                      <p class="field__hint" id="join-email-hint">Use your @gatech.edu address.</p>
+                      <p class="field-error" id="join-email-error" hidden></p>
+                    </div>
+                    <fieldset class="join__interests">
+                      <legend class="field__label">I'm interested in</legend>
+                      <ul class="join__chips" role="list">
+                        <li><label class="join__chip"><input type="checkbox" name="interests" value="Research" /><span>Research</span></label></li>
+                        <li><label class="join__chip"><input type="checkbox" name="interests" value="Design &amp; Innovation" /><span>Design &amp; Innovation</span></label></li>
+                        <li><label class="join__chip"><input type="checkbox" name="interests" value="Education &amp; Advocacy" /><span>Education &amp; Advocacy</span></label></li>
+                        <li><label class="join__chip"><input type="checkbox" name="interests" value="EWB-GT projects" /><span>EWB-GT projects</span></label></li>
+                        <li><label class="join__chip"><input type="checkbox" name="interests" value="Workshops &amp; events" /><span>Workshops &amp; events</span></label></li>
+                      </ul>
+                    </fieldset>
+                    <button class="btn btn--primary join__submit" type="submit">
+                      <svg class="icon" aria-hidden="true"><use href="#i-send"></use></svg>Join the Wish
+                    </button>
+                    <p class="act-status join__status" role="status" data-join-status></p>
+                  </form>
+                  <div class="join__done" data-join-done hidden></div>
+                </div>
+              </article>
+            </div>
+          </div>
           <!-- ACT:END -->
         </div>
       </section>
