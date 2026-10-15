@@ -172,7 +172,9 @@ const CITIES = [
   { name: 'Augusta', at: [-82.0105, 33.4735], dx: -12, dy: 8, anchor: 'end' },
   { name: 'Macon', at: [-83.6324, 32.8407], dx: -12, dy: -4, anchor: 'end' },
   { name: 'Columbus', at: [-84.9877, 32.461], dx: 12, dy: 8, anchor: 'start' },
-  { name: 'Savannah', at: [-81.0912, 32.0809], dx: 12, dy: -10, anchor: 'start' },
+  // Savannah sits on the map's right edge beside the coast drop, so its label
+  // goes above the dot, offset in screen pixels (styles: .map-city--above).
+  { name: 'Savannah', at: [-81.0912, 32.0809], dx: 0, dy: 0, anchor: 'end', cls: 'map-city--above' },
   { name: 'Valdosta', at: [-83.2785, 30.8327], dx: 12, dy: 8, anchor: 'start' },
 ];
 
@@ -480,7 +482,7 @@ function buildMap() {
   const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;');
   const cityLabels = CITIES.map((c) => {
     const [x, y] = P(c.at);
-    return `<g class="map-city"><circle cx="${x}" cy="${y}" r="4"/><text x="${Math.round(x + c.dx)}" y="${Math.round(y + c.dy)}" text-anchor="${c.anchor}">${esc(c.name)}</text></g>`;
+    return `<g class="map-city${c.cls ? ` ${c.cls}` : ''}"><circle cx="${x}" cy="${y}" r="4"/><text x="${Math.round(x + c.dx)}" y="${Math.round(y + c.dy)}" text-anchor="${c.anchor}">${esc(c.name)}</text></g>`;
   }).join('');
   const riverLabels = RIVER_LABELS.map((r) => {
     const [x, y] = P(r.at);

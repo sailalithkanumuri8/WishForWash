@@ -4,10 +4,14 @@
 // into the interactive map (drops, tooltip, dialog, filters, zoom, world view).
 
 const CITE = /\[\[([\w-]+)\]\]/g;
+const ITALIC = /\*([^*]+)\*/g;
 
-// "[[source-id]]" tokens in regions.json become numbered citation links.
+// "[[source-id]]" tokens in regions.json become numbered citation links, and
+// "*E. coli*" becomes italic.
 export function withCitations(text, escapeHtml) {
-  return escapeHtml(text).replace(CITE, (_, id) => `<sup><a class="cite" href="#src-${id}"></a></sup>`);
+  return escapeHtml(text)
+    .replace(ITALIC, '<i>$1</i>')
+    .replace(CITE, (_, id) => `<sup><a class="cite" href="#src-${id}"></a></sup>`);
 }
 
 export function statText(stat) {
@@ -63,7 +67,7 @@ export default function renderMap({ readJSON, readText, escapeHtml }) {
 <p class="label map-story__issue">${icon(r.icon)}${escapeHtml(r.issue)}</p>
 <h3 class="map-story__name">${escapeHtml(r.name)}</h3>
 <p class="map-story__headline">${escapeHtml(r.headline)}</p>
-<p class="map-story__stat"><strong class="map-story__num">${escapeHtml(statText(r.stat))}</strong> ${escapeHtml(r.stat.label)}<sup><a class="cite" href="#src-${r.stat.source}"></a></sup> ${sourceLink(r.stat.source)}</p>
+<p class="map-story__stat"><strong class="map-story__num">${escapeHtml(statText(r.stat))}</strong> ${withCitations(r.stat.label, escapeHtml)}<sup><a class="cite" href="#src-${r.stat.source}"></a></sup> ${sourceLink(r.stat.source)}</p>
 <p class="map-story__text">${withCitations(r.story, escapeHtml)}</p>
 <p class="map-story__done">${icon('sprout')}<span>${withCitations(r.done, escapeHtml)}</span></p>
 <p class="map-story__why">${icon('graduation-cap')}<span>${escapeHtml(r.whyYou)}</span></p>
@@ -84,8 +88,8 @@ export default function renderMap({ readJSON, readText, escapeHtml }) {
 <div class="map-filters" role="group" aria-label="Filter hotspots by issue">${filters}</div>
 <div class="map-tools">
 <button class="map-tool" type="button" data-toggle="rivers" aria-pressed="true">${icon('waves')}Rivers</button>
-<button class="map-tool" type="button" data-toggle="list" aria-pressed="false" aria-controls="map-list">${icon('list')}List view</button>
-<button class="map-tool" type="button" data-world-open aria-label="World view: zoom out to the world">${icon('globe')}World view</button>
+<button class="map-tool" type="button" data-toggle="list" aria-pressed="false" aria-controls="map-list">${icon('list')}List<span class="map-tool__extra"> view</span></button>
+<button class="map-tool" type="button" data-world-open aria-label="World view: zoom out to the world">${icon('globe')}World<span class="map-tool__extra"> view</span></button>
 </div>
 </div>
 <div class="map-stage" data-map-stage>

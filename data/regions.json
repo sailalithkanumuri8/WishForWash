@@ -85,7 +85,7 @@
     },
     "whyYou": "It happened a short walk from Tech Square.",
     "action": {
-      "label": "Take the pledge",
+      "label": "Take the Wish Pledge",
       "href": "#pledge"
     },
     "sources": [
@@ -127,14 +127,14 @@
     "zoom": 3.4,
     "region": "atlanta",
     "headline": "Still failing bacteria standards",
-    "story": "It flows nine miles from near downtown to the Chattahoochee.[[epa-proctor]] It's listed as impaired for E. coli;[[epd-303d-2024]] EPA says high levels can signal leaking sewers.[[epa-proctor]]",
+    "story": "It flows nine miles from near downtown to the Chattahoochee.[[epa-proctor]] It's listed as impaired for *E. coli*;[[epd-303d-2024]] EPA says high levels can signal leaking sewers.[[epa-proctor]]",
     "done": "Sewer repairs and planned green infrastructure should help clean it up.[[epa-proctor]]",
     "stat": {
       "value": 20,
       "countFrom": 10,
       "prefix": "10–",
       "suffix": "×",
-      "label": "typical E. coli vs. the state standard near downtown",
+      "label": "typical *E. coli* vs. the state standard near downtown",
       "source": "epa-proctor"
     },
     "whyYou": "That river supplies Atlanta's tap water.",
@@ -178,7 +178,7 @@
     "region": "middle",
     "headline": "The septic tank out back",
     "story": "Septic systems that are aging or poorly maintained can fail and pollute waterways.[[uga-septic]] In part of Twiggs County, homes have no public sewer at all.[[epd-twiggs-2025]]",
-    "done": "UGA researchers convened wastewater experts to work on fixes.[[uga-septic]]",
+    "done": "UGA researchers gathered wastewater experts to start developing solutions.[[uga-septic]]",
     "stat": {
       "value": 3,
       "prefix": "More than 1 in ",
@@ -186,7 +186,7 @@
       "label": "Georgia households use septic",
       "source": "uga-septic"
     },
-    "whyYou": "Engineers like you can design cheaper, better systems.",
+    "whyYou": "Students like you can help design cheaper, better systems.",
     "action": {
       "label": "Join a design team",
       "href": "#join"
@@ -226,7 +226,7 @@
     "region": "coastal",
     "headline": "Salt seeping into the aquifer",
     "story": "The Upper Floridan aquifer is the coast's main water source. Heavy pumping lowered water levels and let saltwater in at Brunswick and Hilton Head, S.C.[[usgs-pubs-2001]]",
-    "done": "No new wells are allowed near Brunswick's plume, and Savannah's pumping is capped.[[epd-coastal-2006]]",
+    "done": "No new wells are allowed near Brunswick's saltwater plume, and Savannah's pumping is capped.[[epd-coastal-2006]]",
     "stat": {
       "value": 24,
       "label": "coastal counties where Georgia manages pumping",
@@ -272,15 +272,15 @@
     "region": "southwest",
     "headline": "Thirsty crops, shrinking streams",
     "story": "Farming uses over 70% of the region's water.[[asu-2022]] After a drought, Georgia froze new farm permits in 2012; well permits with drought limits reopened in 2025.[[gpb-2024]]",
-    "done": "Now farms are switching to deep wells in droughts.[[asu-2022]]",
+    "done": "A state grant is moving drought-year irrigation to deep wells.[[asu-2022]]",
     "stat": {
       "value": 20,
       "prefix": "About ",
       "suffix": "%",
-      "label": "lower streamflow since 1975; up to half in La Niña growing seasons",
+      "label": "lower streamflow since 1975",
       "source": "singh-2016"
     },
-    "whyYou": "These farms and your tap share one river system.",
+    "whyYou": "These farms and your tap share one river basin.",
     "action": {
       "label": "See the deep-well fix",
       "href": "#solution-irrigation"

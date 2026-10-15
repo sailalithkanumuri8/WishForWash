@@ -78,7 +78,11 @@ function cite(id) {
   return `<sup><a class="cite" href="#src-${id}" data-src="${id}" aria-label="Source ${n}" title="${esc(title)}">${n}</a></sup>`;
 }
 
-const withCitations = (text) => esc(text).replace(/\[\[([\w-]+)\]\]/g, (_, id) => cite(id));
+// "[[source-id]]" becomes a citation and "*E. coli*" becomes italic.
+const withCitations = (text) =>
+  esc(text)
+    .replace(/\*([^*]+)\*/g, '<i>$1</i>')
+    .replace(/\[\[([\w-]+)\]\]/g, (_, id) => cite(id));
 
 function photoFor(region) {
   const src = region.image?.src;
@@ -253,7 +257,7 @@ ${figure}
 <p class="map-panel__headline">${esc(region.headline)}</p>
 <div class="map-panel__stat">
 <p class="map-panel__num"><span data-map-count aria-hidden="true">${esc(statText(region.stat))}</span><span class="visually-hidden">${esc(statText(region.stat))}</span></p>
-<p class="map-panel__label">${esc(region.stat.label)}${cite(region.stat.source)}</p>
+<p class="map-panel__label">${withCitations(region.stat.label)}${cite(region.stat.source)}</p>
 <a class="map-source" href="${esc(src.url)}" target="_blank" rel="noopener">Source: ${esc(src.publisher || src.title)}${iconSvg('external-link')}</a>
 </div>
 <p class="map-panel__story">${withCitations(region.story)}</p>
@@ -261,9 +265,9 @@ ${figure}
 <p class="map-panel__why">${iconSvg('graduation-cap')}<span><strong>Why this matters to you:</strong> ${esc(region.whyYou)}</span></p>
 <a class="btn btn--navy map-panel__action" href="${esc(region.action.href)}"${external}>${esc(region.action.label)}${iconSvg('arrow-right')}</a>
 <nav class="map-panel__nav" aria-label="More hotspots">
-<button class="map-panel__step" type="button" data-step="-1" aria-label="Previous hotspot: ${esc(prev.name)}">${iconSvg('chevron-left')}<span>${esc(prev.shortName)}</span></button>
+<button class="map-panel__step" type="button" data-step="-1" aria-label="Previous hotspot: ${esc(prev.name)}">${iconSvg('chevron-left')}<span class="map-panel__step-name">${esc(prev.shortName)}</span><span class="map-panel__step-word">Previous</span></button>
 <p class="map-panel__count">${index + 1} / ${total}</p>
-<button class="map-panel__step" type="button" data-step="1" aria-label="Next hotspot: ${esc(next.name)}"><span>${esc(next.shortName)}</span>${iconSvg('chevron-right')}</button>
+<button class="map-panel__step" type="button" data-step="1" aria-label="Next hotspot: ${esc(next.name)}"><span class="map-panel__step-name">${esc(next.shortName)}</span><span class="map-panel__step-word">Next</span>${iconSvg('chevron-right')}</button>
 </nav>
 </div>`;
 }
