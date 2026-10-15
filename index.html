@@ -164,15 +164,17 @@
 
           <div class="hero__art">
             <img class="hero__gt" src="/assets/img/gt-logo.svg" alt="Georgia Tech" width="160" height="128" />
-            <div class="hero__globe" data-globe>
-              <img
-                class="hero__globe-img"
-                src="/assets/img/globe-in-hands.webp"
-                alt="Two hands cradling a glass globe of the Earth, filled with water, as a single drop lands on its surface."
-                width="1100"
-                height="1000"
-                fetchpriority="high"
-              />
+            <div class="hero__globe" data-globe data-size="1100 1000" data-water="">
+              <div class="hero__globe-tilt">
+                <img
+                  class="hero__globe-img"
+                  src="/assets/img/globe-in-hands.webp"
+                  alt="Two hands cradling a glass globe of the Earth, filled with water, as a single drop lands on its surface."
+                  width="1100"
+                  height="1000"
+                  fetchpriority="high"
+                />
+              </div>
             </div>
             <div class="hero__bottle" data-bottle>
               <img
@@ -187,15 +189,21 @@
         </div>
 
         <div class="hero__waves" aria-hidden="true">
-          <svg class="hero__wave hero__wave--back" viewBox="0 0 2880 160" preserveAspectRatio="none">
-            <path d="M0 80C240 30 480 30 720 80s480 50 720 0 480-50 720 0 480 50 720 0V160H0Z" />
-          </svg>
-          <svg class="hero__wave hero__wave--mid" viewBox="0 0 2880 160" preserveAspectRatio="none">
-            <path d="M0 96C180 56 360 56 540 96s360 40 540 0 360-40 540 0 360 40 540 0 360-40 540 0 180 20 180 20V160H0Z" />
-          </svg>
-          <svg class="hero__wave hero__wave--front" viewBox="0 0 2880 160" preserveAspectRatio="none">
-            <path d="M0 112C240 82 480 82 720 112s480 30 720 0 480-30 720 0 480 30 720 0V160H0Z" />
-          </svg>
+          <div class="hero__wave-layer hero__wave-layer--back" data-wave-layer="0.9">
+            <svg class="hero__wave" viewBox="0 0 2880 160" preserveAspectRatio="none">
+              <path d="M0 72C240 24 480 24 720 72S1200 120 1440 72S1920 24 2160 72S2640 120 2880 72V160H0Z" />
+            </svg>
+          </div>
+          <div class="hero__wave-layer hero__wave-layer--mid" data-wave-layer="0.5">
+            <svg class="hero__wave" viewBox="0 0 2880 160" preserveAspectRatio="none">
+              <path d="M0 96C120 66 240 66 360 96S600 126 720 96S960 66 1080 96S1320 126 1440 96S1680 66 1800 96S2040 126 2160 96S2400 66 2520 96S2760 126 2880 96V160H0Z" />
+            </svg>
+          </div>
+          <div class="hero__wave-layer hero__wave-layer--front" data-wave-layer="0">
+            <svg class="hero__wave" viewBox="0 0 2880 160" preserveAspectRatio="none">
+              <path d="M0 116C240 88 480 88 720 116S1200 144 1440 116S1920 88 2160 116S2640 144 2880 116V160H0Z" />
+            </svg>
+          </div>
         </div>
 
         <a class="scroll-cue" href="#issue">
@@ -257,7 +265,7 @@
 
           <div class="issue__grid">
             <figure class="people" id="people-grid">
-              <div class="people__grid" aria-hidden="true"></div>
+              <div class="people__grid"><!-- @render people --></div>
               <figcaption class="people__caption">
                 <strong class="people__big">1 in 4</strong>
                 Out of every 100 people on Earth, about 25 can't count on safe drinking water at

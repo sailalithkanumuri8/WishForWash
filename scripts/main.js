@@ -5,8 +5,13 @@
 import 'lenis/dist/lenis.css';
 import { ScrollTrigger, scrollToTarget, startMotion } from './motion.js';
 import './effects.js';
+import './issue.js';
+import './campus.js';
 import { initNav } from './nav.js';
+import { initHero } from './hero.js';
 import { initMap } from './map.js';
+import { initWatch } from './watch.js';
+import { initSolutions } from './solutions.js';
 import { initAct } from './pledge-quiz.js';
 import { navHeight } from './utils.js';
 
@@ -42,7 +47,10 @@ function initSources() {
 const initializers = [
   ['nav', initNav],
   ['sources', initSources],
+  ['hero', initHero],
   ['map', initMap],
+  ['watch', initWatch],
+  ['solutions', initSolutions],
   ['act', initAct],
 ];
 

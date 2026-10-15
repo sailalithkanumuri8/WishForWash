@@ -1,1 +1,97 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" preserveAspectRatio="xMidYMid slice"><rect width="1200" height="675" fill="#5b6470"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Illustration: rain falling on an asphalt parking lot; runoff races across the pavement into a storm drain and pours murky water into a creek.">
+  <defs>
+    <filter id="cb-grain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="4" result="n"/>
+      <feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .09 0"/>
+      <feComposite in2="SourceGraphic" operator="in"/>
+      <feBlend in="SourceGraphic" mode="multiply"/>
+    </filter>
+    <marker id="cb-arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10Z" fill="#a9c4e4"/>
+    </marker>
+    <g id="cb-car">
+      <rect x="-27" y="-50" width="54" height="100" rx="14"/>
+      <rect x="-21" y="-30" width="42" height="44" rx="9" fill="#2a3442" opacity=".55"/>
+      <rect x="-19" y="-27" width="38" height="12" rx="5" fill="#d9ecfa" opacity=".55"/>
+    </g>
+  </defs>
+
+  <!-- asphalt -->
+  <rect width="1200" height="675" fill="#5a6370"/>
+  <g filter="url(#cb-grain)"><rect width="1200" height="560" fill="#5a6370"/></g>
+  <path d="M90 120c60-18 140-10 190 14M820 300c70-20 150-8 220 22M300 420c60-14 120-8 170 10" stroke="#4d5561" stroke-width="18" stroke-linecap="round" fill="none" opacity=".6"/>
+
+  <!-- parking stalls: two double rows -->
+  <g stroke="#e9eef4" stroke-width="5" stroke-linecap="round" opacity=".9">
+    <path d="M60 40v130M140 40v130M220 40v130M300 40v130M380 40v130M460 40v130M540 40v130M620 40v130M700 40v130M780 40v130M860 40v130M940 40v130M1020 40v130M1100 40v130M1180 40v130"/>
+    <path d="M60 40h1120"/>
+    <path d="M60 300v130M140 300v130M220 300v130M300 300v130M380 300v130M460 300v130M540 300v130M620 300v130M700 300v130M780 300v130M860 300v130M940 300v130M1020 300v130M1100 300v130M1180 300v130"/>
+    <path d="M60 430h1120"/>
+  </g>
+  <!-- lane arrows -->
+  <g fill="#e9eef4" opacity=".55">
+    <path d="M330 236h70v-12l26 22-26 22v-12h-70z"/>
+    <path d="M860 236h-70v-12l-26 22 26 22v-12h70z"/>
+  </g>
+
+  <!-- cars -->
+  <g>
+    <use href="#cb-car" transform="translate(100 105)" fill="#d9ecfa"/>
+    <use href="#cb-car" transform="translate(260 105)" fill="#b3a369"/>
+    <use href="#cb-car" transform="translate(340 105)" fill="#8fd3f0"/>
+    <use href="#cb-car" transform="translate(580 105)" fill="#0e2a4f"/>
+    <use href="#cb-car" transform="translate(740 105)" fill="#e9eef4"/>
+    <use href="#cb-car" transform="translate(980 105)" fill="#55b6da"/>
+    <use href="#cb-car" transform="translate(1060 105)" fill="#c94f4f"/>
+    <use href="#cb-car" transform="translate(180 365)" fill="#55b6da"/>
+    <use href="#cb-car" transform="translate(420 365)" fill="#e9eef4"/>
+    <use href="#cb-car" transform="translate(500 365)" fill="#b3a369"/>
+    <use href="#cb-car" transform="translate(820 365)" fill="#0e2a4f"/>
+    <use href="#cb-car" transform="translate(900 365)" fill="#d9ecfa"/>
+    <use href="#cb-car" transform="translate(1140 365)" fill="#8fd3f0"/>
+  </g>
+
+  <!-- light poles -->
+  <g fill="#2a3442">
+    <circle cx="200" cy="240" r="9"/><circle cx="600" cy="240" r="9"/><circle cx="1000" cy="240" r="9"/>
+  </g>
+  <g fill="#fff6c8" opacity=".35">
+    <circle cx="200" cy="240" r="26"/><circle cx="600" cy="240" r="26"/><circle cx="1000" cy="240" r="26"/>
+  </g>
+
+  <!-- sheet runoff racing toward the drain -->
+  <g fill="none" stroke="#a9c4e4" stroke-width="5" stroke-linecap="round" stroke-dasharray="18 14" marker-end="url(#cb-arrow)" opacity=".95">
+    <path d="M60 462c110 16 200 36 300 64"/>
+    <path d="M200 446c70 20 120 42 170 76"/>
+    <path d="M900 462c-150 16-330 36-420 64"/>
+    <path d="M640 446c-70 20-140 42-200 76"/>
+    <path d="M420 446v72"/>
+  </g>
+  <g fill="#7e98b8" opacity=".5">
+    <ellipse cx="380" cy="230" rx="60" ry="14"/>
+    <ellipse cx="760" cy="250" rx="48" ry="11"/>
+    <ellipse cx="160" cy="470" rx="44" ry="10"/>
+  </g>
+
+  <!-- sidewalk + storm drain -->
+  <rect y="540" width="1200" height="34" fill="#a3abb4"/>
+  <rect x="380" y="532" width="80" height="26" rx="4" fill="#1d242e"/>
+  <g stroke="#59616c" stroke-width="4"><path d="M394 536v18M410 536v18M426 536v18M442 536v18"/></g>
+
+  <!-- murky creek with a plume from the outfall -->
+  <path d="M0 574h1200v101H0Z" fill="#6e7f74"/>
+  <path d="M0 590c120 14 240-10 360 2s240 16 360 0 240-14 480 4" fill="none" stroke="#8a9a8c" stroke-width="5" opacity=".7"/>
+  <path d="M420 574c-40 30-130 50-260 70-60 10-90 20-110 31h760c-20-11-50-21-110-31-130-20-220-40-260-70Z" fill="#8a6f4e" opacity=".55"/>
+  <path d="M420 558v26" stroke="#3a4552" stroke-width="16"/>
+
+  <!-- rain -->
+  <g stroke="#d9ecfa" stroke-width="2.4" stroke-linecap="round" opacity=".5">
+    <path d="M70 20l-14 34M210 70l-14 34M330 10l-14 34M470 90l-14 34M560 30l-14 34M690 110l-14 34M820 20l-14 34M950 80l-14 34M1080 30l-14 34M1150 140l-14 34M40 220l-14 34M180 280l-14 34M300 200l-14 34M450 260l-14 34M620 190l-14 34M740 280l-14 34M880 210l-14 34M1010 260l-14 34M1130 330l-14 34M110 400l-14 34M250 470l-14 34M390 380l-14 34M530 460l-14 34M690 400l-14 34M800 480l-14 34M930 390l-14 34M1060 460l-14 34M1180 420l-14 34"/>
+  </g>
+
+  <!-- annotation -->
+  <g transform="translate(60 486)">
+    <rect width="300" height="40" rx="20" fill="#0e2a4f"/>
+    <text x="150" y="26" fill="#ffffff" font-family="Montserrat, Arial, sans-serif" font-size="17" font-weight="700" text-anchor="middle">Runoff races to the drain</text>
+  </g>
+</svg>
