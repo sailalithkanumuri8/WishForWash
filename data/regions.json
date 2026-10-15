@@ -1,0 +1,301 @@
+[
+  {
+    "id": "lake-lanier",
+    "order": 1,
+    "name": "Lake Lanier",
+    "shortName": "Lake Lanier",
+    "type": "supply",
+    "filters": [
+      "supply"
+    ],
+    "issue": "Water supply",
+    "icon": "waves",
+    "coords": {
+      "lat": 34.23,
+      "lon": -83.965
+    },
+    "pin": {
+      "x": 35.82,
+      "y": 20.99
+    },
+    "zoom": 2.4,
+    "region": "mountains",
+    "headline": "The lake behind Atlanta's taps",
+    "story": "Lake Lanier anchors metro Atlanta's water supply. Alabama sued in 1990 and Florida joined;[[arc-wars]] in 2021 the Supreme Court unanimously rejected Florida's case.[[scotus-2021]]",
+    "done": "The Army Corps' 2024 adoption of a Georgia–Alabama deal ended the fight.[[arc-2025]]",
+    "stat": {
+      "value": 621,
+      "prefix": "Up to ",
+      "suffix": " million",
+      "label": "gallons a day for metro Atlanta through 2050",
+      "source": "usace-rod-2017"
+    },
+    "whyYou": "The water in your campus tap starts here.",
+    "action": {
+      "label": "Trace your tap water",
+      "href": "https://atlantawatershed.org/water-quality-reports/"
+    },
+    "sources": [
+      "arc-wars",
+      "scotus-2021",
+      "arc-2025",
+      "usace-rod-2017"
+    ],
+    "image": {
+      "src": "assets/img/places/lake-lanier.webp",
+      "alt": "Lake Lanier in North Georgia.",
+      "credit": "",
+      "creditUrl": "",
+      "license": ""
+    }
+  },
+  {
+    "id": "midtown-atlanta",
+    "order": 2,
+    "name": "Midtown, near campus",
+    "shortName": "Midtown",
+    "type": "supply",
+    "filters": [
+      "supply"
+    ],
+    "issue": "Aging infrastructure",
+    "icon": "wrench",
+    "coords": {
+      "lat": 33.7833,
+      "lon": -84.3878
+    },
+    "pin": {
+      "x": 28.08,
+      "y": 29.47
+    },
+    "offset": {
+      "dx": 30,
+      "dy": 20
+    },
+    "zoom": 3.4,
+    "region": "atlanta",
+    "headline": "When century-old pipes burst",
+    "story": "On May 31, 2024, pipes the mayor dated to 1910 and 1930 broke, one under a mile from Tech Tower.[[cnn-2024]] Downtown and Midtown lost safe tap water.[[ap-2024]]",
+    "done": "The Army Corps came to help assess the aging pipes.[[cnn-2024]]",
+    "stat": {
+      "value": 6,
+      "suffix": " days",
+      "label": "until the last boil-water advisory lifted",
+      "source": "ap-2024"
+    },
+    "whyYou": "It happened a short walk from Tech Square.",
+    "action": {
+      "label": "Take the pledge",
+      "href": "#pledge"
+    },
+    "sources": [
+      "ap-2024",
+      "cnn-2024"
+    ],
+    "image": {
+      "src": "assets/img/places/midtown-atlanta.webp",
+      "alt": "Midtown Atlanta near the Georgia Tech campus.",
+      "credit": "",
+      "creditUrl": "",
+      "license": ""
+    }
+  },
+  {
+    "id": "proctor-creek",
+    "order": 3,
+    "name": "Proctor Creek, Westside",
+    "shortName": "Proctor Creek",
+    "type": "sanitation",
+    "filters": [
+      "sanitation",
+      "quality"
+    ],
+    "issue": "Sanitation, water quality",
+    "icon": "test-tube",
+    "coords": {
+      "lat": 33.7756,
+      "lon": -84.4407
+    },
+    "pin": {
+      "x": 27.11,
+      "y": 29.61
+    },
+    "offset": {
+      "dx": -28,
+      "dy": 4
+    },
+    "zoom": 3.4,
+    "region": "atlanta",
+    "headline": "Still failing bacteria standards",
+    "story": "It flows nine miles from near downtown to the Chattahoochee.[[epa-proctor]] It's listed as impaired for E. coli;[[epd-303d-2024]] EPA says high levels can signal leaking sewers.[[epa-proctor]]",
+    "done": "Sewer repairs and planned green infrastructure should help clean it up.[[epa-proctor]]",
+    "stat": {
+      "value": 20,
+      "countFrom": 10,
+      "prefix": "10–",
+      "suffix": "×",
+      "label": "typical E. coli vs. the state standard near downtown",
+      "source": "epa-proctor"
+    },
+    "whyYou": "That river supplies Atlanta's tap water.",
+    "action": {
+      "label": "Volunteer with Water Watch",
+      "href": "#act"
+    },
+    "sources": [
+      "epa-proctor",
+      "epd-303d-2024"
+    ],
+    "image": {
+      "src": "assets/img/places/proctor-creek.webp",
+      "alt": "Proctor Creek on Atlanta's Westside.",
+      "credit": "",
+      "creditUrl": "",
+      "license": ""
+    }
+  },
+  {
+    "id": "middle-georgia",
+    "order": 4,
+    "name": "Rural Middle Georgia",
+    "shortName": "Middle Georgia",
+    "type": "sanitation",
+    "filters": [
+      "sanitation",
+      "quality"
+    ],
+    "issue": "Septic, sanitation",
+    "icon": "house",
+    "coords": {
+      "lat": 32.6876,
+      "lon": -83.3466
+    },
+    "pin": {
+      "x": 47.08,
+      "y": 50.45
+    },
+    "zoom": 2.2,
+    "region": "middle",
+    "headline": "The septic tank out back",
+    "story": "Septic systems that are aging or poorly maintained can fail and pollute waterways.[[uga-septic]] In part of Twiggs County, homes have no public sewer at all.[[epd-twiggs-2025]]",
+    "done": "UGA researchers convened wastewater experts to work on fixes.[[uga-septic]]",
+    "stat": {
+      "value": 3,
+      "prefix": "More than 1 in ",
+      "count": false,
+      "label": "Georgia households use septic",
+      "source": "uga-septic"
+    },
+    "whyYou": "Engineers like you can design cheaper, better systems.",
+    "action": {
+      "label": "Join a design team",
+      "href": "#join"
+    },
+    "sources": [
+      "uga-septic",
+      "epd-twiggs-2025"
+    ],
+    "image": {
+      "src": "assets/img/places/middle-georgia.webp",
+      "alt": "Rural Middle Georgia landscape.",
+      "credit": "",
+      "creditUrl": "",
+      "license": ""
+    }
+  },
+  {
+    "id": "coast",
+    "order": 5,
+    "name": "Savannah & Brunswick coast",
+    "shortName": "The coast",
+    "type": "quality",
+    "filters": [
+      "quality"
+    ],
+    "issue": "Groundwater quality",
+    "icon": "layers",
+    "coords": {
+      "lat": 31.8058,
+      "lon": -81.4307
+    },
+    "pin": {
+      "x": 82.79,
+      "y": 66.95
+    },
+    "zoom": 2.2,
+    "region": "coastal",
+    "headline": "Salt seeping into the aquifer",
+    "story": "The Upper Floridan aquifer is the coast's main water source. Heavy pumping lowered water levels and let saltwater in at Brunswick and Hilton Head, S.C.[[usgs-pubs-2001]]",
+    "done": "No new wells are allowed near Brunswick's plume, and Savannah's pumping is capped.[[epd-coastal-2006]]",
+    "stat": {
+      "value": 24,
+      "label": "coastal counties where Georgia manages pumping",
+      "source": "epd-coastal-2006"
+    },
+    "whyYou": "From the coast? This is likely your tap water.",
+    "action": {
+      "label": "Save water, share the site",
+      "href": "#act"
+    },
+    "sources": [
+      "usgs-pubs-2001",
+      "epd-coastal-2006"
+    ],
+    "image": {
+      "src": "assets/img/places/coast.webp",
+      "alt": "Salt marsh on the Georgia coast.",
+      "credit": "",
+      "creditUrl": "",
+      "license": ""
+    }
+  },
+  {
+    "id": "albany-flint",
+    "order": 6,
+    "name": "Albany & the Lower Flint",
+    "shortName": "Albany",
+    "type": "supply",
+    "filters": [
+      "supply"
+    ],
+    "issue": "Drought, irrigation",
+    "icon": "sun",
+    "coords": {
+      "lat": 31.579,
+      "lon": -84.149
+    },
+    "pin": {
+      "x": 32.13,
+      "y": 71.58
+    },
+    "zoom": 2.2,
+    "region": "southwest",
+    "headline": "Thirsty crops, shrinking streams",
+    "story": "Farming uses over 70% of the region's water.[[asu-2022]] After a drought, Georgia froze new farm permits in 2012; well permits with drought limits reopened in 2025.[[gpb-2024]]",
+    "done": "Now farms are switching to deep wells in droughts.[[asu-2022]]",
+    "stat": {
+      "value": 20,
+      "prefix": "About ",
+      "suffix": "%",
+      "label": "lower streamflow since 1975; up to half in La Niña growing seasons",
+      "source": "singh-2016"
+    },
+    "whyYou": "These farms and your tap share one river system.",
+    "action": {
+      "label": "See the deep-well fix",
+      "href": "#solution-irrigation"
+    },
+    "sources": [
+      "singh-2016",
+      "asu-2022",
+      "gpb-2024"
+    ],
+    "image": {
+      "src": "assets/img/places/albany-flint.webp",
+      "alt": "The Flint River in southwest Georgia.",
+      "credit": "",
+      "creditUrl": "",
+      "license": ""
+    }
+  }
+]

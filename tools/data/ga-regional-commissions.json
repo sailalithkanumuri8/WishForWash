@@ -1,0 +1,17 @@
+{
+  "source": "Georgia Department of Community Affairs, map \"Regional Commissions, Effective July 1, 2021\" (https://dca.georgia.gov/media/50266/download). County membership read from the official map; 12 commissions, 159 counties.",
+  "regions": [
+    { "id": "northwest", "name": "Northwest Georgia", "counties": ["Bartow", "Catoosa", "Chattooga", "Dade", "Fannin", "Floyd", "Gilmer", "Gordon", "Haralson", "Murray", "Paulding", "Pickens", "Polk", "Walker", "Whitfield"] },
+    { "id": "mountains", "name": "Georgia Mountains", "counties": ["Banks", "Dawson", "Franklin", "Habersham", "Hall", "Hart", "Lumpkin", "Rabun", "Stephens", "Towns", "Union", "White"] },
+    { "id": "atlanta", "name": "Atlanta Region", "counties": ["Cherokee", "Clayton", "Cobb", "DeKalb", "Douglas", "Fayette", "Forsyth", "Fulton", "Gwinnett", "Henry", "Rockdale"] },
+    { "id": "northeast", "name": "Northeast Georgia", "counties": ["Barrow", "Clarke", "Elbert", "Greene", "Jackson", "Jasper", "Madison", "Morgan", "Newton", "Oconee", "Oglethorpe", "Walton"] },
+    { "id": "three-rivers", "name": "Three Rivers", "counties": ["Butts", "Carroll", "Coweta", "Heard", "Lamar", "Meriwether", "Pike", "Spalding", "Troup", "Upson"] },
+    { "id": "middle", "name": "Middle Georgia", "counties": ["Baldwin", "Bibb", "Crawford", "Houston", "Jones", "Monroe", "Peach", "Pulaski", "Putnam", "Twiggs", "Wilkinson"] },
+    { "id": "csra", "name": "Central Savannah River Area", "counties": ["Burke", "Columbia", "Glascock", "Hancock", "Jefferson", "Jenkins", "Lincoln", "McDuffie", "Richmond", "Taliaferro", "Warren", "Washington", "Wilkes"] },
+    { "id": "river-valley", "name": "River Valley", "counties": ["Chattahoochee", "Clay", "Crisp", "Dooly", "Harris", "Macon", "Marion", "Muscogee", "Quitman", "Randolph", "Schley", "Stewart", "Sumter", "Talbot", "Taylor", "Webster"] },
+    { "id": "heart", "name": "Heart of Georgia Altamaha", "counties": ["Appling", "Bleckley", "Candler", "Dodge", "Emanuel", "Evans", "Jeff Davis", "Johnson", "Laurens", "Montgomery", "Tattnall", "Telfair", "Toombs", "Treutlen", "Wayne", "Wheeler", "Wilcox"] },
+    { "id": "southwest", "name": "Southwest Georgia", "counties": ["Baker", "Calhoun", "Colquitt", "Decatur", "Dougherty", "Early", "Grady", "Lee", "Miller", "Mitchell", "Seminole", "Terrell", "Thomas", "Worth"] },
+    { "id": "southern", "name": "Southern Georgia", "counties": ["Atkinson", "Bacon", "Ben Hill", "Berrien", "Brantley", "Brooks", "Charlton", "Clinch", "Coffee", "Cook", "Echols", "Irwin", "Lanier", "Lowndes", "Pierce", "Tift", "Turner", "Ware"] },
+    { "id": "coastal", "name": "Coastal Georgia", "counties": ["Bryan", "Bulloch", "Camden", "Chatham", "Effingham", "Glynn", "Liberty", "Long", "McIntosh", "Screven"] }
+  ]
+}

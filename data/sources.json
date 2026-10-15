@@ -130,14 +130,6 @@
     "url": "https://www.gpb.org/news/2024/12/20/state-lift-ban-on-new-irrigation-wells"
   },
   {
-    "id": "usgs-2001",
-    "type": "Government",
-    "title": "Coastal ground water at risk: saltwater contamination at Brunswick, Georgia and Hilton Head Island, South Carolina",
-    "publisher": "U.S. Geological Survey",
-    "date": "2001",
-    "url": "https://www.usgs.gov/index.php/publications/coastal-ground-water-risk-saltwater-contamination-brunswick-georgia-and-hilton-head"
-  },
-  {
     "id": "uga-septic",
     "type": "University",
     "title": "Wastewater professionals gather to talk septic",
@@ -285,5 +277,54 @@
     "title": "Lucide icons",
     "publisher": "Lucide Contributors (ISC License)",
     "url": "https://lucide.dev/"
+  },
+  {
+    "id": "arc-2025",
+    "type": "Government",
+    "title": "ARC Celebrates Landmark ACF Agreement following U.S. Army Corps of Engineers' Adoption of Water Control Plan Updates",
+    "publisher": "Atlanta Regional Commission",
+    "date": "Jan. 9, 2025",
+    "url": "https://atlantaregional.org/news/natural-resources/arc-celebrates-landmark-acf-agreement-following-u-s-army-corps-of-engineers-adoption-of-water-control-plan-updates/"
+  },
+  {
+    "id": "usace-rod-2017",
+    "type": "Government",
+    "title": "Record of Decision: Apalachicola-Chattahoochee-Flint River Basin Master Water Control Manual Update and Water Supply Storage Assessment",
+    "publisher": "U.S. Army Corps of Engineers",
+    "date": "Mar. 30, 2017",
+    "url": "https://www.sam.usace.army.mil/Portals/46/docs/planning_environmental/acf/docs/ACF%20ROD%20Signed%2030%20March%2017.pdf"
+  },
+  {
+    "id": "epd-303d-2024",
+    "type": "Government",
+    "title": "2024 Integrated 305(b)/303(d) List: Streams",
+    "publisher": "Georgia Environmental Protection Division",
+    "date": "2024",
+    "url": "https://epd.georgia.gov/document/document/2024305bstreamspdf/download"
+  },
+  {
+    "id": "usgs-pubs-2001",
+    "type": "Government",
+    "authors": "Krause and Clarke",
+    "title": "Coastal ground water at risk: saltwater contamination at Brunswick, Georgia and Hilton Head Island, South Carolina (Water-Resources Investigations Report 2001-4107)",
+    "publisher": "U.S. Geological Survey Publications Warehouse",
+    "date": "2001",
+    "url": "https://pubs.usgs.gov/publication/wri014107"
+  },
+  {
+    "id": "epd-coastal-2006",
+    "type": "Government",
+    "title": "Coastal Georgia Water and Wastewater Permitting Plan for Managing Salt Water Intrusion",
+    "publisher": "Georgia Environmental Protection Division",
+    "date": "June 2006",
+    "url": "https://epd.georgia.gov/document/document/saltwatermanagementplanjune2006pdf/download"
+  },
+  {
+    "id": "epd-twiggs-2025",
+    "type": "Government",
+    "title": "Notice of No Significant Impact on the Environment: Twiggs County Water System Improvement Project",
+    "publisher": "Georgia Environmental Protection Division",
+    "date": "Sept. 8, 2025",
+    "url": "https://epd.georgia.gov/document/document/twiggs-county-boc-nonsi-letter-1pdf/download"
   }
 ]
