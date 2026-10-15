@@ -171,3 +171,16 @@ registerMotion('magnetic', ({ enabled, gsap }) => {
   });
   return () => cleanups.forEach((fn) => fn());
 });
+
+/* --------------------------------------------------------------------------
+   Pause CSS animation loops in sections that are off-screen
+   -------------------------------------------------------------------------- */
+
+const sections = qsa('.section');
+if ('IntersectionObserver' in window && sections.length) {
+  const io = new IntersectionObserver(
+    (entries) => entries.forEach((entry) => entry.target.classList.toggle('is-offscreen', !entry.isIntersecting)),
+    { rootMargin: '100px 0px' },
+  );
+  sections.forEach((section) => io.observe(section));
+}

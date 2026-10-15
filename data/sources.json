@@ -260,5 +260,28 @@
     "type": "Design reference (not used as evidence)",
     "title": "Ocean Central",
     "url": "https://oceancentral.org/"
+  },
+  {
+    "id": "poster-art",
+    "type": "Brand asset",
+    "title": "Wish for Wash information poster (wordmark, bottle mock-up, globe-in-hands)",
+    "publisher": "LMC 3403 Group 2, Georgia Tech",
+    "date": "Fall 2026",
+    "note": "Artwork cut out and reused across the site."
+  },
+  {
+    "id": "gt-logo",
+    "type": "Brand asset",
+    "title": "Georgia Tech logo 2021",
+    "publisher": "Georgia Tech, via Wikimedia Commons",
+    "note": "Georgia Tech marks are trademarks of the Georgia Institute of Technology.",
+    "url": "https://commons.wikimedia.org/wiki/File:Georgia_Tech_logo_2021.svg"
+  },
+  {
+    "id": "lucide",
+    "type": "Design credit",
+    "title": "Lucide icons",
+    "publisher": "Lucide Contributors (ISC License)",
+    "url": "https://lucide.dev/"
   }
 ]

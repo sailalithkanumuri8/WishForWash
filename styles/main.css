@@ -1504,8 +1504,22 @@ sup:has(> .cite) {
   font-weight: 500;
 }
 
+.issue__equity {
+  max-width: 62ch;
+  margin-top: var(--space-6);
+  padding: var(--space-4) var(--space-5);
+  border-left: 4px solid var(--gt-gold);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  background: rgb(14 42 79 / 0.35);
+  font-weight: 500;
+}
+
+.issue__equity strong {
+  color: var(--wash-ice);
+}
+
 .issue__source {
-  margin-top: var(--space-5);
+  margin-top: var(--space-4);
 }
 
 .issue__grid {
@@ -2405,6 +2419,26 @@ sup:has(> .cite) {
   margin-top: clamp(4rem, 3rem + 4vw, 6.5rem);
 }
 
+.pillars__brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-bottom: var(--space-3);
+  color: var(--wash-ice);
+}
+
+.pillars__drop {
+  width: 28px;
+  height: 38px;
+}
+
+.pillars__wordmark {
+  font-family: var(--font-wordmark);
+  font-size: 1.75rem;
+  line-height: 1;
+}
+
 .pillars__title {
   margin-bottom: var(--space-6);
   font-family: var(--font-body);
@@ -2752,6 +2786,41 @@ sup:has(> .cite) {
   padding-bottom: var(--space-6);
 }
 
+.about__brand {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+  margin-bottom: var(--space-7);
+  padding-bottom: var(--space-6);
+  border-bottom: 1px solid var(--line-light);
+}
+
+.about__logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--wash-ice);
+  text-decoration: none;
+}
+
+.about__drop {
+  width: 40px;
+  height: 54px;
+}
+
+.about__wordmark {
+  font-family: var(--font-wordmark);
+  font-size: clamp(2rem, 1.5rem + 2vw, 3rem);
+  line-height: 1;
+}
+
+.about__gt {
+  width: 92px;
+  height: auto;
+}
+
 .about__grid {
   display: grid;
   gap: var(--space-7);
@@ -2961,6 +3030,13 @@ sup:has(> .cite) {
 /* ==========================================================================
    Motion preferences
    ========================================================================== */
+
+/* CSS loops pause while their section is off-screen (scripts/effects.js). */
+.is-offscreen *,
+.is-offscreen *::before,
+.is-offscreen *::after {
+  animation-play-state: paused !important;
+}
 
 /* Motion off (system "reduce motion" or the nav switch): stop CSS loops and
    make transitions instant. JS-driven motion is handled in scripts/motion.js. */

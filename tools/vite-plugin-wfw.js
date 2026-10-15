@@ -40,7 +40,11 @@ async function replaceAsync(input, re, fn) {
 function renderSourceItem(src, n) {
   const parts = [];
   if (src.authors) parts.push(escapeHtml(src.authors));
-  parts.push(`<a href="${escapeHtml(src.url)}" target="_blank" rel="noopener">${escapeHtml(src.title)}</a>`);
+  parts.push(
+    src.url
+      ? `<a href="${escapeHtml(src.url)}" target="_blank" rel="noopener">${escapeHtml(src.title)}</a>`
+      : escapeHtml(src.title),
+  );
   if (src.publisher) parts.push(`<span class="sources__pub">${escapeHtml(src.publisher)}</span>`);
   if (src.date) parts.push(escapeHtml(src.date));
   const type = src.type ? `<span class="sources__type">${escapeHtml(src.type)}</span>` : '';
@@ -95,6 +99,25 @@ export default function wishForWash({ siteUrl }) {
           const label = `${src.publisher ? `${src.publisher}: ` : ''}${src.title}`;
           return `<a class="cite" href="#src-${id}" data-src="${id}" aria-label="Source ${n}" title="${escapeHtml(label)}">${n}</a>`;
         });
+        // Photo credits join the list for every photo that appears on the page.
+        if (exists('data/photo-credits.json')) {
+          for (const photo of readJSON('data/photo-credits.json')) {
+            if (!html.includes(photo.file)) continue;
+            const id = `photo-${photo.id}`;
+            if (byId.has(id)) continue;
+            const entry = {
+              id,
+              type: 'Photo credit',
+              authors: photo.author,
+              title: photo.title,
+              publisher: `${photo.license}, via Wikimedia Commons`,
+              note: `${photo.modifications}.`,
+              url: photo.sourceUrl,
+            };
+            sources.push(entry);
+            byId.set(id, entry);
+          }
+        }
         const uncited = sources.filter((s) => !order.includes(s.id)).map((s) => s.id);
         const list = [...order, ...uncited]
           .map((id, i) => renderSourceItem(byId.get(id), i + 1))
