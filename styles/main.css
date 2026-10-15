@@ -1019,9 +1019,15 @@ sup:has(> .cite) {
   }
 }
 
+/* A backdrop-filter makes the header the containing block for the fixed menu,
+   which would shrink the open menu to the header's height once the page has
+   scrolled. The open menu covers the page anyway, so the blur goes at once. */
 .site-header.menu-open {
   background-color: var(--wash-deep);
   box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  transition: none;
 }
 
 /* Without JavaScript: no Motion switch or menu button; tabs stay reachable. */
