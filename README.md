@@ -52,14 +52,22 @@ tools/                build helpers, word counter, link checker
 ## Editing content (no code needed)
 
 - **Map stories:** `data/regions.json`.
-- **Quiz:** `data/quiz.json`.
+- **Quiz:** `data/quiz.json` (questions, answers, explanations and the three personas).
 - **Sources:** `data/sources.json`. In the HTML, cite a source with
   `<sup><a class="cite" href="#src-ID"></a></sup>`. At build time the citations are numbered in the
-  order they first appear, and the footer Sources list is generated to match.
+  order they first appear, and the footer Sources list is generated to match. Photo credits from
+  `data/photo-credits.json` are added to the list automatically for every photo used on the page.
 - **Word count:** `npm run build && npm run check:words` prints words per section against the PRD
-  budget. The assignment asks for 1,200 to 2,000 words; the transcript and Sources list are not counted.
+  budget, adds the quiz text (drawn by JavaScript) and checks the total against the 1,200 to 2,000
+  word requirement. The video transcript, Sources list and photo credits are not counted.
 - **Links:** `npm run build && npm run check:links` checks every external link. A few publishers
-  (ScienceDirect, gatech.edu news) block automated checks with HTTP 403; open those in a browser.
+  (gatech.edu news, ScienceDirect) block automated checks with HTTP 403 and one server sends an
+  incomplete certificate chain; the report lists those separately so you can open them in a browser.
+
+## Team
+
+The footer credits LMC 3403 Group 2 and the team roles. Add member names in the `about__team`
+paragraph in `index.html`.
 
 ## Swapping in our own video
 
