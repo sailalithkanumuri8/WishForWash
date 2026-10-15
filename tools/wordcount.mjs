@@ -1,7 +1,7 @@
 // Word count per section, measured on the built page (run `npm run build` first).
 // The assignment asks for 1,200-2,000 words of written content. Following the PRD,
 // map pop-up text is counted inside its section; the Sources list, the video
-// transcript, decorative SVG text and navigation chrome are not counted.
+// transcript, photo credits and decorative SVG text are not counted.
 //
 //   npm run build && npm run check:words
 
@@ -20,7 +20,8 @@ function stripBlocks(input) {
     .replace(/<details class="transcript"[\s\S]*?<\/details>/gi, ' ')
     .replace(/<ol class="sources__list"[\s\S]*?<\/ol>/gi, ' ')
     .replace(/<sup>[\s\S]*?<\/sup>/gi, ' ')
-    .replace(/<[^>]*\bdata-wordcount="skip"[^>]*>[\s\S]*?<\/(div|p|span|ul|li|section|aside)>/gi, ' ');
+    // Attribution and other apparatus marked data-wordcount="skip" (photo credits, etc.)
+    .replace(/<(\w+)\b[^>]*\bdata-wordcount="skip"[^>]*>[\s\S]*?<\/\1>/gi, ' ');
 }
 
 function toWords(fragment) {

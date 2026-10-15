@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 320" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+  <defs>
+    <g id="eco-tree">
+      <ellipse cx="6" cy="10" rx="30" ry="10" fill="#0e2a4f" opacity=".16"/>
+      <circle r="28" fill="#4f8f5a"/>
+      <circle cx="-10" cy="-6" r="16" fill="#5fa36a"/>
+      <circle cx="9" cy="-10" r="13" fill="#6db477"/>
+      <circle cx="-5" cy="-14" r="6" fill="#93cf8e" opacity=".8"/>
+    </g>
+  </defs>
+  <rect width="480" height="320" fill="#7db77a"/>
+  <ellipse cx="90" cy="70" rx="120" ry="46" fill="#6aa267" opacity=".8"/>
+  <ellipse cx="380" cy="250" rx="140" ry="52" fill="#6aa267" opacity=".8"/>
+  <ellipse cx="200" cy="200" rx="110" ry="40" fill="#94c78f" opacity=".7"/>
+  <path d="M-10 120C80 100 140 140 230 124s150-50 260-40" fill="none" stroke="#e8e0c4" stroke-width="20" stroke-linecap="round"/>
+  <path d="M-10 120C80 100 140 140 230 124s150-50 260-40" fill="none" stroke="#cfc6a6" stroke-width="20" stroke-linecap="round" stroke-dasharray="2 10"/>
+  <path d="M300 -10C260 50 360 90 310 150S200 200 236 250 290 300 260 330" fill="none" stroke="#5c955b" stroke-width="50" stroke-linecap="round"/>
+  <path d="M300 -10C260 50 360 90 310 150S200 200 236 250 290 300 260 330" fill="none" stroke="#8fd3f0" stroke-width="28" stroke-linecap="round"/>
+  <path d="M300 -10C260 50 360 90 310 150S200 200 236 250 290 300 260 330" fill="none" stroke="#55b6da" stroke-width="9" stroke-linecap="round" stroke-dasharray="14 12"/>
+  <g fill="#c9d2dc"><ellipse cx="292" cy="40" rx="6" ry="4"/><ellipse cx="326" cy="110" rx="6" ry="4"/><ellipse cx="248" cy="196" rx="6" ry="4"/><ellipse cx="252" cy="270" rx="6" ry="4"/></g>
+  <use href="#eco-tree" transform="translate(70 200)"/>
+  <use href="#eco-tree" transform="translate(150 60) scale(.8)"/>
+  <use href="#eco-tree" transform="translate(410 70) scale(1.1)"/>
+  <use href="#eco-tree" transform="translate(430 210) scale(.7)"/>
+  <use href="#eco-tree" transform="translate(130 280) scale(.75)"/>
+  <g fill="none" stroke="#d9ecfa" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M190 150v14m-5-5 5 5 5-5M380 150v14m-5-5 5 5 5-5M60 120v14m-5-5 5 5 5-5"/>
+  </g>
+  <g stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity=".55">
+    <path d="M40 10l-8 18M120 30l-8 18M210 8l-8 18M250 70l-8 18M360 20l-8 18M450 40l-8 18M20 160l-8 18M160 230l-8 18M330 200l-8 18M470 150l-8 18"/>
+  </g>
+</svg>

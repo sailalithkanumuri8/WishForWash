@@ -40,6 +40,15 @@
     "url": "https://ourworldindata.org/clean-water-sanitation"
   },
   {
+    "id": "atl-water-2025",
+    "type": "Government",
+    "title": "2025 Water Quality Report",
+    "publisher": "City of Atlanta Department of Watershed Management",
+    "date": "2025",
+    "note": "Atlanta's \"sole local surface water source is the Chattahoochee River.\"",
+    "url": "https://atlantawatershed.org/water-quality-reports/"
+  },
+  {
     "id": "wwdr-2023",
     "type": "Intergovernmental",
     "title": "Imminent risk of a global water crisis, warns the UN World Water Development Report 2023",
@@ -237,6 +246,14 @@
     "title": "Water Quality Monitoring",
     "publisher": "Chattahoochee Riverkeeper",
     "url": "https://chattahoochee.org/our-work/water-quality-monitoring/"
+  },
+  {
+    "id": "ewb-gt-engage",
+    "type": "Get involved (not used as evidence)",
+    "title": "Engineers Without Borders at Georgia Tech",
+    "publisher": "GT Engage",
+    "note": "Lists Wish for Wash among EWB-GT's projects; applications open each fall and spring.",
+    "url": "https://gatech.campuslabs.com/engage/organization/engineers-without-borders"
   },
   {
     "id": "ocean-central",
