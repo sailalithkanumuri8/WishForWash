@@ -173,7 +173,8 @@ export function initNav() {
 
   menuBtn?.addEventListener('click', () => (menuOpen ? closeMenu() : openMenu()));
   qs('[data-menu-close]', menu)?.addEventListener('click', () => closeMenu());
-  window.matchMedia('(min-width: 768px)').addEventListener('change', (e) => {
+  // Same query as the tab bar in main.css: tabs show from 768px except on short landscape phones.
+  window.matchMedia('(min-width: 768px) and (min-height: 501px), (min-width: 1100px)').addEventListener('change', (e) => {
     if (e.matches) closeMenu({ returnFocus: false });
   });
 

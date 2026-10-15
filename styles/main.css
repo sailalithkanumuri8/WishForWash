@@ -842,6 +842,18 @@ sup:has(> .cite) {
   text-decoration: none;
 }
 
+/* Short landscape screens: smaller links in two columns so the menu fits. */
+@media (max-height: 500px) {
+  .mobile-menu__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--space-5);
+  }
+
+  .mobile-menu__link {
+    font-size: 1.6rem;
+  }
+}
+
 .mobile-menu__link span {
   font-family: var(--font-body);
   font-size: var(--fs-label);
@@ -870,7 +882,9 @@ sup:has(> .cite) {
   }
 }
 
-@media (min-width: 768px) {
+/* Tabs from 768px up, except on short landscape phones, which keep the menu button
+   (a two-row tab bar would take a third of a 375px-tall screen). nav.js matches this query. */
+@media (min-width: 768px) and (min-height: 501px), (min-width: 1100px) {
   .nav__tabs-wrap {
     display: block;
   }
@@ -883,7 +897,7 @@ sup:has(> .cite) {
 
 /* Desktop and tablet show the switch's "Motion" label; the thumb shows the state.
    Phones show the On/Off text instead to save room. */
-@media (min-width: 768px) {
+@media (min-width: 768px) and (min-height: 501px), (min-width: 1100px) {
   .motion-toggle__state {
     display: none;
   }
@@ -893,21 +907,21 @@ sup:has(> .cite) {
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 767px), (max-width: 1099px) and (max-height: 500px) {
   .motion-toggle__label {
     display: none;
   }
 }
 
 /* Between 768 and 1279px the wordmark gives way to the drop so the tabs fit. */
-@media (min-width: 768px) and (max-width: 1279px) {
+@media (min-width: 768px) and (max-width: 1279px) and (min-height: 501px), (min-width: 1100px) and (max-width: 1279px) {
   .nav__wordmark {
     display: none;
   }
 }
 
 /* Tablets: the six tabs move to a second row of the sticky bar. */
-@media (min-width: 768px) and (max-width: 1099px) {
+@media (min-width: 768px) and (max-width: 1099px) and (min-height: 501px) {
   :root {
     --nav-h: 112px;
   }

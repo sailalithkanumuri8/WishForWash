@@ -42,8 +42,9 @@ registerMotion('lights-down', ({ enabled, gsap }) => {
   const dim = qs('#watch .watch__dim');
   if (!enabled || !section || !frame || !dim) return;
 
+  // Pin only where the player fits on screen; short landscape phones get the plain scrub.
   const mm = gsap.matchMedia();
-  mm.add('(min-width: 768px)', () => {
+  mm.add('(min-width: 768px) and (min-height: 600px)', () => {
     gsap
       .timeline({
         scrollTrigger: {
@@ -58,7 +59,7 @@ registerMotion('lights-down', ({ enabled, gsap }) => {
       .fromTo(dim, { opacity: 0 }, { opacity: 0.82, ease: 'none' }, 0)
       .fromTo(frame, { scale: 0.86 }, { scale: 1, ease: 'none' }, 0);
   });
-  mm.add('(max-width: 767px)', () => {
+  mm.add('(max-width: 767px), (max-height: 599px)', () => {
     gsap
       .timeline({ scrollTrigger: { trigger: frame, start: 'top 85%', end: 'center center', scrub: 0.6 } })
       .fromTo(dim, { opacity: 0 }, { opacity: 0.7, ease: 'none' }, 0)
