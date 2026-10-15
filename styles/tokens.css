@@ -94,6 +94,9 @@
   --nav-solid: rgb(31 76 138 / 0.86); /* deep-to-navy blend under the blur */
   --glass-dark: rgb(14 42 79 / 0.28);
   --line-light: rgb(255 255 255 / 0.28);
+  /* Paper grain laid over the flat illustrations so they sit closer to the
+     poster's soft, hand-painted art. */
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
   --line-navy: rgb(14 42 79 / 0.18);
   --shadow-soft: 0 18px 40px -18px rgb(9 27 54 / 0.55);
   --shadow-card: 0 10px 30px -12px rgb(9 27 54 / 0.45);

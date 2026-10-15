@@ -2378,6 +2378,17 @@ sup:has(> .cite) {
   clip-path: inset(0 calc(100% - var(--pos)) 0 0);
 }
 
+.compare__img::after,
+.campus__media--illo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--grain);
+  mix-blend-mode: soft-light;
+  opacity: 0.55;
+  pointer-events: none;
+}
+
 /* The SVG captions shrink to a few pixels on phones; the tags label each side there. */
 @media (max-width: 599px) {
   .compare__note {
@@ -2664,6 +2675,7 @@ sup:has(> .cite) {
 
 .campus__credit {
   position: absolute;
+  z-index: 1;
   right: 0.6rem;
   bottom: 0.6rem;
   max-width: calc(100% - 1.2rem);
@@ -2703,8 +2715,13 @@ sup:has(> .cite) {
   letter-spacing: -0.01em;
 }
 
+/* Positive stats get an earth-green marker stroke (PRD color roles). */
 .campus__num {
+  padding-inline: 0.06em;
   color: var(--wash-deep);
+  background: linear-gradient(transparent 58%, rgb(125 183 122 / 0.55) 58%, rgb(125 183 122 / 0.55) 90%, transparent 90%);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
 }
 
 .campus__hint {
