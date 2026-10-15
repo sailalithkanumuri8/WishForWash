@@ -271,10 +271,10 @@ a:hover {
   font-size: var(--fs-body);
   font-weight: 500;
   line-height: var(--lh-body);
-  max-width: 60ch;
+  max-width: var(--measure);
 }
 
-.prose {
+.prose > p {
   max-width: var(--measure);
 }
 
@@ -1535,7 +1535,7 @@ sup:has(> .cite) {
 }
 
 .issue__equity {
-  max-width: 62ch;
+  max-width: var(--measure);
   margin-top: var(--space-6);
   padding: var(--space-4) var(--space-5);
   border-left: 4px solid var(--gt-gold);
@@ -1627,7 +1627,7 @@ sup:has(> .cite) {
 }
 
 .causes__intro {
-  max-width: 60ch;
+  max-width: var(--measure);
   margin-top: var(--space-4);
   font-weight: 500;
 }
@@ -1752,7 +1752,7 @@ sup:has(> .cite) {
 }
 
 .sdg__goal {
-  max-width: 62ch;
+  max-width: var(--measure);
 }
 
 .sdg__targets {
@@ -1964,7 +1964,6 @@ sup:has(> .cite) {
 }
 
 .watch__framing {
-  max-width: 62ch;
   text-align: left;
 }
 
@@ -2083,7 +2082,8 @@ sup:has(> .cite) {
 }
 
 .video__caption {
-  margin-top: var(--space-4);
+  max-width: var(--measure);
+  margin: var(--space-4) auto 0;
   font-size: var(--fs-small);
   text-align: center;
 }
@@ -2462,7 +2462,7 @@ sup:has(> .cite) {
 }
 
 .compare__caption {
-  max-width: 70ch;
+  max-width: var(--measure);
   margin-top: var(--space-4);
   padding: var(--space-4) var(--space-5);
   border-radius: var(--radius-md);
@@ -2914,7 +2914,7 @@ sup:has(> .cite) {
 }
 
 .about__team {
-  max-width: 60ch;
+  max-width: var(--measure);
   margin-top: var(--space-4);
 }
 
@@ -2977,7 +2977,7 @@ sup:has(> .cite) {
 }
 
 .sources__intro {
-  max-width: 75ch;
+  max-width: var(--measure);
   padding: 0 var(--space-6);
   font-size: var(--fs-small);
 }
@@ -2991,6 +2991,7 @@ sup:has(> .cite) {
 }
 
 .sources__list li {
+  max-width: var(--measure);
   padding-left: 0.4rem;
   scroll-margin-top: calc(var(--nav-h) + 24px);
   border-radius: var(--radius-sm);
