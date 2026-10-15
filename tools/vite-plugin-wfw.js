@@ -118,7 +118,8 @@ export default function wishForWash({ siteUrl }) {
               authors: photo.author,
               title: photo.title,
               publisher: `${photo.license}, via Wikimedia Commons`,
-              note: `${photo.modifications}.`,
+              // The Commons file title can mislead ("Rockdale GA"), so say where it is.
+              note: `${photo.place ? `Shows ${photo.place}. ` : ''}${photo.modifications}.`,
               url: photo.sourceUrl,
             };
             sources.push(entry);
