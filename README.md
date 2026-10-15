@@ -60,14 +60,17 @@ tools/                build helpers, word counter, link checker
 - **Word count:** `npm run build && npm run check:words` prints words per section against the PRD
   budget, adds the quiz text (drawn by JavaScript) and checks the total against the 1,200 to 2,000
   word requirement. The video transcript, Sources list and photo credits are not counted.
-- **Links:** `npm run build && npm run check:links` checks every external link. A few publishers
-  (gatech.edu news, ScienceDirect) block automated checks with HTTP 403 and one server sends an
-  incomplete certificate chain; the report lists those separately so you can open them in a browser.
+- **Links:** `npm run build && npm run check:links` checks every external link. Publishers that block
+  automated checks (HTTP 403 or 429) and one server that sends an incomplete certificate chain are
+  listed separately so you can open them in a browser. A DNS error (`ENOTFOUND`) on a link that worked
+  before is usually a local network hiccup; re-run the check.
 
 ## Team
 
-The footer credits LMC 3403 Group 2 and the team roles. Add member names in the `about__team`
-paragraph in `index.html`.
+The PRD asks the footer to name the team. Add member names to the second `about__team` paragraph in
+`index.html` ("Made by LMC 3403 Group 2 at Georgia Tech, Fall 2026."), for example
+`Made by LMC 3403 Group 2 at Georgia Tech, Fall 2026: Name, Name, Name, Name and Name.`
+The page has about 50 words of room under the 2,000-word cap; run `npm run check:words` after.
 
 ## Swapping in our own video
 
@@ -97,6 +100,23 @@ all use it.
   every animation off or on (skips the loader, removes parallax, cursor, particles and pinning, and
   shows final numbers).
 - Every section is readable with JavaScript turned off.
+- Contrast: body text is 4.5:1 or better everywhere (axe-core reports no violations). The poster's
+  mid-blue (`--wash-blue`) cannot reach 4.5:1 with any text color, so, as the PRD's color rules say,
+  only large display text (section titles, the hero subhead) sits directly on it, which meets the
+  WCAG AA large-text ratio of 3:1. Body copy on blue sections sits on deep-blue panels or light cards.
+- Body text is capped at 70 characters per line (`--measure` in `styles/tokens.css`).
+
+## Revision log
+
+The PRD's acceptance criteria ask for first-draft feedback to be logged and addressed before
+Oct. 23. Add a row for each piece of peer or instructor feedback and the commit that addressed it.
+
+| Date | Feedback | What changed | Commit |
+|------|----------|--------------|--------|
+| Oct. 15 | Pre-draft design review: map panel button invisible, campus strip pinned early, flip-card backs clipped | Fixed all three | `8b67928`, `64e15ae`, `169c4a6` |
+| Oct. 15 | Pre-draft PRD audit: lines over 70 characters; Map, Watch, Solutions had no exit cue | 70-character measure; exit cue on every section | `377d929`, `86a3a0f` |
+| Oct. 15 | Pre-draft copy review: unexplained acronyms (SDG, EWB-GT, JMP, GAWP), claims stronger than sources | Acronyms explained or removed; claims matched to sources | `86a3a0f`, `8b67928` |
+|  | *First-draft feedback goes here* |  |  |
 
 ## Credits
 
