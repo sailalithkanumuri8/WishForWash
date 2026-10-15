@@ -1668,7 +1668,6 @@ sup:has(> .cite) {
 }
 
 .ripple::after {
-  inset: auto;
   left: 1.6rem;
   width: 1.2rem;
   height: 1.2rem;
@@ -1788,10 +1787,6 @@ sup:has(> .cite) {
 /* ==========================================================================
    3. Watch (#watch)
    ========================================================================== */
-
-.watch {
-  overflow: hidden;
-}
 
 .watch__dim {
   position: absolute;
@@ -2205,7 +2200,7 @@ sup:has(> .cite) {
 
 .compare__tag--after {
   right: clamp(0.75rem, 2vw, 1.25rem);
-  background: var(--earth-green);
+  background: var(--wash-white);
   color: var(--wash-navy);
 }
 
@@ -2370,7 +2365,7 @@ sup:has(> .cite) {
    ========================================================================== */
 
 .gt {
-  overflow: hidden;
+  overflow-x: clip;
 }
 
 .gt .lede a {
