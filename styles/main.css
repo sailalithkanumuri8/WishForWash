@@ -1750,12 +1750,10 @@ sup:has(> .cite) {
   line-height: 0.9;
 }
 
-.sdg__title {
-  margin-bottom: var(--space-3);
-}
-
+/* The title is inline (for its underline), so the gap lives on the goal line. */
 .sdg__goal {
   max-width: var(--measure);
+  margin-top: var(--space-3);
 }
 
 .sdg__targets {
@@ -1780,6 +1778,11 @@ sup:has(> .cite) {
   color: var(--wash-ice);
 }
 
+/* The goal line spells SDG out right below, so the title's abbr needs no dotted underline. */
+.sdg__title abbr {
+  text-decoration: none;
+}
+
 .sdg__ripple-intro {
   font-weight: 700;
 }
@@ -1795,6 +1798,7 @@ sup:has(> .cite) {
 .ripple {
   position: relative;
   display: grid;
+  align-content: start;
   gap: 0.15rem;
   height: 100%;
   padding: var(--space-4) var(--space-5) var(--space-4) 4.25rem;
@@ -2575,8 +2579,10 @@ sup:has(> .cite) {
 }
 
 @media (min-width: 768px) {
+  /* Equal rows: every card matches the tallest back face. */
   .flips {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: 1fr;
   }
 }
 
