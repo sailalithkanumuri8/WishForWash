@@ -1,7 +1,7 @@
 // The Issue: stat counters (15), the "1 in 4" people grid (16), WASH icons that
 // draw themselves (17) and cause cards that tilt toward the cursor (18).
 
-import { registerMotion } from './motion.js';
+import { isBelowFold, registerMotion } from './motion.js';
 import { hasFinePointer } from './prefs.js';
 import { qsa } from './utils.js';
 
@@ -10,7 +10,10 @@ const FIG_H = 44;
 // 15. Stat numbers count up from zero when scrolled into view.
 registerMotion('counters', ({ enabled, gsap, ScrollTrigger }) => {
   if (!enabled) return;
+  // Reverting the context replays the count tween to 0; ignore its updates then.
+  let alive = true;
   qsa('#issue [data-count]').forEach((el) => {
+    if (!isBelowFold(el)) return; // already seen: keep the final number
     const target = parseFloat(el.dataset.count);
     const decimals = parseInt(el.dataset.decimals || '0', 10);
     const finalText = el.textContent;
@@ -25,12 +28,21 @@ registerMotion('counters', ({ enabled, gsap, ScrollTrigger }) => {
           value: target,
           duration: 1.6,
           ease: 'power2.out',
-          onUpdate: () => (el.textContent = state.value.toFixed(decimals)),
-          onComplete: () => (el.textContent = finalText),
+          onUpdate: () => {
+            if (alive) el.textContent = state.value.toFixed(decimals);
+          },
+          onComplete: () => {
+            if (alive) el.textContent = finalText;
+          },
         }),
     });
   });
-  return () => qsa('#issue [data-count]').forEach((el) => (el.textContent = Number(el.dataset.count).toFixed(parseInt(el.dataset.decimals || '0', 10))));
+  return () => {
+    alive = false;
+    qsa('#issue [data-count]').forEach((el) => {
+      el.textContent = Number(el.dataset.count).toFixed(parseInt(el.dataset.decimals || '0', 10));
+    });
+  };
 });
 
 // 16. 100-person grid: 25 figures drain to empty as you scroll ("1 in 4").
@@ -62,6 +74,7 @@ registerMotion('people', ({ enabled, gsap }) => {
 registerMotion('wash-icons', ({ enabled, gsap, ScrollTrigger }) => {
   if (!enabled) return;
   qsa('.wash__icon').forEach((icon) => {
+    if (!isBelowFold(icon)) return;
     const paths = qsa('.draw', icon);
     paths.forEach((p) => {
       const len = Math.ceil(p.getTotalLength());

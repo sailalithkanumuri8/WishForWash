@@ -73,6 +73,9 @@ export function scrollToTarget(target, { immediate = false, offset, onComplete }
       easing: (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2),
       onComplete,
     });
+  } else if (lenis) {
+    lenis.scrollTo(top, { immediate: true, force: true });
+    onComplete?.();
   } else {
     window.scrollTo(0, top);
     onComplete?.();
@@ -123,6 +126,11 @@ function rebuild() {
   ScrollTrigger.refresh();
 }
 
+/** True when an element hasn't scrolled into view yet (so it can animate in). */
+export function isBelowFold(el, ratio = 0.92) {
+  return el.getBoundingClientRect().top > window.innerHeight * ratio;
+}
+
 /** Start the motion layer (called once from main.js after modules register). */
 export function startMotion() {
   if (started) return;
@@ -136,6 +144,24 @@ export function startMotion() {
   const refresh = () => ScrollTrigger.refresh();
   document.fonts?.ready.then(refresh);
   window.addEventListener('load', refresh, { once: true });
+
+  // Content that expands later (transcript, map list, quiz results, pledge card)
+  // changes the page height; re-measure pins and triggers when that happens.
+  if ('ResizeObserver' in window) {
+    let lastHeight = document.body.scrollHeight;
+    let timer = 0;
+    new ResizeObserver(() => {
+      window.clearTimeout(timer);
+      timer = window.setTimeout(() => {
+        const height = document.body.scrollHeight;
+        if (Math.abs(height - lastHeight) > 2) {
+          lastHeight = height;
+          ScrollTrigger.refresh();
+          lastHeight = document.body.scrollHeight;
+        }
+      }, 200);
+    }).observe(document.querySelector('main') || document.body);
+  }
 }
 
 /* --------------------------------------------------------------------------
@@ -166,6 +192,7 @@ registerMotion('reveal', ({ enabled }) => {
   const to = { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.8, ease: 'power3.out', clearProps: 'filter,transform' };
 
   qsa('[data-reveal]').forEach((el) => {
+    if (!isBelowFold(el)) return;
     gsap.set(el, from);
     ScrollTrigger.create({
       trigger: el,
@@ -176,6 +203,7 @@ registerMotion('reveal', ({ enabled }) => {
   });
 
   qsa('[data-reveal-group]').forEach((group) => {
+    if (!isBelowFold(group)) return;
     const items = Array.from(group.children);
     gsap.set(items, { ...from, y: 34 });
     ScrollTrigger.create({
@@ -187,6 +215,10 @@ registerMotion('reveal', ({ enabled }) => {
   });
 
   underlines.forEach((el) => {
+    if (!isBelowFold(el)) {
+      el.classList.add('is-in');
+      return;
+    }
     el.classList.remove('is-in');
     ScrollTrigger.create({
       trigger: el,
@@ -202,7 +234,7 @@ registerMotion('reveal', ({ enabled }) => {
 // Section headlines rise in word by word (SplitType).
 registerMotion('headlines', ({ enabled }) => {
   if (!enabled) return;
-  const splits = qsa('[data-split]').map((el) => {
+  const splits = qsa('[data-split]').filter((el) => isBelowFold(el)).map((el) => {
     const split = new SplitType(el, { types: 'words', tagName: 'span' });
     gsap.set(split.words, { opacity: 0, yPercent: 60 });
     ScrollTrigger.create({
@@ -250,6 +282,7 @@ function wavePath(phase, seed) {
 
 registerMotion('dividers', ({ enabled }) => {
   if (!enabled) return;
+  let alive = true; // a reverted tween must not redraw the path after cleanup
   const items = qsa('.wave-divider__path').map((path, index) => {
     const state = { phase: 0, original: path.getAttribute('d'), seed: index * 1.7 };
     const tween = gsap.to(state, {
@@ -258,7 +291,9 @@ registerMotion('dividers', ({ enabled }) => {
       ease: 'none',
       repeat: -1,
       paused: true,
-      onUpdate: () => path.setAttribute('d', wavePath(state.phase, state.seed)),
+      onUpdate: () => {
+        if (alive) path.setAttribute('d', wavePath(state.phase, state.seed));
+      },
     });
     path.setAttribute('d', wavePath(0, state.seed));
     ScrollTrigger.create({
@@ -269,5 +304,8 @@ registerMotion('dividers', ({ enabled }) => {
     });
     return { path, state };
   });
-  return () => items.forEach(({ path, state }) => path.setAttribute('d', state.original));
+  return () => {
+    alive = false;
+    items.forEach(({ path, state }) => path.setAttribute('d', state.original));
+  };
 });
