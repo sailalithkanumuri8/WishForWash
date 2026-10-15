@@ -99,6 +99,12 @@ a:hover {
   outline-offset: 3px;
 }
 
+/* Headings and sections receive focus only programmatically (after a jump),
+   so they don't need a ring; interactive elements always keep theirs. */
+:is(h1, h2, h3, h4, section, li, main)[tabindex='-1']:focus {
+  outline: none;
+}
+
 /* Light surfaces (aqua / ice cards) get a navy inner ring so focus stays visible. */
 .on-light :focus-visible {
   outline-color: var(--wash-foam);
@@ -4361,11 +4367,6 @@ sup:has(> .cite) {
     flex-wrap: wrap;
     align-items: center;
   }
-}
-
-/* Body scroll lock for the bottom sheet when smooth scrolling is off. */
-html.scroll-locked {
-  overflow: hidden;
 }
 
 /* ===== END MAP SECTION ===== */

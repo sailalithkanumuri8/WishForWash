@@ -102,10 +102,14 @@ export default function wishForWash({ siteUrl }) {
           const label = `${src.publisher ? `${src.publisher}: ` : ''}${src.title}`;
           return `<a class="cite" href="#src-${id}" data-src="${id}" aria-label="Source ${n}" title="${escapeHtml(label)}">${n}</a>`;
         });
-        // Photo credits join the list for every photo that appears on the page.
+        // Photo credits join the list for every photo used on the page, either in
+        // the markup or in a map panel (data/regions.json).
         if (exists('data/photo-credits.json')) {
+          const mapPhotos = exists('data/regions.json')
+            ? readJSON('data/regions.json').map((r) => r.image?.src).filter(Boolean)
+            : [];
           for (const photo of readJSON('data/photo-credits.json')) {
-            if (!html.includes(photo.file)) continue;
+            if (!html.includes(photo.file) && !mapPhotos.includes(photo.file)) continue;
             const id = `photo-${photo.id}`;
             if (byId.has(id)) continue;
             const entry = {

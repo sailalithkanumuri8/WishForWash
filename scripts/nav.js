@@ -74,7 +74,7 @@ export function initNav() {
   document.fonts?.ready.then(placeWave);
 
   /* ---- Smooth scrolling for in-page links ---- */
-  function goTo(id, { push = true, immediate = false } = {}) {
+  function goTo(id, { push = true, immediate = false, moveFocus = true } = {}) {
     const target = document.getElementById(id);
     if (!target) return;
     if (push) history.pushState(null, '', id === 'home' ? `${location.pathname}${location.search}` : `#${id}`);
@@ -86,6 +86,7 @@ export function initNav() {
       immediate,
       onComplete: () => {
         suppressSpy = false;
+        if (!moveFocus) return;
         // Move focus for keyboard and screen reader users without jumping the page.
         const focusTarget = target.matches('section') ? target.querySelector('h1, h2') || target : target;
         if (!focusTarget.hasAttribute('tabindex')) focusTarget.setAttribute('tabindex', '-1');
@@ -117,7 +118,7 @@ export function initNav() {
   if (location.hash.length > 1) {
     const id = decodeURIComponent(location.hash.slice(1));
     if (document.getElementById(id)) {
-      const land = () => goTo(id, { push: false, immediate: true });
+      const land = () => goTo(id, { push: false, immediate: true, moveFocus: false });
       requestAnimationFrame(land);
       window.addEventListener('load', land, { once: true });
     }
