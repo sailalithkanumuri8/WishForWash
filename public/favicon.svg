@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <title>Wish for Wash</title>
+  <defs>
+    <linearGradient id="wfw-drop" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#4D9FF0"/>
+      <stop offset="1" stop-color="#2876C8"/>
+    </linearGradient>
+  </defs>
+  <path d="M32 3C26.5 11.5 11.5 25 11.5 39.5A20.5 20.5 0 0 0 52.5 39.5C52.5 25 37.5 11.5 32 3Z" fill="url(#wfw-drop)"/>
+  <path d="M20.5 40.5C20.5 33.5 23.5 27.5 27.5 23.5" fill="none" stroke="#fff" stroke-width="4.2" stroke-linecap="round" opacity=".9"/>
+  <path d="M25 47.5Q32 53 39 47.5" fill="none" stroke="#fff" stroke-width="4.2" stroke-linecap="round"/>
+</svg>
