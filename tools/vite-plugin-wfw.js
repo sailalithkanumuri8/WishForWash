@@ -52,7 +52,9 @@ function renderSourceItem(src, n) {
     ? ` <a class="sources__alt" href="${escapeHtml(src.altUrl)}" target="_blank" rel="noopener">(${escapeHtml(src.altLabel || 'mirror')})</a>`
     : '';
   const note = `${alt}${src.note ? ` <span class="sources__note">${escapeHtml(src.note)}</span>` : ''}`;
-  return `<li id="src-${escapeHtml(src.id)}" data-n="${n}">${type}${parts.join('. ')}.${note}</li>`;
+  // End each part with a period unless it already ends in one ("…No. 142, Orig.").
+  const sentence = (html) => (/[.?!]$/.test(html.replace(/<[^>]+>/g, '').trim()) ? html : `${html}.`);
+  return `<li id="src-${escapeHtml(src.id)}" data-n="${n}">${type}${parts.map(sentence).join(' ')}${note}</li>`;
 }
 
 export default function wishForWash({ siteUrl }) {
