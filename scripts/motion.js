@@ -22,6 +22,9 @@ ScrollTrigger.addEventListener('refreshInit', () => ScrollTrigger.sort());
 
 export { gsap, ScrollTrigger, SplitType };
 
+/** Where the Watch and campus pins run: wide enough, and tall enough to fit a pinned card. */
+export const PIN_QUERY = '(min-width: 768px) and (min-height: 600px)';
+
 const modules = [];
 let started = false;
 let lenis = null;
@@ -131,6 +134,88 @@ function rebuild() {
   ScrollTrigger.refresh();
 }
 
+/**
+ * Keep the reader on the same content when the width changes (rotating a phone,
+ * resizing a window) or the pins switch on or off. Crossing a breakpoint
+ * rebuilds the pins, and GSAP clears its saved scroll position when pins are
+ * created inside gsap.matchMedia(), so its refresh would land at the top of the
+ * page. The position is noted whenever scrolling settles, before any reflow.
+ * Height-only resizes (a mobile URL bar) are left alone.
+ */
+function keepPlaceOnResize() {
+  let width = window.innerWidth;
+  let saved = null; // the reading position, updated whenever scrolling settles
+  let pending = null; // the position to put back after a width or pin change
+  let settle = 0;
+  let idle = 0;
+
+  const readingLine = () => navHeight() + 8;
+
+  // A modest block at (or just below) the reading line that scrolls with the
+  // page, or failing that the section there. Several probes, since a gap or a
+  // section-wide canvas may sit at one; blocks about to scroll off are skipped.
+  // Where the reader is gets stored as a share of the block's height, so it
+  // still lands right when the block reflows to a new height.
+  const place = (el, r, y) => ({ el, gap: Math.min(0, y - r.top), share: Math.max(0, (y - r.top) / r.height) });
+  const capture = () => {
+    const y = readingLine();
+    for (const dy of [0, 40, 120, 200]) {
+      for (const fx of [0.5, 0.25, 0.75, 0.1, 0.9]) {
+        for (const el of document.elementsFromPoint(window.innerWidth * fx, y + dy)) {
+          if (el.closest('.site-header, .map-panel, .map-backdrop')) break;
+          const r = el.getBoundingClientRect();
+          if (el.closest('main, footer') && r.height > 0 && r.height < window.innerHeight * 1.5 && r.bottom > y + 24) {
+            return place(el, r, y);
+          }
+        }
+      }
+    }
+    for (const section of document.querySelectorAll('main > section, footer > section')) {
+      const r = section.getBoundingClientRect();
+      if (r.top <= y && r.bottom > y + 24) return place(section, r, y);
+    }
+    return null;
+  };
+
+  const remember = () => {
+    if (!pending) saved = capture();
+  };
+  remember();
+  window.addEventListener(
+    'scroll',
+    () => {
+      window.clearTimeout(idle);
+      idle = window.setTimeout(remember, 150);
+    },
+    { passive: true },
+  );
+
+  const restore = () => {
+    const a = pending;
+    if (!a?.el.isConnected) return;
+    const into = a.gap < 0 ? a.gap : a.share * a.el.getBoundingClientRect().height;
+    scrollToTarget(a.el, { immediate: true, offset: readingLine() - into });
+  };
+
+  const hold = () => {
+    pending ||= saved;
+    window.clearTimeout(settle);
+    settle = window.setTimeout(() => {
+      restore();
+      pending = null;
+      remember();
+    }, 900);
+  };
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth === width) return;
+    width = window.innerWidth;
+    hold();
+  });
+  window.matchMedia(PIN_QUERY).addEventListener('change', hold);
+  ScrollTrigger.addEventListener('refresh', () => pending && restore());
+}
+
 /** True when an element hasn't scrolled into view yet (so it can animate in). */
 export function isBelowFold(el, ratio = 0.92) {
   return el.getBoundingClientRect().top > window.innerHeight * ratio;
@@ -150,14 +235,27 @@ export function startMotion() {
   document.fonts?.ready.then(refresh);
   window.addEventListener('load', refresh, { once: true });
 
+  keepPlaceOnResize();
+
   // Content that expands later (transcript, map list, quiz results, pledge card)
   // changes the page height; re-measure pins and triggers when that happens.
   if ('ResizeObserver' in window) {
     let lastHeight = document.body.scrollHeight;
     let timer = 0;
+    // Window resizes are left to ScrollTrigger, which refreshes on its own;
+    // a second refresh from here mid-resize only adds churn.
+    let resizing = 0;
+    window.addEventListener('resize', () => {
+      window.clearTimeout(resizing);
+      resizing = window.setTimeout(() => {
+        resizing = 0;
+        lastHeight = document.body.scrollHeight;
+      }, 1000);
+    });
     new ResizeObserver(() => {
       window.clearTimeout(timer);
       timer = window.setTimeout(() => {
+        if (resizing) return;
         const height = document.body.scrollHeight;
         if (Math.abs(height - lastHeight) > 2) {
           lastHeight = height;

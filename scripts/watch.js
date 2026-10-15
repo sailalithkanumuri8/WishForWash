@@ -1,6 +1,6 @@
 // Watch: click-to-load YouTube player (captions on) and the "lights down" pin (23).
 
-import { registerMotion } from './motion.js';
+import { PIN_QUERY, registerMotion } from './motion.js';
 import { qs } from './utils.js';
 
 export function initWatch() {
@@ -44,7 +44,7 @@ registerMotion('lights-down', ({ enabled, gsap }) => {
 
   // Pin only where the player fits on screen; short landscape phones get the plain scrub.
   const mm = gsap.matchMedia();
-  mm.add('(min-width: 768px) and (min-height: 600px)', () => {
+  mm.add(PIN_QUERY, () => {
     gsap
       .timeline({
         scrollTrigger: {
