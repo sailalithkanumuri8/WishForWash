@@ -43,8 +43,10 @@ export default function renderPeople() {
     const y = Math.floor(i / COLS) * CELL_H + 4;
     const isDry = dry.has(i);
     // Dry figures are drawn empty (the end state); the animation refills them first.
+    // A dark void behind their water shows through as it drains.
     const water = isDry
-      ? `<rect class="person__water" x="0" y="${FIG_H}" width="20" height="0"/>`
+      ? `<rect class="person__void" x="0" y="0" width="20" height="${FIG_H}"/>` +
+        `<rect class="person__water" x="0" y="${FIG_H}" width="20" height="0"/>`
       : `<rect class="person__water" x="0" y="0" width="20" height="${FIG_H}"/>`;
     people.push(
       `<g class="person${isDry ? ' person--dry' : ''}" transform="translate(${x} ${y})">` +

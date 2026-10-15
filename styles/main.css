@@ -1582,10 +1582,13 @@ sup:has(> .cite) {
   fill: var(--wash-foam);
 }
 
+.person__void {
+  fill: rgb(14 42 79 / 0.55);
+}
+
 .person--dry .person__outline {
   stroke: var(--gt-gold);
-  stroke-width: 1.6;
-  stroke-dasharray: 3 2.5;
+  stroke-width: 2;
 }
 
 .people__caption {
@@ -1877,6 +1880,10 @@ sup:has(> .cite) {
   text-decoration: none;
 }
 
+.section--blue .exit-cue {
+  color: var(--wash-white);
+}
+
 .exit-cue .icon {
   width: 1.2em;
   height: 1.2em;
@@ -1933,6 +1940,11 @@ sup:has(> .cite) {
 @media (min-width: 1200px) {
   .causes__list {
     grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  /* Two title lines in every card keep the four bodies aligned. */
+  .cause__title {
+    min-height: 2.5em;
   }
 }
 
@@ -2366,6 +2378,13 @@ sup:has(> .cite) {
   clip-path: inset(0 calc(100% - var(--pos)) 0 0);
 }
 
+/* The SVG captions shrink to a few pixels on phones; the tags label each side there. */
+@media (max-width: 599px) {
+  .compare__note {
+    display: none;
+  }
+}
+
 .compare__tag {
   position: absolute;
   top: clamp(0.75rem, 2vw, 1.25rem);
@@ -2524,6 +2543,7 @@ sup:has(> .cite) {
 
 .pillar {
   display: grid;
+  align-content: start;
   justify-items: center;
   gap: var(--space-3);
   padding: clamp(2rem, 1.5rem + 1.5vw, 2.75rem) var(--space-5);
@@ -2818,7 +2838,13 @@ sup:has(> .cite) {
 }
 
 .story__text {
-  max-width: 62ch;
+  max-width: var(--measure);
+}
+
+.story__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
 }
 
 @media (min-width: 768px) {

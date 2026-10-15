@@ -593,13 +593,12 @@ function initQuiz(app, share) {
     const score = state.answers.filter((answer, i) => answer === questions[i].answer).length;
     const persona =
       quiz.personas.find((p) => score >= p.min && score <= p.max) || quiz.personas[quiz.personas.length - 1];
-    const scoreLine = score === total ? `You got all ${total}.` : `You got ${score} of ${total}.`;
     const next = persona.next;
     result.innerHTML = `
       <p class="label quiz__result-kicker">Your result</p>
       <p class="quiz__score"><span class="quiz__score-num">${score}</span><span class="quiz__score-of">of ${total} correct</span></p>
       <h4 class="quiz__persona" tabindex="-1" data-quiz-persona>${escapeHtml(persona.headline)}</h4>
-      <p class="quiz__summary">${escapeHtml(scoreLine)} ${escapeHtml(persona.summary)}</p>
+      <p class="quiz__summary">${escapeHtml(persona.summary)}</p>
       <div class="quiz__result-actions">
         <a class="btn btn--navy" href="${escapeHtml(next.href)}"${next.external ? ' target="_blank" rel="noopener"' : ''}>${escapeHtml(next.label)}${icon(next.external ? 'external-link' : 'arrow-right')}</a>
         <button class="btn btn--outline-navy" type="button" data-quiz-share>${icon('share-2')}Share the site</button>
@@ -735,7 +734,7 @@ function initJoin(app) {
       <h4 class="join__done-title" tabindex="-1" data-join-title></h4>
       <p data-join-lead></p>
       <ol class="join__steps">
-        <li><strong>Apply to EWB-GT</strong> when applications open each fall and spring, and rank Wish for Wash as your project: <a href="${JOIN_LINKS.apply}" target="_blank" rel="noopener">find the EWB-GT application</a>.</li>
+        <li><strong>Apply to EWB-GT</strong> when applications open each fall and spring, and say you'd like to join Wish for Wash: <a href="${JOIN_LINKS.apply}" target="_blank" rel="noopener">find the EWB-GT application</a>.</li>
         <li><strong>Follow <a href="${JOIN_LINKS.instagram}" target="_blank" rel="noopener">@ewb.usa.gt</a></strong> on Instagram for application dates and events.</li>
         <li><strong>Find EWB-GT on <a href="${JOIN_LINKS.engage}" target="_blank" rel="noopener">GT Engage</a></strong>, and request to join there once you're accepted.</li>
       </ol>
