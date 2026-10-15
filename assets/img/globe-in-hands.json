@@ -1,0 +1,35 @@
+{
+  "file": "globe-in-hands.webp",
+  "image": {
+    "width": 865,
+    "height": 949
+  },
+  "globe": {
+    "cx": 424.5,
+    "cy": 424.4,
+    "r": 425.3
+  },
+  "water": {
+    "cx": 422.5,
+    "cy": 329.6,
+    "rx": 390.5,
+    "ry": 75.9
+  },
+  "drop": {
+    "x": 341,
+    "y": 83,
+    "width": 165,
+    "height": 255
+  },
+  "ripple": {
+    "cx": 422.9,
+    "cy": 334.6
+  },
+  "posterCrop": [
+    680,
+    1051,
+    1545,
+    2000
+  ],
+  "notes": "Pixel coordinates in globe-in-hands.webp. Multiply by (rendered width / image.width) for any other size, e.g. 640 / image.width for globe-in-hands-640.webp. The arms are cut off by the bottom and right edges of the image, as on the poster; the glass dome is translucent (alpha ~0.75-0.97), everything else is opaque."
+}
