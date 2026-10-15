@@ -993,6 +993,18 @@ sup:has(> .cite) {
   border-radius: 50%;
 }
 
+@media (max-width: 767px) {
+  .back-to-top {
+    width: 46px;
+    height: 53px;
+  }
+
+  /* Let the last line of the page clear the floating drop. */
+  .site-footer .about {
+    padding-bottom: 5.5rem;
+  }
+}
+
 .site-header.menu-open {
   background-color: var(--wash-deep);
   box-shadow: none;
@@ -2039,6 +2051,20 @@ sup:has(> .cite) {
   font-weight: 700;
   line-height: 1.1;
   color: var(--wash-ice);
+}
+
+@media (max-width: 599px) {
+  .video__poster-text .label {
+    display: none;
+  }
+
+  .video__poster-title {
+    font-size: 1.05rem;
+  }
+
+  .video__play {
+    top: 42%;
+  }
 }
 
 .video__caption {
