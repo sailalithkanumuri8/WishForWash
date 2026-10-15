@@ -25,6 +25,7 @@ const PROJECTS = [
     title: 'Nepal: water for Chisopani Bhirke',
     text: 'EWB-GT students are designing a water supply for a village of about 1,000 people.',
     href: 'https://ce.gatech.edu/news/2025/11/georgia-tech-students-work-bring-clean-water-nepal',
+    source: 'me-nepal-2025',
   },
   {
     id: 'malawi',
@@ -33,10 +34,17 @@ const PROJECTS = [
     title: 'Malawi: "Sanitation Solutions"',
     text: "EWB-GT's GT Malawi team placed third in Georgia's 2024 student water design contest.",
     href: 'https://ce.gatech.edu/news/2024/04/cee-students-continue-dominance-2024-georgia-association-water-professionals',
+    source: 'cee-gawp-2024',
   },
 ];
 
 let ui = null;
+
+// Numbered citation matching the footer Sources list.
+function cite(id) {
+  const n = document.getElementById(`src-${id}`)?.dataset.n;
+  return n ? `<sup><a class="cite" href="#src-${id}" data-src="${id}" aria-label="Source ${n}">${n}</a></sup>` : '';
+}
 
 function build(container) {
   const countries = feature(world, world.objects.countries).features;
@@ -62,7 +70,9 @@ function build(container) {
   ).join('')}<g class="map-world__home"><circle r="9"/><circle r="4"/><text x="15" y="6">Georgia Tech</text></g></g>
 </svg>
 <ul class="map-world__cards" role="list">${PROJECTS.map(
-    (p) => `<li class="map-world__card"><a href="${p.href}" target="_blank" rel="noopener"><strong>${p.title}</strong><span>${p.text}</span></a></li>`,
+    (p) =>
+      `<li class="map-world__card"><strong><a href="${p.href}" target="_blank" rel="noopener">${p.title}</a></strong>` +
+      `<span>${p.text}${cite(p.source)}</span></li>`,
   ).join('')}</ul>
 <button class="btn btn--primary btn--sm map-world__back" type="button"><svg class="icon" aria-hidden="true"><use href="#i-map-pin"></use></svg>Back to Georgia</button>
 </div>`;

@@ -4215,7 +4215,7 @@ sup:has(> .cite) {
   list-style: none;
 }
 
-.map-world__card a {
+.map-world__card {
   display: grid;
   gap: 0.1rem;
   padding: 0.6rem 0.85rem;
@@ -4225,11 +4225,11 @@ sup:has(> .cite) {
   box-shadow: var(--shadow-card);
   font-size: 0.8125rem;
   line-height: 1.35;
-  text-decoration: none;
 }
 
-.map-world__card a:hover strong {
-  text-decoration: underline;
+.map-world__card strong a {
+  color: inherit;
+  text-decoration-color: var(--wash-deep);
 }
 
 .map-world__card strong {
