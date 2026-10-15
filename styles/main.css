@@ -315,10 +315,10 @@ sup:has(> .cite) {
   white-space: nowrap;
 }
 
+/* Inline (not inline-block) so a citation never wraps away from its word. */
 .cite {
-  display: inline-block;
-  min-width: 1.4em;
-  padding: 0 0.2em;
+  display: inline;
+  padding: 0.05em 0.35em;
   margin-left: 0.08em;
   border-radius: 0.4em;
   font-family: var(--font-body);
@@ -2849,7 +2849,7 @@ sup:has(> .cite) {
 
 .about__links-title {
   margin-bottom: var(--space-3);
-  color: var(--wash-foam);
+  color: var(--wash-ice);
 }
 
 .about__links ul {
