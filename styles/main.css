@@ -1026,11 +1026,6 @@ sup:has(> .cite) {
     width: 46px;
     height: 53px;
   }
-
-  /* Let the last line of the page clear the floating drop. */
-  .site-footer .about {
-    padding-bottom: 5.5rem;
-  }
 }
 
 /* A backdrop-filter makes the header the containing block for the fixed menu,
@@ -2951,6 +2946,13 @@ sup:has(> .cite) {
 
 .site-footer .about {
   padding-bottom: var(--space-6);
+}
+
+/* Phones: let the last line of the page clear the floating back-to-top drop. */
+@media (max-width: 767px) {
+  .site-footer .about {
+    padding-bottom: 5.5rem;
+  }
 }
 
 .about__brand {
