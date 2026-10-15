@@ -308,6 +308,12 @@ a:hover {
 }
 
 /* Citation superscripts: every number links to its entry in Sources. */
+/* A citation on a display headline stays body-sized */
+.section-title sup:has(> .cite) {
+  font-size: 0.32em;
+  vertical-align: 1.6em;
+}
+
 sup:has(> .cite) {
   line-height: 0;
   font-size: 0.68em;
