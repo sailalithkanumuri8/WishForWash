@@ -783,11 +783,11 @@ sup:has(> .cite) {
   height: 18px;
 }
 
-/* Mobile menu: a full-screen overlay that rises like a wave */
+/* Mobile menu: a full-screen overlay that rises like a wave, under the bar */
 .mobile-menu {
   position: fixed;
   inset: 0;
-  z-index: var(--z-menu);
+  z-index: -1;
   display: flex;
   flex-direction: column;
   padding: calc(var(--nav-h) + var(--space-5)) var(--page-pad) var(--space-7);
@@ -992,6 +992,42 @@ sup:has(> .cite) {
 
 .back-to-top:focus-visible {
   border-radius: 50%;
+}
+
+.site-header.menu-open {
+  background-color: var(--wash-deep);
+  box-shadow: none;
+}
+
+/* Without JavaScript: no Motion switch or menu button; tabs stay reachable. */
+.no-js .motion-toggle,
+.no-js .nav__menu-btn {
+  display: none;
+}
+
+.no-js .back-to-top {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+@media (max-width: 767px) {
+  .no-js .site-header {
+    height: auto;
+    background-color: var(--nav-solid);
+  }
+
+  .no-js .nav {
+    flex-wrap: wrap;
+    padding-block: 0.5rem;
+  }
+
+  .no-js .nav__tabs-wrap {
+    display: block;
+    order: 3;
+    width: 100%;
+    overflow-x: auto;
+  }
 }
 
 .scroll-locked,

@@ -126,13 +126,23 @@ export function initNav() {
   /* ---- Mobile menu: full-screen overlay that rises like a wave ---- */
   const menuBtn = qs('#menu-btn');
   const menu = qs('#mobile-menu');
-  const trap = createFocusTrap(menu, { onEscape: () => closeMenu() });
+  const menuIcon = qs('.nav__menu-icon use', menuBtn);
+  const menuLabel = qs('.nav__menu-label', menuBtn);
+  // The bar stays on top of the overlay, so keep focus within the whole header.
+  const trap = createFocusTrap(header, { onEscape: () => closeMenu() });
+
+  function setMenuButton(open) {
+    menuBtn.setAttribute('aria-expanded', String(open));
+    menuIcon?.setAttribute('href', open ? '#i-x' : '#i-menu');
+    if (menuLabel) menuLabel.textContent = open ? 'Close' : 'Menu';
+  }
 
   function openMenu() {
     if (menuOpen) return;
     menuOpen = true;
     menu.hidden = false;
-    menuBtn.setAttribute('aria-expanded', 'true');
+    setMenuButton(true);
+    header.classList.add('menu-open');
     lockScroll(true);
     if (motionEnabled()) {
       gsap.fromTo(menu, { yPercent: 100 }, { yPercent: 0, duration: 0.6, ease: 'power3.out' });
@@ -148,11 +158,12 @@ export function initNav() {
   function closeMenu({ returnFocus = true } = {}) {
     if (!menuOpen) return;
     menuOpen = false;
-    menuBtn.setAttribute('aria-expanded', 'false');
+    setMenuButton(false);
     trap.deactivate({ returnFocus });
     lockScroll(false);
     const finish = () => {
       menu.hidden = true;
+      header.classList.remove('menu-open');
       gsap.set(menu, { clearProps: 'transform' });
     };
     if (motionEnabled()) gsap.to(menu, { yPercent: 100, duration: 0.45, ease: 'power2.in', onComplete: finish });

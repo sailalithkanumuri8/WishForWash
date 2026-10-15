@@ -60,6 +60,8 @@ export function lockScroll(locked) {
 export function scrollToTarget(target, { immediate = false, offset, onComplete } = {}) {
   const el = typeof target === 'string' ? document.querySelector(target) : target;
   if (!el) return;
+  // Content may have just expanded (e.g. the Sources list); refresh Lenis's scroll limit first.
+  lenis?.resize();
   const top =
     el.id === 'home'
       ? 0
