@@ -2,7 +2,7 @@
   {
     "id": "jmp",
     "type": "Intergovernmental",
-    "title": "1 in 4 people globally still lack access to safe drinking water",
+    "title": "1 in 4 people globally still lack access to safe drinking water – WHO, UNICEF",
     "publisher": "World Health Organization and UNICEF Joint Monitoring Programme (JMP)",
     "date": "Aug. 26, 2025",
     "url": "https://www.who.int/news/item/26-08-2025-1-in-4-people-globally-still-lack-access-to-safe-drinking-water---who--unicef"
@@ -20,7 +20,8 @@
     "title": "Clean water and sanitation for all: interactions with other sustainable development goals",
     "publisher": "Sustainable Water Resources Management (Springer)",
     "date": "2017",
-    "url": "https://link.springer.com/article/10.1007/s40899-017-0117-4"
+    "url": "https://link.springer.com/article/10.1007/s40899-017-0117-4",
+    "authors": "Blanca Fernandez Milan"
   },
   {
     "id": "coes-2018",
@@ -28,7 +29,8 @@
     "title": "Achieving universal access to clean water and sanitation in an era of water scarcity: strengthening contributions from academia",
     "publisher": "Current Opinion in Environmental Sustainability",
     "date": "2018",
-    "url": "https://www.sciencedirect.com/science/article/pii/S1877343518300113"
+    "url": "https://doi.org/10.1016/j.cosust.2018.08.001",
+    "authors": "Cecilia Tortajada and Asit K. Biswas"
   },
   {
     "id": "owid",
@@ -36,6 +38,15 @@
     "title": "Clean Water and Sanitation",
     "publisher": "Our World in Data",
     "url": "https://ourworldindata.org/clean-water-sanitation"
+  },
+  {
+    "id": "wwdr-2023",
+    "type": "Intergovernmental",
+    "title": "Imminent risk of a global water crisis, warns the UN World Water Development Report 2023",
+    "publisher": "UNESCO, on behalf of UN-Water",
+    "date": "Mar. 22, 2023",
+    "note": "Its 26% and 46% figures describe 2020; we use the 2025 JMP update instead.",
+    "url": "https://www.unesco.org/en/articles/imminent-risk-global-water-crisis-warns-un-world-water-development-report-2023"
   },
   {
     "id": "ap-2024",
@@ -129,15 +140,16 @@
     "type": "Peer-reviewed",
     "title": "Contributions of recycled wastewater to clean water and sanitation Sustainable Development Goals",
     "publisher": "npj Clean Water",
-    "date": "2020",
-    "url": "https://www.nature.com/articles/s41545-020-0069-3"
+    "date": "Apr. 30, 2020",
+    "url": "https://www.nature.com/articles/s41545-020-0069-3",
+    "authors": "Cecilia Tortajada"
   },
   {
     "id": "cee-gawp-2024",
     "type": "University",
-    "title": "CEE students continue dominance at 2024 Georgia Association of Water Professionals competition",
+    "title": "CEE Students Continue Dominance at 2024 Georgia Association of Water Professionals",
     "publisher": "Georgia Tech School of Civil and Environmental Engineering",
-    "date": "Apr. 2024",
+    "date": "Apr. 29, 2024",
     "url": "https://ce.gatech.edu/news/2024/04/cee-students-continue-dominance-2024-georgia-association-water-professionals"
   },
   {
@@ -148,27 +160,76 @@
     "url": "https://sustain.gatech.edu/water/"
   },
   {
+    "id": "gt-kendeda-water",
+    "type": "University",
+    "title": "Water Petal",
+    "publisher": "Georgia Tech, The Kendeda Building for Innovative Sustainable Design",
+    "url": "https://livingbuilding.gatech.edu/living-building-challenge/water-petal"
+  },
+  {
+    "id": "gt-cisterns-2017",
+    "type": "University",
+    "authors": "Victor Rogers",
+    "title": "Hidden Georgia Tech: The Cistern System at Tech Green",
+    "publisher": "Georgia Tech News Center",
+    "date": "Nov. 10, 2017",
+    "url": "https://news.gatech.edu/archive/features/hidden-georgia-tech-cistern-system-tech-green.shtml"
+  },
+  {
     "id": "gt-sn-plan",
     "type": "University",
     "title": "The Sustainability Next Plan Transforms Vision Into Reality",
     "publisher": "Georgia Tech",
-    "url": "https://hg.gatech.edu/node/669810"
+    "url": "https://hg.gatech.edu/node/669810",
+    "date": "Sept. 20, 2023"
   },
   {
     "id": "gt-sn-2022",
     "type": "University",
-    "title": "Sustainability Next Task Force Delivers Vision and Launches Implementation",
+    "title": "The Sustainability Next Task Force Delivers Vision and Launches Implementation",
     "publisher": "Georgia Tech News Center",
     "date": "Oct. 24, 2022",
     "url": "https://www.gatech.edu/news/2022/10/24/sustainability-next-task-force-delivers-vision-and-launches-implementation"
   },
   {
+    "id": "gt-strategic-plan",
+    "type": "University",
+    "title": "Strategic Focus Areas: Amplify Impact, Connect Globally, Lead by Example",
+    "publisher": "Georgia Tech Strategic Plan 2020-2030",
+    "url": "https://strategicplan.gatech.edu/focus"
+  },
+  {
     "id": "cee-nepal-2025",
     "type": "University",
-    "title": "Georgia Tech students work to bring clean water to Nepal",
+    "title": "Georgia Tech Students Work to Bring Clean Water to Nepal",
     "publisher": "Georgia Tech School of Civil and Environmental Engineering",
-    "date": "Nov. 2025",
+    "date": "Nov. 24, 2025",
     "url": "https://ce.gatech.edu/news/2025/11/georgia-tech-students-work-bring-clean-water-nepal"
+  },
+  {
+    "id": "me-nepal-2025",
+    "type": "University",
+    "authors": "Anjali Balaganesh and Venja Gunjal",
+    "title": "Georgia Tech Students Work to Bring Clean Water to Nepal (full story)",
+    "publisher": "Georgia Tech George W. Woodruff School of Mechanical Engineering",
+    "date": "Nov. 20, 2025",
+    "url": "https://www.me.gatech.edu/news/georgia-tech-students-work-bring-clean-water-nepal"
+  },
+  {
+    "id": "video-kendeda",
+    "type": "Video credit",
+    "title": "The Kendeda Building - Water Petal",
+    "publisher": "Georgia Tech, YouTube",
+    "date": "Apr. 1, 2020",
+    "note": "Embedded in the Watch section with English captions.",
+    "url": "https://www.youtube.com/watch?v=K1r5OSFlyio"
+  },
+  {
+    "id": "sdg-week",
+    "type": "Get involved (not used as evidence)",
+    "title": "SDG Week",
+    "publisher": "Georgia Tech Office of Sustainability",
+    "url": "https://sustain.gatech.edu/sdg-week/"
   },
   {
     "id": "riverkeeper",
