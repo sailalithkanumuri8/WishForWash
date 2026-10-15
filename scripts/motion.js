@@ -162,8 +162,8 @@ registerMotion('reveal', ({ enabled }) => {
     return;
   }
 
-  const from = { autoAlpha: 0, y: 28, filter: 'blur(6px)' };
-  const to = { autoAlpha: 1, y: 0, filter: 'blur(0px)', duration: 0.8, ease: 'power3.out', clearProps: 'filter,transform' };
+  const from = { opacity: 0, y: 28, filter: 'blur(6px)' };
+  const to = { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.8, ease: 'power3.out', clearProps: 'filter,transform' };
 
   qsa('[data-reveal]').forEach((el) => {
     gsap.set(el, from);
@@ -204,14 +204,14 @@ registerMotion('headlines', ({ enabled }) => {
   if (!enabled) return;
   const splits = qsa('[data-split]').map((el) => {
     const split = new SplitType(el, { types: 'words', tagName: 'span' });
-    gsap.set(split.words, { autoAlpha: 0, yPercent: 60 });
+    gsap.set(split.words, { opacity: 0, yPercent: 60 });
     ScrollTrigger.create({
       trigger: el,
       start: 'top 88%',
       once: true,
       onEnter: () =>
         gsap.to(split.words, {
-          autoAlpha: 1,
+          opacity: 1,
           yPercent: 0,
           duration: 0.7,
           ease: 'power3.out',

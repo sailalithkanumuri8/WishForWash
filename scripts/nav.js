@@ -148,8 +148,8 @@ export function initNav() {
       gsap.fromTo(menu, { yPercent: 100 }, { yPercent: 0, duration: 0.6, ease: 'power3.out' });
       gsap.fromTo(
         qsa('.mobile-menu__list li', menu),
-        { autoAlpha: 0, y: 24 },
-        { autoAlpha: 1, y: 0, duration: 0.5, ease: 'power3.out', stagger: 0.05, delay: 0.15 },
+        { opacity: 0, y: 24 },
+        { opacity: 1, y: 0, duration: 0.5, ease: 'power3.out', stagger: 0.05, delay: 0.15 },
       );
     }
     trap.activate(qs('.mobile-menu__link[aria-current="true"]', menu) || qs('.mobile-menu__link', menu));
@@ -207,7 +207,7 @@ export function initNav() {
         gsap
           .timeline()
           .to(svg, { scaleY: 0.82, scaleX: 1.12, transformOrigin: '50% 100%', duration: 0.14, ease: 'power2.out' })
-          .to(svg, { scaleY: 1.25, scaleX: 0.86, y: -26, autoAlpha: 0, duration: 0.32, ease: 'power2.in' })
+          .to(svg, { scaleY: 1.25, scaleX: 0.86, y: -26, opacity: 0, duration: 0.32, ease: 'power2.in' })
           .add(() => goTo('home'))
           .set(svg, { clearProps: 'all' }, '+=0.6');
       } else {

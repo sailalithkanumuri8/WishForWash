@@ -134,8 +134,8 @@ function playIntro(delay = 0) {
   );
   tl.fromTo(
     intro,
-    { autoAlpha: 0, y: 22, filter: 'blur(6px)' },
-    { autoAlpha: 1, y: 0, filter: 'blur(0px)', duration: 0.7, ease: 'power3.out', stagger: 0.08 },
+    { opacity: 0, y: 22, filter: 'blur(6px)' },
+    { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.7, ease: 'power3.out', stagger: 0.08 },
     0.2,
   );
 }
@@ -164,7 +164,7 @@ function runLoader() {
     .fromTo(water, { attr: { y: 128 } }, { attr: { y: 8 }, duration: 0.8, ease: 'power1.inOut' }, 0)
     .fromTo(wave, { y: 128, x: 0 }, { y: 8, x: -48, duration: 0.8, ease: 'power1.inOut' }, 0)
     .to(drop, { scale: 14, duration: 0.4, ease: 'power2.in', transformOrigin: '50% 65%' }, 0.8)
-    .to(loader, { autoAlpha: 0, duration: 0.32, ease: 'power1.out' }, 0.86)
+    .to(loader, { opacity: 0, duration: 0.32, ease: 'power1.out' }, 0.86)
     .add(() => playIntro(0), 0.78);
 }
 
