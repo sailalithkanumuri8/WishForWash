@@ -167,25 +167,25 @@ const PAD_BOTTOM = 60;
 
 // City labels for orientation (not hotspots). [lon, lat], label anchor offset.
 const CITIES = [
-  { name: 'Atlanta', at: [-84.388, 33.749], dx: -14, dy: 34, anchor: 'end' },
+  { name: 'Atlanta', at: [-84.388, 33.749], dx: -14, dy: 60, anchor: 'end' },
   { name: 'Athens', at: [-83.3576, 33.9519], dx: 12, dy: 8, anchor: 'start' },
   { name: 'Augusta', at: [-82.0105, 33.4735], dx: -12, dy: 8, anchor: 'end' },
   { name: 'Macon', at: [-83.6324, 32.8407], dx: -12, dy: -4, anchor: 'end' },
   { name: 'Columbus', at: [-84.9877, 32.461], dx: 12, dy: 8, anchor: 'start' },
-  { name: 'Savannah', at: [-81.0912, 32.0809], dx: -12, dy: -8, anchor: 'end' },
+  { name: 'Savannah', at: [-81.0912, 32.0809], dx: 12, dy: -10, anchor: 'start' },
   { name: 'Valdosta', at: [-83.2785, 30.8327], dx: 12, dy: 8, anchor: 'start' },
 ];
 
 // River labels: placed at a point along the river with a rotation (degrees).
 const RIVER_LABELS = [
-  { name: 'Chattahoochee R.', at: [-85.02, 32.0], rotate: -88, dx: -10 },
-  { name: 'Flint R.', at: [-84.12, 32.35], rotate: -72, dx: 12 },
+  { name: 'Chattahoochee R.', at: [-85.06, 31.62], rotate: -88, dx: -10 },
+  { name: 'Flint R.', at: [-84.09, 31.98], rotate: -72, dx: 12 },
   { name: 'Savannah R.', at: [-82.0, 33.12], rotate: 52, dx: 14 },
 ];
 
 const STATE_LABELS = [
-  { name: 'TENNESSEE', at: [-84.9, 35.13] },
-  { name: 'NORTH CAROLINA', at: [-83.3, 35.13] },
+  { name: 'TENNESSEE', at: [-84.9, 35.13], cls: 'map-state-label--top' },
+  { name: 'NORTH CAROLINA', at: [-83.3, 35.13], cls: 'map-state-label--top' },
   { name: 'SOUTH CAROLINA', at: [-81.75, 34.15] },
   { name: 'ALABAMA', at: [-85.72, 32.6], rotate: -90 },
   { name: 'FLORIDA', at: [-83.3, 30.24] },
@@ -490,15 +490,21 @@ function buildMap() {
   const stateLabels = STATE_LABELS.map((s) => {
     const [x, y] = P(s.at);
     const rot = s.rotate ? ` transform="rotate(${s.rotate} ${Math.round(x)} ${Math.round(y)})"` : '';
-    return `<text class="map-state-label" x="${Math.round(x)}" y="${Math.round(y)}" text-anchor="middle"${rot}>${esc(s.name)}</text>`;
+    const cls = s.cls ? `map-state-label ${s.cls}` : 'map-state-label';
+    return `<text class="${cls}" x="${Math.round(x)}" y="${Math.round(y)}" text-anchor="middle"${rot}>${esc(s.name)}</text>`;
   }).join('');
 
   const ordered = [...hotspots].sort((a, b) => a.order - b.order);
+  // No-JS fallback pins (numbered like the list cards). Crowded pins fan out on
+  // a leader line, matching the interactive drops.
   const staticPins = ordered
     .map((s, i) => {
       const x = Math.round((s.pin.x / 100) * VIEW_W * 10) / 10;
       const y = Math.round((s.pin.y / 100) * VIEW_H * 10) / 10;
-      return `<g class="map-static-pin" transform="translate(${x} ${y})"><circle r="17"/><text y="7" text-anchor="middle">${i + 1}</text></g>`;
+      const ox = s.offset ? Math.round(s.offset.dx * 1.4) : 0;
+      const oy = s.offset ? Math.round(s.offset.dy * 1.4) : 0;
+      const leader = s.offset ? `<path d="M0 0L${ox} ${oy}"/><circle class="map-static-pin__dot" r="5"/>` : '';
+      return `<g class="map-static-pin" transform="translate(${x} ${y})">${leader}<g transform="translate(${ox} ${oy})"><circle r="17"/><text y="7" text-anchor="middle">${i + 1}</text></g></g>`;
     })
     .join('');
 

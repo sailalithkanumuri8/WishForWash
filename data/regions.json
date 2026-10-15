@@ -69,8 +69,8 @@
       "y": 29.47
     },
     "offset": {
-      "dx": 26,
-      "dy": -28
+      "dx": 30,
+      "dy": 20
     },
     "zoom": 3.4,
     "region": "atlanta",
@@ -121,8 +121,8 @@
       "y": 29.61
     },
     "offset": {
-      "dx": -30,
-      "dy": -14
+      "dx": -28,
+      "dy": 4
     },
     "zoom": 3.4,
     "region": "atlanta",
