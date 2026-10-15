@@ -1177,7 +1177,8 @@ sup:has(> .cite) {
 
 .hero__bottle {
   position: absolute;
-  left: max(var(--page-pad), 4%);
+  /* Tuck the bottle against the globe's left edge (globe = min(80%, 520px)). */
+  left: max(var(--page-pad), calc(100% - min(80%, 520px) - 9%));
   top: 34%;
   z-index: 2;
   width: clamp(84px, 5vw + 62px, 168px);

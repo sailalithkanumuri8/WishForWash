@@ -27,23 +27,43 @@ function initFlips() {
       if (focus) (flipped ? backBtn : openBtn).focus({ preventScroll: true });
     }
 
+    // Hover flips on mouse devices (after a short intent delay) and flips back
+    // when the pointer leaves, unless the card was flipped deliberately.
+    let pinned = false;
+    let hoverTimer = 0;
+    let hoverFlippedAt = 0;
+
     setFlipped(false);
-    openBtn.addEventListener('click', () => setFlipped(true, { focus: true }));
-    backBtn.addEventListener('click', () => setFlipped(false, { focus: true }));
+    openBtn.addEventListener('click', () => {
+      window.clearTimeout(hoverTimer);
+      pinned = true;
+      setFlipped(true, { focus: true });
+    });
+    backBtn.addEventListener('click', () => {
+      // A click that lands mid-flip right after a hover flip was aimed at the front.
+      if (performance.now() - hoverFlippedAt < 700) return;
+      pinned = false;
+      setFlipped(false, { focus: true });
+    });
     card.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape' && card.classList.contains('is-flipped')) setFlipped(false, { focus: true });
+      if (event.key === 'Escape' && card.classList.contains('is-flipped')) {
+        pinned = false;
+        setFlipped(false, { focus: true });
+      }
     });
 
-    // Hover flips on mouse devices; it flips back when the pointer leaves
-    // unless the card was flipped deliberately with a click.
-    let pinned = false;
-    openBtn.addEventListener('click', () => (pinned = true));
-    backBtn.addEventListener('click', () => (pinned = false));
     card.addEventListener('pointerenter', (event) => {
-      if (event.pointerType === 'mouse' && hasFinePointer() && motionEnabled()) setFlipped(true);
+      if (event.pointerType !== 'mouse' || !hasFinePointer() || !motionEnabled()) return;
+      hoverTimer = window.setTimeout(() => {
+        if (card.classList.contains('is-flipped')) return;
+        hoverFlippedAt = performance.now();
+        setFlipped(true);
+      }, 160);
     });
     card.addEventListener('pointerleave', (event) => {
-      if (event.pointerType === 'mouse' && !pinned && card.contains(document.activeElement) === false) setFlipped(false);
+      if (event.pointerType !== 'mouse') return;
+      window.clearTimeout(hoverTimer);
+      if (!pinned && !card.contains(document.activeElement)) setFlipped(false);
     });
   });
 }
