@@ -1125,6 +1125,8 @@ sup:has(> .cite) {
 .hero > .hero__inner {
   position: static;
   display: grid;
+  /* minmax(0, 1fr): the track never grows to fit text measured in a fallback font */
+  grid-template-columns: minmax(0, 1fr);
   grid-template-areas:
     'copy'
     'art';
@@ -1136,12 +1138,16 @@ sup:has(> .cite) {
   position: relative;
   z-index: 3;
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: clamp(1.1rem, 0.8rem + 1vw, 1.6rem);
   justify-items: start;
   min-width: 0;
 }
 
 .wordmark {
+  /* Full-width box: its size never depends on which font has loaded yet. */
+  justify-self: stretch;
+  height: 0.92em;
   margin: 0;
   font-family: var(--font-wordmark);
   /* 96px desktop / 48px mobile (PRD), never wider than the column */
@@ -1159,7 +1165,7 @@ sup:has(> .cite) {
 }
 
 .hero__sub {
-  max-width: 33ch;
+  max-width: 28rem;
   font-size: var(--fs-lede);
   font-weight: 700;
   line-height: 1.45;

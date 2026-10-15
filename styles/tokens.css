@@ -35,6 +35,48 @@
   font-display: swap;
 }
 
+/* Arial sized to Montserrat's metrics at each weight, so text barely moves when
+   the web font swaps in (measured with fontTools from the font files). */
+@font-face {
+  font-family: 'Montserrat Fallback';
+  src: local('Arial'), local('ArialMT'), local('Helvetica Neue'), local('Helvetica');
+  font-weight: 100 450;
+  size-adjust: 110.2%;
+  ascent-override: 87.8%;
+  descent-override: 22.8%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: 'Montserrat Fallback';
+  src: local('Arial'), local('ArialMT'), local('Helvetica Neue'), local('Helvetica');
+  font-weight: 451 550;
+  size-adjust: 111.9%;
+  ascent-override: 86.5%;
+  descent-override: 22.4%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: 'Montserrat Fallback';
+  src: local('Arial Bold'), local('Arial-BoldMT'), local('Helvetica Neue Bold'), local('Helvetica Bold');
+  font-weight: 551 650;
+  size-adjust: 106.9%;
+  ascent-override: 90.5%;
+  descent-override: 23.5%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: 'Montserrat Fallback';
+  src: local('Arial Bold'), local('Arial-BoldMT'), local('Helvetica Neue Bold'), local('Helvetica Bold');
+  font-weight: 651 900;
+  size-adjust: 108.9%;
+  ascent-override: 88.9%;
+  descent-override: 23.1%;
+  line-gap-override: 0%;
+}
+
 :root {
   /* ---- Color (poster palette) ---- */
   --wash-blue: #5087c4; /* page background, default section */
@@ -61,7 +103,7 @@
   /* ---- Type ---- */
   --font-display: 'Pixelify Sans', 'Silkscreen', ui-monospace, monospace;
   --font-wordmark: 'Wish Wordmark', var(--font-display);
-  --font-body: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  --font-body: 'Montserrat', 'Montserrat Fallback', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
 
   /* Fluid sizes: mobile (375px) -> desktop (1440px) values from the PRD */
   --fs-hero: clamp(3rem, 1.944rem + 4.507vw, 6rem); /* 48 -> 96 */
