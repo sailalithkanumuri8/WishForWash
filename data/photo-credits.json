@@ -1,0 +1,110 @@
+[
+  {
+    "id": "midtown-atlanta",
+    "file": "assets/img/places/midtown-atlanta.webp",
+    "place": "Midtown Atlanta skyline, seen from the Georgia Tech campus",
+    "alt": "Midtown Atlanta's high-rise towers rising above the tree canopy and brick buildings of the Georgia Tech campus under an overcast sky.",
+    "title": "Panorama of the midtown Atlanta skyline from the rooftop garden of the Clough Undergraduate Learning Commons at Georgia Tech, October 2015",
+    "author": "Marc Merlin",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Panorama_of_the_midtown_Atlanta_skyline_from_the_rooftop_garden_of_the_Clough_Undergraduate_Learning_Commons_at_Georgia_Tech,_October_2015.jpg",
+    "modifications": "Cropped, resized and tinted with a blue duotone"
+  },
+  {
+    "id": "proctor-creek",
+    "file": "assets/img/places/proctor-creek.webp",
+    "place": "Proctor Creek, Rockdale neighborhood, Westside Atlanta",
+    "alt": "Proctor Creek winding around a wide gravel bar between grassy banks and bare, early-spring trees in Atlanta's Rockdale neighborhood.",
+    "title": "Proctor Creek, Rockdale GA",
+    "author": "John Phelan",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Proctor_Creek,_Rockdale_GA.jpg",
+    "modifications": "Cropped, resized and tinted with a blue duotone"
+  },
+  {
+    "id": "lake-lanier",
+    "file": "assets/img/places/lake-lanier.webp",
+    "place": "Buford Dam and Lake Sidney Lanier (Lake Lanier)",
+    "alt": "Aerial view of Buford Dam, a long grass-covered earthen dam with its powerhouse, holding back the island-dotted water of Lake Lanier, with the Chattahoochee River flowing out below.",
+    "title": "USACE Buford Dam Georgia",
+    "author": "U.S. Army Corps of Engineers, photographer not specified or unknown",
+    "license": "Public domain",
+    "licenseUrl": "https://commons.wikimedia.org/wiki/Template:PD-USGov-Military-Army-USACE",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:USACE_Buford_Dam_Georgia.jpg",
+    "modifications": "Cropped, resized and tinted with a blue duotone"
+  },
+  {
+    "id": "albany-flint",
+    "file": "assets/img/places/albany-flint.webp",
+    "place": "Flint River at Albany, Dougherty County",
+    "alt": "The wide, fast-flowing Flint River in Albany passing under a steel truss railroad bridge, with a cypress tree on the near bank and dense trees on the far shore.",
+    "title": "Railroad bridge, Flint River, Albany",
+    "author": "Michael Rivera",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Railroad_bridge,_Flint_River,_Albany.jpg",
+    "modifications": "Cropped, resized and tinted with a blue duotone"
+  },
+  {
+    "id": "coast",
+    "file": "assets/img/places/coast.webp",
+    "place": "Salt marsh on Little St. Simons Island, Glynn County, near Brunswick",
+    "alt": "Salt-marsh grass lining a tidal creek on Little St. Simons Island, stretching flat to the horizon under heavy clouds.",
+    "title": "Salt marshes at Little St. Simon's Island, Georgia, US",
+    "author": "Trish Hartmann",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Salt_marshes_at_Little_St._Simon%27s_Island,_Georgia,_US.jpg",
+    "modifications": "Cropped, resized and tinted with a blue duotone"
+  },
+  {
+    "id": "middle-georgia",
+    "file": "assets/img/places/middle-georgia.webp",
+    "place": "Farmland on Felton Road, Houston County, Middle Georgia",
+    "alt": "A barn, two sheds and parked pickup trucks at the far edge of a wide grassy field, seen past a weathered wooden fence, with a line of trees under a cloudy sky.",
+    "title": "Barn, Felton Rd., Houston County",
+    "author": "Michael Rivera",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Barn,_Felton_Rd.,_Houston_County.jpg",
+    "modifications": "Cropped, resized and tinted with a blue duotone"
+  },
+  {
+    "id": "kendeda",
+    "file": "assets/img/campus/kendeda.webp",
+    "place": "Kendeda Building for Innovative Sustainable Design, Georgia Tech",
+    "alt": "The Kendeda Building at Georgia Tech, a two-story wood-and-glass building under a broad overhanging canopy of solar panels, seen from the street on a clear day.",
+    "title": "Kendeda Building 1",
+    "author": "JJonahJackalope",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kendeda_Building_1.jpg",
+    "modifications": "Cropped, resized and tinted with a blue duotone"
+  },
+  {
+    "id": "stamps-field",
+    "file": "assets/img/campus/stamps-field.webp",
+    "place": "Burger Bowl recreation field, Georgia Tech",
+    "alt": "Burger Bowl, an open grassy recreation field on the Georgia Tech campus, ringed by trees, with a footpath crossing it and campus buildings beyond.",
+    "title": "Burgerbowl",
+    "author": "Kyle Koza (Kjkoza at English Wikipedia)",
+    "license": "Public domain",
+    "licenseUrl": "https://commons.wikimedia.org/wiki/Template:PD-user-en",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Burgerbowl.jpg",
+    "modifications": "Cropped, resized and tinted with a blue duotone"
+  },
+  {
+    "id": "cisterns",
+    "file": "assets/img/campus/cisterns.webp",
+    "place": "Clough Undergraduate Learning Commons and Tech Green, Georgia Tech",
+    "alt": "The Clough Undergraduate Learning Commons, a long building with trees growing on its roof terrace, seen across the open lawn of Tech Green, with the Bank of America Plaza tower in the distance.",
+    "title": "CULC",
+    "author": "JJonahJackalope",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:CULC.jpg",
+    "modifications": "Cropped, resized and tinted with a blue duotone"
+  }
+]
