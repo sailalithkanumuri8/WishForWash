@@ -147,6 +147,17 @@ function playIntro(delay = 0) {
 function runLoader() {
   const loader = qs('#loader');
   const visible = loader && getComputedStyle(loader).display !== 'none';
+  // On a slow connection the CSS failsafe may already have faded the loader out
+  // (after 3s) and shown the hero; don't bring the loader back or replay the intro.
+  const failsafeRan =
+    visible &&
+    (getComputedStyle(loader).visibility === 'hidden' ||
+      (loader.getAnimations?.() || []).some((a) => a.playState === 'finished' || a.currentTime >= 3000));
+  if (failsafeRan) {
+    loader.classList.add('is-done');
+    markVisited();
+    return;
+  }
   if (!visible) {
     markVisited();
     playIntro(0.05);
