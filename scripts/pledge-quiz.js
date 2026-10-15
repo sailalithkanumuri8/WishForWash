@@ -125,10 +125,10 @@ const RESULT_TEMPLATE = `
           <ul class="wish-card__list" data-wish-list></ul>
           <p class="wish-card__sign">Signed, <span data-wish-name></span></p>
         </div>
-        <figcaption class="wish-card__foot">
+        <p class="wish-card__foot">
           <span data-wish-date></span>
           <span data-wish-url></span>
-        </figcaption>
+        </p>
       </div>
       <svg class="wish-card__waves" viewBox="0 0 400 34" preserveAspectRatio="none" aria-hidden="true" focusable="false">
         <path d="M0 12C50 2 100 2 150 12s100 10 150 0 75-10 100-6V34H0Z" fill="#55b6da" />
@@ -339,6 +339,7 @@ async function downloadCard(cardEl, statusEl, button) {
   button.disabled = true;
   statusEl.textContent = 'Making your image…';
   let holder = null;
+  let probeFix = null;
   try {
     const { default: html2canvas } = await import('html2canvas');
     if (document.fonts?.ready) await document.fonts.ready;
@@ -353,13 +354,37 @@ async function downloadCard(cardEl, statusEl, button) {
     holder.appendChild(copy);
     document.body.appendChild(holder);
 
+    // html2canvas finds each font's baseline with a 1x1 <img> that must sit
+    // inline on the text line. Our reset makes images display:block, which
+    // pushes the probe down a line and draws all text too low. Undo that for
+    // the probe only, while the export runs.
+    probeFix = document.createElement('style');
+    probeFix.textContent = 'img[src^="data:image/gif;base64,R0lGODlhAQAB"]{display:inline!important}';
+    document.head.appendChild(probeFix);
+
     const canvas = await html2canvas(copy, {
       scale: 2,
       backgroundColor: null,
       logging: false,
-      onclone: (doc) => {
+      // Clone only the card, not the whole page (skips the bubble canvases too).
+      ignoreElements: (el) => el.parentElement === document.body && el !== holder,
+      onclone: async (doc) => {
         const clone = doc.querySelector('.wish-export');
-        if (clone) clone.style.left = '0px';
+        if (!clone) return;
+        clone.style.left = '0px';
+        // html2canvas lays out and measures text inside its cloned document.
+        // Load every web font the card uses there first, or the text is
+        // measured with fallback fonts and drawn out of place.
+        if (doc.fonts) {
+          const view = doc.defaultView;
+          const loads = Array.from(clone.querySelectorAll('*'), (el) => {
+            const style = view.getComputedStyle(el);
+            const text = el.textContent.trim() || 'Wish';
+            return doc.fonts.load(`${style.fontStyle} ${style.fontWeight} ${style.fontSize} ${style.fontFamily}`, text);
+          });
+          await Promise.allSettled(loads);
+          await doc.fonts.ready;
+        }
       },
     });
     const blob = await new Promise((resolve) => canvas.toBlob(resolve, 'image/png'));
@@ -379,6 +404,7 @@ async function downloadCard(cardEl, statusEl, button) {
     statusEl.textContent = 'Sorry, that download did not work. A screenshot of your card works too.';
   } finally {
     holder?.remove();
+    probeFix?.remove();
     button.disabled = false;
   }
 }
@@ -545,7 +571,7 @@ function initQuiz(app, share) {
     feedback.classList.toggle('is-right', correct);
     feedback.innerHTML = `
       <p class="quiz__feedback-title">${icon(correct ? 'circle-check' : 'circle-x')}<span>${
-        correct ? 'Correct!' : `Not quite. It's ${escapeHtml(q.options[q.answer])}.`
+        correct ? 'Correct!' : `Not quite. Correct answer: ${escapeHtml(q.options[q.answer])}.`
       }</span></p>
       <p>${escapeHtml(q.explain)}${citations(q.cite)}</p>
       <p class="quiz__from">From: <a href="${escapeHtml(q.section.href)}">${escapeHtml(q.section.label)}</a></p>`;
@@ -647,7 +673,8 @@ function initQuiz(app, share) {
    -------------------------------------------------------------------------- */
 
 const JOIN_LINKS = {
-  apply: 'https://ewbgt.org/',
+  // EWB-GT's link page carries the current application (opens each fall and spring).
+  apply: 'https://linktr.ee/ewb.gt',
   instagram: 'https://www.instagram.com/ewb.usa.gt/',
   engage: 'https://gatech.campuslabs.com/engage/organization/engineers-without-borders',
 };
@@ -707,7 +734,7 @@ function initJoin(app) {
       <h4 class="join__done-title" tabindex="-1" data-join-title></h4>
       <p data-join-lead></p>
       <ol class="join__steps">
-        <li><strong>Apply to EWB-GT</strong> when applications open each fall and spring, and rank Wish for Wash as your project: <a href="${JOIN_LINKS.apply}" target="_blank" rel="noopener">ewbgt.org</a>.</li>
+        <li><strong>Apply to EWB-GT</strong> when applications open each fall and spring, and rank Wish for Wash as your project: <a href="${JOIN_LINKS.apply}" target="_blank" rel="noopener">find the EWB-GT application</a>.</li>
         <li><strong>Follow <a href="${JOIN_LINKS.instagram}" target="_blank" rel="noopener">@ewb.usa.gt</a></strong> on Instagram for application dates and events.</li>
         <li><strong>Find EWB-GT on <a href="${JOIN_LINKS.engage}" target="_blank" rel="noopener">GT Engage</a></strong>, and request to join there once you're accepted.</li>
       </ol>

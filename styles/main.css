@@ -1029,14 +1029,16 @@ sup:has(> .cite) {
 .rung__time {
   display: flex;
   align-items: baseline;
-  gap: 0.55rem;
-  font-family: var(--font-display);
-  font-weight: 700;
+  gap: 0.5rem;
   line-height: 1;
 }
 
+/* Numbers use the stats face (Montserrat 800) so "5" never reads as "S". */
 .rung__amount {
-  font-size: clamp(3rem, 2.5rem + 1.6vw, 4rem);
+  font-family: var(--font-body);
+  font-size: clamp(2.75rem, 2.3rem + 1.4vw, 3.5rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
 }
 
 .rung__unit {
@@ -1084,6 +1086,28 @@ sup:has(> .cite) {
 .rung__link .icon {
   width: 1.1em;
   height: 1.1em;
+}
+
+.rung__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: auto;
+}
+
+.rung__links .rung__link {
+  margin-top: 0;
+}
+
+.rung__link--outline {
+  border: 2px solid var(--wash-navy);
+  background: transparent;
+  color: var(--wash-navy);
+}
+
+.rung__link--outline:hover {
+  box-shadow: none;
+  background: rgb(14 42 79 / 0.08);
 }
 
 @media (min-width: 768px) {
@@ -1568,12 +1592,11 @@ sup:has(> .cite) {
 
 .wish-card__waves {
   display: block;
-  width: calc(100% + 13cqi);
+  width: 100%;
   height: auto;
-  margin: 0 -6.5cqi;
 }
 
-/* Fixed-size copy used only for the PNG download */
+/* Fixed-size copy used only for the PNG download (540 x 675 at 2x = 1080 x 1350) */
 .wish-export {
   position: fixed;
   left: -10000px;
@@ -1583,18 +1606,46 @@ sup:has(> .cite) {
 }
 
 .wish-export .wish-card {
+  display: flex;
+  flex-direction: column;
   width: 540px;
+  min-height: 675px;
   box-shadow: none;
   border-radius: 32px;
 }
 
+/* Fixed sizes for the export so up to five promises fit in 540 x 675 */
 .wish-export .wish-card__inner {
-  min-height: 675px;
+  flex: 1;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 34px 34px 0;
+}
+
+.wish-export .wish-card__title {
+  font-size: 72px;
 }
 
 .wish-export .wish-card__box {
-  flex: 1;
-  align-content: start;
+  gap: 14px;
+  padding: 24px 26px;
+}
+
+.wish-export .wish-card__lead,
+.wish-export .wish-card__sign {
+  font-size: 18px;
+}
+
+.wish-export .wish-card__list {
+  gap: 9px;
+  font-size: 18px;
+}
+
+.wish-export .wish-card__foot {
+  flex-wrap: nowrap;
+  margin: 0 -34px;
+  padding: 16px 34px;
+  font-size: 14px;
 }
 
 /* ---- Pledge reward: the bottle mock-up ---- */
@@ -1678,6 +1729,13 @@ sup:has(> .cite) {
 
 .quiz__app {
   margin-top: 1.5rem;
+}
+
+.quiz__fallback {
+  padding: 0.85rem 1rem;
+  border-radius: 14px;
+  background: var(--wash-white);
+  font-weight: 700;
 }
 
 .quiz__progress {
@@ -1967,10 +2025,11 @@ sup:has(> .cite) {
 }
 
 .quiz__score-num {
-  font-family: var(--font-display);
-  font-size: clamp(3.5rem, 3rem + 2vw, 4.75rem);
-  font-weight: 700;
+  font-family: var(--font-body);
+  font-size: clamp(3rem, 2.47rem + 2.25vw, 4.5rem);
+  font-weight: 800;
   line-height: 0.9;
+  letter-spacing: -0.02em;
 }
 
 .quiz__score-of {
@@ -2067,6 +2126,12 @@ sup:has(> .cite) {
 
 .join__social .btn {
   white-space: normal;
+}
+
+@media (max-width: 479px) {
+  .join__social .btn {
+    width: 100%;
+  }
 }
 
 .join__panel {
@@ -2173,7 +2238,7 @@ sup:has(> .cite) {
 }
 
 .join__done .btn {
-  margin-top: 0.25rem;
+  margin-top: 1.25rem;
 }
 
 /* ===== END TAKE ACTION SECTION ===== */

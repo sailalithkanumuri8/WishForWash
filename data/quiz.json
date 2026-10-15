@@ -43,16 +43,16 @@
         "Desalinating seawater from the coast"
       ],
       "answer": 1,
-      "explain": "A $49.8 million grant funds about 242 deep wells, plus stream monitoring.",
+      "explain": "A $49.8 million grant funds about 242 deep wells, plus aquifer and stream monitoring.",
       "cite": ["asu-2022"],
       "section": { "label": "Solutions", "href": "#solutions" }
     },
     {
       "id": "q5",
-      "prompt": "How much should the 80-acre EcoCommons cut campus stormwater runoff?",
+      "prompt": "Georgia Tech's EcoCommons is designed to cut stormwater runoff by how much?",
       "options": ["10%", "25%", "50%", "90%"],
       "answer": 2,
-      "explain": "The EcoCommons is designed to cut campus stormwater runoff by 50%.",
+      "explain": "Its 80 acres of planned green space are designed to cut runoff by 50%.",
       "cite": ["gt-water"],
       "section": { "label": "Georgia Tech", "href": "#gt" }
     }
@@ -76,7 +76,7 @@
       "summary": "You know the story well enough to tell it. Give it an afternoon, then share this site.",
       "next": {
         "label": "Volunteer with Water Watch",
-        "href": "https://chattahoochee.org/our-work/water-quality-monitoring/",
+        "href": "https://chattahoochee.org/volunteer/",
         "external": true
       }
     },
