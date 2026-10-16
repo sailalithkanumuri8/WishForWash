@@ -65,25 +65,22 @@ tools/                build helpers, word counter, link checker
   listed separately so you can open them in a browser. A DNS error (`ENOTFOUND`) on a link that worked
   before is usually a local network hiccup; re-run the check.
 
-## Team
+## Team decisions
 
-The PRD asks the footer to name the team. Add member names to the second `about__team` paragraph in
-`index.html` ("Made by LMC 3403 Group 2 at Georgia Tech, Fall 2026."), for example
-`Made by LMC 3403 Group 2 at Georgia Tech, Fall 2026: Name, Name, Name, Name and Name.`
-The page has about 50 words of room under the 2,000-word cap; run `npm run check:words` after.
+These PRD items were settled by the team, so the site handles them on purpose:
 
-## Swapping in our own video
-
-The Watch section currently embeds Georgia Tech's "The Kendeda Building: Water Petal" (the PRD's
-fallback). To use our own video, change `data-video-id` and `data-video-title` on the
-`<figure class="video">` in `index.html`, replace `assets/img/video-poster.webp`, update the caption
-and paste our transcript into the `<details class="transcript">` block.
-
-## Join form responses
-
-The class version has no backend: the join form validates the GT email and then points people to
-GT Engage and the EWB-GT Instagram. To collect responses, create a Formspree form and put its
-endpoint in the form's `data-endpoint` attribute in `index.html`.
+- **Team names:** the footer credits the course, group and semester ("Made by LMC 3403 Group 2 at
+  Georgia Tech, Fall 2026.") and, by the team's choice, does not list member names on the public site.
+- **Video:** the Watch section uses Georgia Tech's "The Kendeda Building: Water Petal", the campus
+  water film the PRD names as the alternative to a group-made video. The team chose it as the final
+  video. (To swap videos, change `data-video-id` and `data-video-title` on `<figure class="video">`,
+  the poster image, the caption and the transcript.)
+- **Join form:** no backend. The form checks for a GT email, then points people to GT Engage and the
+  EWB-GT Instagram, and says plainly that the class version doesn't save sign-ups. To collect
+  responses later, put a Formspree endpoint in the form's `data-endpoint` attribute; the sending code
+  is already there.
+- **Refill map:** Georgia Tech publishes no refill-station map, so the pledge's refill option links a
+  Google Maps search for refill stations near campus.
 
 ## Deploying
 
