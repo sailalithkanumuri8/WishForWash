@@ -81,6 +81,12 @@ These PRD items were settled by the team, so the site handles them on purpose:
   is already there.
 - **Refill map:** Georgia Tech publishes no refill-station map, so the pledge's refill option links a
   Google Maps search for refill stations near campus.
+- **Map story length:** each hotspot panel (name, headline, number, story, what's being done, why it
+  matters, action) runs 71 to 76 words, the PRD's "about 70 words" per hotspot. A 70-word story field
+  on top of the rest would add about 270 words and break the 2,000-word cap.
+- **Browser testing:** Chrome (desktop and Android-size emulation), the Safari engine (WebKit, desktop
+  and iPhone 14 emulation) and Firefox, plus the live site after each deploy. Edge runs Chrome's
+  engine. The team chose to skip a separate run in the Safari app.
 
 ## Deploying
 
