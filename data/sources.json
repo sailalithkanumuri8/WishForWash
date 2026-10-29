@@ -40,15 +40,6 @@
     "url": "https://ourworldindata.org/clean-water-sanitation"
   },
   {
-    "id": "atl-water-2025",
-    "type": "Government",
-    "title": "2025 Water Quality Report",
-    "publisher": "City of Atlanta Department of Watershed Management",
-    "date": "2025",
-    "note": "Atlanta's \"sole local surface water source is the Chattahoochee River.\"",
-    "url": "https://atlantawatershed.org/water-quality-reports/"
-  },
-  {
     "id": "wwdr-2023",
     "type": "Intergovernmental",
     "title": "Imminent risk of a global water crisis, warns the UN World Water Development Report 2023",
@@ -191,13 +182,6 @@
     "publisher": "Georgia Tech News Center",
     "date": "Oct. 24, 2022",
     "url": "https://news.gatech.edu/news/2022/10/24/sustainability-next-task-force-delivers-vision-and-launches-implementation"
-  },
-  {
-    "id": "gt-strategic-plan",
-    "type": "University",
-    "title": "Strategic Focus Areas: Amplify Impact, Connect Globally, Lead by Example",
-    "publisher": "Georgia Tech Strategic Plan 2020-2030",
-    "url": "https://strategicplan.gatech.edu/focus"
   },
   {
     "id": "cee-nepal-2025",

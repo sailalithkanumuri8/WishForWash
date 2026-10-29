@@ -121,7 +121,11 @@ Oct. 23. Add a row for each piece of peer or instructor feedback and the commit 
 | Oct. 15 | Pre-draft copy review: unexplained acronyms (SDG, EWB-GT, JMP, GAWP), claims stronger than sources | Acronyms explained or removed; claims matched to sources | `86a3a0f`, `8b67928` |
 | Oct. 15 | Pre-draft QA pass: phone menu shrank after scrolling; widening or rotating jumped to the top; focus hidden in the campus strip; landscape phones got a cramped nav and map panel; late script brought the loader back | Fixed each | `08b66f4`, `11c8e5a`, `dbce803`, `6319506`, `19f378b`, `8aeae53`, `626aa9c` |
 | Oct. 15 | Pre-draft QA pass: no-JS forms put the email in the URL; transcript not keyboard-scrollable; jump links landed under the nav; small layout and Sources typos | Fixed each | `9bddb5f`, `d327275`, `cc2d354`, `de663e1`, `7e33bfc`, `5c11b52`, `c831202` |
-|  | *First-draft feedback goes here* |  |  |
+| Oct. 26 | Draft feedback: cut the parking-lot slider, the "How we line up with GT's plan" badges and the "30 students" story; drop the SDG 6.1 to 6.4 chips and the green ring on flipped solution cards; move "What we do" up after "What is WASH?"; map: remove the side filters, add a tagline explaining it and tabs to open each place without using the map | All done. The map's whole side column went (filters, tracker, Rivers and List buttons); the place tabs now mark explored places and World view sits beside them. The Georgia Tech section got an exit cue to Take Action in place of the story's "Join them" button | *not committed yet* |
+| Oct. 29 | Team follow-up: remove the "What we do" section | Removed the section (Research, Design & Innovation, Education & Advocacy cards) | *not committed yet* |
+| Oct. 29 | Team follow-up: put the map instructions and place tabs to the right of the map, instructions above the tabs | On desktop (1200px and wider) they form a column right of the map, and a story's panel opens over that column; narrower screens keep them above the map | *not committed yet* |
+| Oct. 29 | Team follow-up: remove the map intro ("Every glass you fill on campus...") and shorten the map instructions | Intro removed, along with its now-unused Atlanta water report source; instructions cut to "Six drops, six Georgia water stories. Pick a place or click a drop to explore." | *not committed yet* |
+| Oct. 29 | Team follow-up: the map story panel shows a scroll bar | Bar hidden; the panel still scrolls by wheel, trackpad, touch and keyboard | *not committed yet* |
 
 ## Credits
 

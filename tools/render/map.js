@@ -1,7 +1,7 @@
 // Static markup for the Explore Georgia map, built from data/regions.json.
 // Everything here is readable without JavaScript: the inline SVG map (with
 // numbered pins) and the six stories as plain cards. scripts/map.js turns it
-// into the interactive map (drops, tooltip, dialog, filters, zoom, world view).
+// into the interactive map (place tabs, drops, tooltip, dialog, zoom, world view).
 
 const CITE = /\[\[([\w-]+)\]\]/g;
 const ITALIC = /\*([^*]+)\*/g;
@@ -20,12 +20,8 @@ export function statText(stat) {
 
 const DROP_PATH = 'M20 2C15.5 12.5 4 20.5 4 32.5a16 16 0 0 0 32 0C36 20.5 24.5 12.5 20 2Z';
 
-const FILTERS = [
-  { id: 'all', label: 'All', icon: 'map' },
-  { id: 'supply', label: 'Water supply', icon: 'droplets' },
-  { id: 'quality', label: 'Water quality', icon: 'test-tube' },
-  { id: 'sanitation', label: 'Sanitation', icon: 'toilet' },
-];
+// The instructions that sit above the place tabs (edit the wording here).
+const TAGLINE = '<strong>Six drops, six Georgia water stories.</strong> Pick a place or click a drop to explore.';
 
 const icon = (name, cls = '') => `<svg class="icon${cls ? ` ${cls}` : ''}" aria-hidden="true"><use href="#i-${name}"></use></svg>`;
 
@@ -41,10 +37,13 @@ export default function renderMap({ readJSON, readText, escapeHtml }) {
     return `<a class="map-source" href="${escapeHtml(src.url)}" target="_blank" rel="noopener" aria-label="${escapeHtml(label)}">Source${icon('external-link')}</a>`;
   };
 
-  const filters = FILTERS.map(
-    (f) =>
-      `<button class="chip map-chip" type="button" data-filter="${f.id}" aria-pressed="${f.id === 'all'}">${icon(f.icon)}${f.label}</button>`,
-  ).join('');
+  // One tab per hotspot, so every story opens without touching the map itself.
+  const tabs = regions
+    .map(
+      (r) =>
+        `<li><button class="map-tab" type="button" data-map-tab="${r.id}" aria-haspopup="dialog">${icon(r.icon)}<span class="map-tab__name">${escapeHtml(r.shortName)}</span><span class="visually-hidden">: ${escapeHtml(r.issue.toLowerCase())}</span><span class="visually-hidden" data-tab-state></span>${icon('check', 'map-tab__check')}</button></li>`,
+    )
+    .join('');
 
   const pins = regions
     .map((r, i) => {
@@ -52,7 +51,7 @@ export default function renderMap({ readJSON, readText, escapeHtml }) {
       const label = `${r.name}, ${r.issue.toLowerCase()} issue, open details`;
       // .pin sits on the true location; .pin__anchor carries the declutter offset;
       // the button falls in (GSAP) and its body grows on hover (CSS).
-      return `<li class="pin" data-id="${r.id}" data-filters="${r.filters.join(' ')}" style="--x:${r.pin.x}%;--y:${r.pin.y}%;--i:${i}"${off}>
+      return `<li class="pin" data-id="${r.id}" style="--x:${r.pin.x}%;--y:${r.pin.y}%;--i:${i}"${off}>
 <span class="pin__dot" aria-hidden="true"></span><span class="pin__leader" aria-hidden="true"></span>
 <span class="pin__anchor"><span class="pin__ripple" aria-hidden="true"></span>
 <button class="drop" type="button" data-hotspot="${r.id}" aria-haspopup="dialog" aria-label="${escapeHtml(label)}"><span class="drop__body" aria-hidden="true">
@@ -63,7 +62,7 @@ export default function renderMap({ readJSON, readText, escapeHtml }) {
 
   const cards = regions
     .map(
-      (r) => `<article class="map-story card card--ice on-light" id="story-${r.id}" data-id="${r.id}" data-filters="${r.filters.join(' ')}">
+      (r) => `<article class="map-story card card--ice on-light" id="story-${r.id}" data-id="${r.id}">
 <p class="label map-story__issue">${icon(r.icon)}${escapeHtml(r.issue)}</p>
 <h3 class="map-story__name">${escapeHtml(r.name)}</h3>
 <p class="map-story__headline">${escapeHtml(r.headline)}</p>
@@ -76,21 +75,12 @@ export default function renderMap({ readJSON, readText, escapeHtml }) {
     )
     .join('\n');
 
-  const trackerDrops = regions.map(() => '<li></li>').join('');
-
   return `<div class="map-app" id="map-app" data-map-app>
 <div class="map-layout">
-<div class="map-side">
-<div class="map-progress" data-progress>
-<ol class="map-progress__drops" aria-hidden="true">${trackerDrops}</ol>
-<p class="map-progress__text" data-progress-text><span data-progress-count>0</span> of ${regions.length} explored</p>
-</div>
-<div class="map-filters" role="group" aria-label="Filter hotspots by issue">${filters}</div>
-<div class="map-tools">
-<button class="map-tool" type="button" data-toggle="rivers" aria-pressed="true">${icon('waves')}Rivers</button>
-<button class="map-tool" type="button" data-toggle="list" aria-pressed="false" aria-controls="map-list">${icon('list')}List<span class="map-tool__extra"> view</span></button>
+<div class="map-bar" data-map-bar>
+<p class="map-tagline" data-reveal>${icon('map-pin')}<span>${TAGLINE}</span></p>
+<ul class="map-tabs" role="list" aria-label="Places on the map">${tabs}</ul>
 <button class="map-tool" type="button" data-world-open aria-label="World view: zoom out to the world">${icon('globe')}World<span class="map-tool__extra"> view</span></button>
-</div>
 </div>
 <div class="map-stage" data-map-stage>
 <div class="map-canvas">${svg}</div>

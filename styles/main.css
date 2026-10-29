@@ -1662,8 +1662,7 @@ sup:has(> .cite) {
 }
 
 .wash__title,
-.causes__title,
-.plan__title {
+.causes__title {
   color: var(--wash-ice);
 }
 
@@ -1790,34 +1789,13 @@ sup:has(> .cite) {
   margin-top: var(--space-3);
 }
 
-.sdg__targets {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2);
-  margin: var(--space-5) 0;
-  padding: 0;
-  list-style: none;
-}
-
-.chip--target {
-  background: var(--wash-deep);
-  color: var(--wash-white);
-  text-transform: none;
-  letter-spacing: 0.01em;
-  font-size: 0.875rem;
-}
-
-.chip--target strong {
-  font-weight: 800;
-  color: var(--wash-ice);
-}
-
 /* The goal line spells SDG out right below, so the title's abbr needs no dotted underline. */
 .sdg__title abbr {
   text-decoration: none;
 }
 
 .sdg__ripple-intro {
+  margin-top: var(--space-5);
   font-weight: 700;
 }
 
@@ -2331,10 +2309,6 @@ sup:has(> .cite) {
   z-index: 2;
 }
 
-.flips.is-enhanced .flip.is-flipped .flip__back {
-  box-shadow: inset 0 0 0 3px var(--earth-green);
-}
-
 .flips.is-enhanced .flip__btn {
   display: inline-flex;
   align-items: center;
@@ -2386,252 +2360,11 @@ sup:has(> .cite) {
   visibility: hidden;
 }
 
-/* Before/after slider with a water-drop handle (animation 25) */
-.compare {
-  margin: clamp(3.5rem, 2.5rem + 4vw, 6rem) 0 0;
-}
-
-.compare__stage {
-  --pos: 50%;
-  position: relative;
-  aspect-ratio: 16 / 9;
-  border-radius: var(--radius-card);
-  overflow: hidden;
-  box-shadow: var(--shadow-soft);
-  touch-action: pan-y;
-  user-select: none;
-  -webkit-user-select: none;
-  cursor: ew-resize;
-}
-
-.compare__img {
-  position: absolute;
-  inset: 0;
-}
-
-.compare__img svg {
-  width: 100%;
-  height: 100%;
-}
-
-.compare__img--before {
-  clip-path: inset(0 calc(100% - var(--pos)) 0 0);
-}
-
-.compare__img::after,
-.campus__media--illo::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: var(--grain);
-  mix-blend-mode: soft-light;
-  opacity: 0.55;
-  pointer-events: none;
-}
-
-/* The SVG captions shrink to a few pixels on phones; the tags label each side there. */
-@media (max-width: 599px) {
-  .compare__note {
-    display: none;
-  }
-}
-
-.compare__tag {
-  position: absolute;
-  top: clamp(0.75rem, 2vw, 1.25rem);
-  z-index: 2;
-  padding: 0.4rem 0.85rem;
-  border-radius: var(--radius-pill);
-  font-size: var(--fs-label);
-  font-weight: 700;
-  letter-spacing: var(--tracking-label);
-  text-transform: uppercase;
-  pointer-events: none;
-}
-
-.compare__tag--before {
-  left: clamp(0.75rem, 2vw, 1.25rem);
-  background: var(--wash-navy);
-  color: var(--wash-white);
-}
-
-.compare__tag--after {
-  right: clamp(0.75rem, 2vw, 1.25rem);
-  background: var(--wash-white);
-  color: var(--wash-navy);
-}
-
-.compare__stage::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: var(--pos);
-  z-index: 2;
-  width: 3px;
-  margin-left: -1.5px;
-  background: var(--wash-white);
-  box-shadow: 0 0 12px rgb(0 0 0 / 0.35);
-  pointer-events: none;
-}
-
-.compare__handle {
-  position: absolute;
-  top: 50%;
-  left: var(--pos);
-  z-index: 3;
-  width: 56px;
-  height: 70px;
-  transform: translate(-50%, -58%);
-  pointer-events: none;
-  filter: drop-shadow(0 8px 14px rgb(9 27 54 / 0.45));
-}
-
-.compare__handle svg {
-  width: 100%;
-  height: 100%;
-  overflow: visible;
-}
-
-.compare__handle svg path:first-child {
-  fill: var(--wash-foam);
-  stroke: var(--wash-navy);
-  stroke-width: 2.5;
-}
-
-.compare__arrows {
-  fill: none;
-  stroke: var(--wash-navy);
-  stroke-width: 2.5;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.compare__stage.is-dragging .compare__handle svg {
-  transform: scale(1.08);
-}
-
-/* The range input stays focusable for keyboard and screen reader users. */
-.compare__range {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 4;
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  opacity: 0;
-  cursor: ew-resize;
-  pointer-events: none;
-}
-
-.compare__stage:has(.compare__range:focus-visible) {
-  outline: 3px solid var(--wash-foam);
-  outline-offset: 4px;
-}
-
-.compare__caption {
-  max-width: var(--measure);
-  margin-top: var(--space-4);
-  padding: var(--space-4) var(--space-5);
-  border-radius: var(--radius-md);
-  background: var(--wash-deep);
-  font-size: var(--fs-small);
-}
-
-.compare__credit {
-  display: block;
-  margin-top: var(--space-1);
-  color: var(--wash-ice);
-}
-
-/* Wish for Wash pillars: the poster's "What we do" cards */
-.pillars {
-  margin-top: clamp(4rem, 3rem + 4vw, 6.5rem);
-}
-
-.pillars__brand {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.6rem;
-  margin-bottom: var(--space-3);
-  color: var(--wash-ice);
-}
-
-.pillars__drop {
-  width: 28px;
-  height: 38px;
-}
-
-.pillars__wordmark {
-  font-family: var(--font-wordmark);
-  font-size: 1.75rem;
-  line-height: 1;
-}
-
-.pillars__title {
-  margin-bottom: var(--space-6);
-  font-family: var(--font-body);
-  font-size: var(--fs-heading);
-  font-weight: 800;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  text-decoration: underline;
-  text-decoration-thickness: 3px;
-  text-underline-offset: 0.25em;
-  color: var(--wash-white);
-  text-align: center;
-}
-
-.pillars__list {
-  display: grid;
-  gap: var(--gutter);
-  margin: 0;
-  padding: 0;
-}
-
-.pillar {
-  display: grid;
-  align-content: start;
-  justify-items: center;
-  gap: var(--space-3);
-  padding: clamp(2rem, 1.5rem + 1.5vw, 2.75rem) var(--space-5);
-  text-align: center;
-  border-radius: 48px;
-}
-
-.pillar__icon {
-  width: 44px;
-  height: 44px;
-}
-
-.pillar__title {
-  font-size: 1.25rem;
-  font-weight: 800;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-}
-
 @media (min-width: 768px) {
   /* Equal rows: every card matches the tallest back face. */
   .flips {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-auto-rows: 1fr;
-  }
-}
-
-@media (min-width: 1024px) {
-  .pillars__list {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
-
-@media (min-width: 640px) and (max-width: 1023px) {
-  .pillars__list {
-    max-width: 560px;
-    margin-inline: auto;
   }
 }
 
@@ -2785,152 +2518,9 @@ sup:has(> .cite) {
   visibility: hidden;
 }
 
-/* Plan badges: Sustainability Next + three strategic themes */
-.plan {
-  margin-top: clamp(3.5rem, 2.5rem + 4vw, 6rem);
-}
-
-.badges {
-  display: grid;
-  gap: var(--gutter);
-  margin: var(--space-6) 0 0;
-  padding: 0;
-}
-
-.badge {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  grid-template-rows: auto auto;
-  align-items: center;
-  column-gap: var(--space-4);
-  height: 100%;
-  padding: var(--space-5);
-  border-radius: var(--radius-card);
-  background: var(--wash-navy);
-  border: 2px solid rgb(179 163 105 / 0.55);
-  color: var(--wash-white);
-  text-decoration: none;
-  transition: transform var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out),
-    box-shadow var(--dur-fast) var(--ease-out);
-}
-
-.badge:hover {
-  transform: translateY(-3px);
-  border-color: var(--gt-gold);
-  box-shadow: var(--glow-gold);
-}
-
-.badge__seal {
-  grid-row: 1 / span 2;
-  display: grid;
-  place-items: center;
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: var(--gt-gold);
-  color: var(--wash-navy);
-  box-shadow: 0 0 0 5px rgb(179 163 105 / 0.25);
-}
-
-.badge__seal .icon {
-  width: 26px;
-  height: 26px;
-}
-
-.badge__name {
-  font-size: 1.0625rem;
-  font-weight: 800;
-  line-height: 1.2;
-}
-
-.badge__action {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  font-size: var(--fs-small);
-  color: var(--wash-foam);
-}
-
-.badge__action::after {
-  content: '→';
-  transition: transform var(--dur-fast) var(--ease-out);
-}
-
-.badge:hover .badge__action::after {
-  transform: translateX(3px);
-}
-
-.badge--plan {
-  background: var(--gt-gold);
-  border-color: var(--gt-gold);
-  color: var(--wash-navy);
-}
-
-.badge--plan .badge__seal {
-  background: var(--wash-navy);
-  color: var(--gt-gold);
-  box-shadow: 0 0 0 5px rgb(14 42 79 / 0.2);
-}
-
-.badge--plan .badge__action {
-  color: var(--wash-navy);
-  font-weight: 600;
-}
-
-/* Student proof story card */
-.story {
-  display: grid;
-  gap: var(--space-4);
-  justify-items: start;
-  margin-top: clamp(3rem, 2rem + 3vw, 4.5rem);
-}
-
-.story__kicker {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.story__kicker .icon {
-  width: 1.4rem;
-  height: 1.4rem;
-}
-
-.story__text {
-  max-width: var(--measure);
-}
-
-.story__actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-3);
-}
-
 @media (min-width: 768px) {
-  .badges {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
   .campus__card {
     width: 380px;
-  }
-}
-
-@media (min-width: 1200px) {
-  .badges {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-
-  .badge {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto auto;
-    row-gap: var(--space-2);
-    justify-items: start;
-  }
-
-  .badge__seal {
-    grid-row: auto;
-    margin-bottom: var(--space-2);
   }
 }
 
@@ -3209,85 +2799,115 @@ sup:has(> .cite) {
   grid-template-columns: minmax(0, 1fr);
 }
 
-/* ---- Side panel: progress, filters, toggles, badge ---- */
+/* ---- Tagline and place tabs above the map ---- */
 
-.map-side {
+/* The section sits on --wash-blue, so the tagline's text lives on a navy panel. */
+.map-tagline {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--space-3) var(--space-4);
-  min-width: 0;
-}
-
-.map-progress {
-  display: inline-flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 0.75rem;
-  min-height: 44px;
-  padding: 0.5rem 1.1rem 0.5rem 0.9rem;
-  border-radius: var(--radius-pill);
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 0 var(--space-2);
+  padding: var(--space-4) var(--space-5);
+  border-radius: var(--radius-md);
   background: var(--wash-navy);
   color: var(--wash-white);
   box-shadow: var(--shadow-card);
 }
 
-.map-progress__drops {
+.map-tagline > span {
+  max-width: var(--measure);
+}
+
+.map-tagline .icon {
+  width: 1.4rem;
+  height: 1.4rem;
+  margin-top: 0.1rem;
+  color: var(--wash-foam);
+}
+
+.map-tagline strong {
+  color: var(--wash-ice);
+}
+
+/* Instructions, then the tabs, then World view (and the badge once earned). */
+.map-bar {
   display: flex;
-  gap: 5px;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  min-width: 0;
+}
+
+.map-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.map-progress__drops li {
-  width: 13px;
-  height: 17px;
-  background-color: rgb(217 236 250 / 0.28);
-  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 13 17'%3E%3Cpath d='M6.5 0C5 4 0 7 0 10.8a6.5 6.5 0 0 0 13 0C13 7 8 4 6.5 0Z'/%3E%3C/svg%3E") center / contain no-repeat;
-  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 13 17'%3E%3Cpath d='M6.5 0C5 4 0 7 0 10.8a6.5 6.5 0 0 0 13 0C13 7 8 4 6.5 0Z'/%3E%3C/svg%3E") center / contain no-repeat;
-  transition: background-color 0.4s var(--ease-out), transform 0.4s var(--ease-out);
-}
-
-.map-progress__drops li.is-filled {
-  background-color: var(--wash-foam);
-  transform: scale(1.12);
-}
-
-.is-complete .map-progress__drops li.is-filled {
-  background-color: var(--gt-gold);
-}
-
-.map-progress__text {
-  font-size: var(--fs-label);
-  font-weight: 600;
-  letter-spacing: var(--tracking-label);
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-
-.map-filters,
-.map-tools {
-  display: flex;
-  flex-wrap: wrap;
+.map-tab {
+  display: inline-flex;
+  align-items: center;
   gap: 0.5rem;
-}
-
-.map-chip {
+  min-height: 44px;
+  padding: 0.5rem 1.05rem 0.5rem 0.85rem;
+  border: 2px solid transparent;
+  border-radius: var(--radius-pill);
+  background: var(--wash-ice);
+  color: var(--wash-navy);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 1.2;
+  box-shadow: var(--shadow-card);
   cursor: pointer;
   transition:
     background-color var(--dur-fast) var(--ease-out),
     color var(--dur-fast) var(--ease-out),
-    border-color var(--dur-fast) var(--ease-out);
+    transform var(--dur-fast) var(--ease-out);
 }
 
-.map-chip:hover {
-  border-color: var(--wash-navy);
+.map-tab .icon {
+  width: 1.2rem;
+  height: 1.2rem;
 }
 
-.map-chip[aria-pressed='true'] {
-  background: var(--wash-navy);
+.map-tab:hover {
+  background: var(--wash-white);
+  transform: translateY(-1px);
+}
+
+/* The place whose story is open */
+.map-tab[aria-current] {
   border-color: var(--wash-ice);
+  background: var(--wash-navy);
   color: var(--wash-white);
+}
+
+/* Explored places get a check, so the tabs double as the progress tracker. */
+.map-tab .map-tab__check {
+  display: none;
+  width: 1.05rem;
+  height: 1.05rem;
+  padding: 2px;
+  border-radius: 50%;
+  background: var(--wash-navy);
+  color: var(--wash-ice);
+  stroke-width: 3;
+  box-sizing: content-box;
+}
+
+.map-tab.is-visited .map-tab__check {
+  display: block;
+}
+
+.map-tab[aria-current] .map-tab__check {
+  background: var(--wash-foam);
+  color: var(--wash-navy);
 }
 
 .map-tool {
@@ -3324,8 +2944,21 @@ sup:has(> .cite) {
   color: var(--wash-navy);
 }
 
-/* Phones: the three tools share one row ("List", "World"). */
+/* Phones: the six tabs sit in two even columns; "World" drops its second word. */
 @media (max-width: 479px) {
+  .map-tabs {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+  }
+
+  .map-tab {
+    justify-content: center;
+    width: 100%;
+    padding-inline: 0.6rem;
+    font-size: 0.875rem;
+  }
+
   .map-tool {
     padding-inline: 0.8rem;
   }
@@ -3336,6 +2969,8 @@ sup:has(> .cite) {
 }
 
 .map-badge {
+  width: 100%;
+  max-width: 30rem;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -3484,10 +3119,6 @@ sup:has(> .cite) {
   }
 }
 
-.is-rivers-off :is(.map-rivers, .map-shimmer, .map-rivers-minor, .map-river-label) {
-  opacity: 0;
-}
-
 .map-labels text {
   font-family: var(--font-body);
   font-weight: 600;
@@ -3562,8 +3193,8 @@ sup:has(> .cite) {
   stroke-width: 2;
 }
 
-/* Without JavaScript the controls can't work, so the list stands in for them. */
-.no-js .map-side {
+/* Without JavaScript the tabs can't open anything, so the list stands in for them. */
+.no-js :is(.map-tabs, [data-world-open]) {
   display: none;
 }
 
@@ -3605,10 +3236,6 @@ sup:has(> .cite) {
 
 .pin.is-out {
   visibility: hidden;
-}
-
-.pin.is-dim {
-  opacity: 0.3;
 }
 
 .pin__dot {
@@ -3874,11 +3501,17 @@ sup:has(> .cite) {
   max-height: 100%;
   overflow-y: auto;
   overscroll-behavior: contain;
+  scrollbar-width: none;
   padding: 1.25rem 1.5rem 1.5rem;
   border-radius: var(--radius-card);
   background: var(--wash-aqua);
   color: var(--wash-navy);
   box-shadow: 0 26px 60px -24px rgb(9 27 54 / 0.75);
+}
+
+/* It still scrolls (wheel, touch, keys); only the bar is hidden. */
+.map-panel__card::-webkit-scrollbar {
+  display: none;
 }
 
 .map-panel__card > * {
@@ -4132,13 +3765,8 @@ sup:has(> .cite) {
   counter-reset: story;
 }
 
-.no-js .map-list,
-.is-list .map-list {
+.no-js .map-list {
   display: grid;
-}
-
-.is-list .map-stage {
-  display: none;
 }
 
 .map-story {
@@ -4388,10 +4016,6 @@ sup:has(> .cite) {
     display: none;
   }
 
-  .map-side {
-    gap: var(--space-3);
-  }
-
   .map-panel {
     position: fixed;
     inset: auto 0 0;
@@ -4428,16 +4052,16 @@ sup:has(> .cite) {
   }
 }
 
-/* Tablets: the panel sits at the right edge, over as little of the map as the
-   width allows (portrait tablets: the right half; landscape: a sliver). */
-@media (min-width: 768px) and (max-width: 1199px) {
+/* Tablets and up: the panel sits at the right edge, over as little of the map
+   as the width allows (portrait tablets: the right half; wider: a sliver). */
+@media (min-width: 768px) {
   .map-stage {
     max-width: min(100%, calc(min(82vh, 900px) * 1000 / 1148));
   }
 
   /* Explicit rows so the panel can share the stage's cell (auto-placement
      would otherwise push the stage to a third row). */
-  .map-side {
+  .map-bar {
     grid-row: 1;
     grid-column: 1;
   }
@@ -4502,7 +4126,8 @@ sup:has(> .cite) {
   }
 }
 
-/* Desktop: map left, explorer column right; the panel slides in beside the map. */
+/* Desktop: map on the left; the instructions and place tabs sit in a column on
+   the right, and a story's panel opens over that column. */
 @media (min-width: 1200px) {
   .map-layout {
     grid-template-columns: minmax(0, 1fr) var(--side-w);
@@ -4510,12 +4135,36 @@ sup:has(> .cite) {
     align-items: start;
   }
 
-  .map-side {
+  .map-bar {
     grid-column: 2;
     grid-row: 1;
-    flex-direction: column;
     align-items: stretch;
-    gap: var(--space-4);
+  }
+
+  .map-tagline {
+    width: auto;
+  }
+
+  /* While a story is open its panel covers the column. */
+  .map-app.is-open .map-bar {
+    visibility: hidden;
+  }
+
+  .map-tabs {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .map-tab {
+    width: 100%;
+  }
+
+  .map-tab .map-tab__check {
+    margin-left: auto;
+  }
+
+  .map-bar .map-tool {
+    align-self: flex-start;
   }
 
   .map-stage {
@@ -4524,26 +4173,11 @@ sup:has(> .cite) {
     max-width: min(100%, calc(min(80vh, 820px) * 1000 / 1148));
   }
 
-  .map-progress {
-    justify-content: space-between;
-  }
-
   .map-panel {
     grid-column: 2;
     grid-row: 1;
-    align-self: start;
-    height: var(--stage-h);
-  }
-
-  .is-list .map-layout {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .is-list .map-side {
-    grid-column: 1;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
+    justify-self: stretch;
+    width: auto;
   }
 }
 

@@ -1,10 +1,11 @@
 // Explore Georgia: the interactive map (PRD "Interactive Georgia map spec").
 //
-// tools/render/map.js writes the static markup (inline SVG, six <button> drops
-// and the list of stories), so the section reads fine without JavaScript. This
-// module adds the behavior: tooltip + region tint, the dialog panel with prev /
-// next, the camera zoom (SVG viewBox tween), filters, the rivers and list
-// toggles, the progress tracker and "Water Explorer" badge, and the world view.
+// tools/render/map.js writes the static markup (inline SVG, six <button> drops,
+// a tab per place and the list of stories), so the section reads fine without
+// JavaScript. This module adds the behavior: tooltip + region tint, the dialog
+// panel with prev / next, the camera zoom (SVG viewBox tween), the place tabs
+// (which also track what has been explored), the "Water Explorer" badge, and
+// the world view.
 
 import confetti from 'canvas-confetti';
 import regionsData from '../data/regions.json';
@@ -28,7 +29,6 @@ const sources = new Map(sourcesData.map((s) => [s.id, s]));
 const DECLUTTER_PX = 58;
 
 const sheetQuery = window.matchMedia('(max-width: 767px)');
-const overlayQuery = window.matchMedia('(min-width: 768px) and (max-width: 1199px)');
 // Phones on their side are too short for a bottom sheet: the panel becomes a
 // right-hand drawer instead (same query as the drawer rules in main.css).
 const drawerQuery = window.matchMedia('(max-height: 500px) and (min-width: 568px) and (max-width: 1199px)');
@@ -53,9 +53,10 @@ const view = { ...base };
 const stageSize = { w: 0, h: 0 };
 const pins = new Map();
 const drops = new Map();
-const cards = new Map();
+const tabs = new Map();
 let zoomTween = null;
 let activeId = null;
+let openedFrom = 'drop'; // 'drop' or 'tab': where focus returns when the panel closes
 let hoverId = null;
 let completed = false;
 let trap = null;
@@ -164,13 +165,10 @@ function focusPoint() {
   const mode = panelMode();
   if (mode === 'drawer') return { fx: 0.28, fy: 0.5 };
   if (mode === 'sheet') return { fx: 0.5, fy: 0.3 };
-  if (overlayQuery.matches) {
-    // Centre the hotspot in the part of the map the panel leaves uncovered.
-    const s = stage.getBoundingClientRect();
-    const open = Math.min(panel.getBoundingClientRect().left, s.right) - s.left;
-    return { fx: Math.min(0.5, Math.max(0.2, open / 2 / s.width)), fy: 0.45 };
-  }
-  return { fx: 0.5, fy: 0.45 };
+  // Inline (tablets and up): centre the hotspot in the part of the map the panel leaves uncovered.
+  const s = stage.getBoundingClientRect();
+  const open = Math.min(panel.getBoundingClientRect().left, s.right) - s.left;
+  return { fx: Math.min(0.5, Math.max(0.2, open / 2 / s.width)), fy: 0.45 };
 }
 
 function viewFor(region) {
@@ -309,19 +307,21 @@ function countUp(region) {
 }
 
 function updateProgress() {
-  const count = visited.size;
-  const counter = qs('[data-progress-count]', app);
-  if (counter) counter.textContent = String(count);
-  qsa('.map-progress__drops li', app).forEach((li, i) => li.classList.toggle('is-filled', i < count));
   for (const [id, li] of pins) li.classList.toggle('is-visited', visited.has(id));
-  if (count === regions.length && !completed) complete();
+  for (const [id, tab] of tabs) {
+    const seen = visited.has(id);
+    tab.classList.toggle('is-visited', seen);
+    qs('[data-tab-state]', tab).textContent = seen ? ', explored' : '';
+  }
+  if (visited.size === regions.length && !completed) complete();
 }
 
-function open(id, { step = false } = {}) {
+function open(id, { step = false, from } = {}) {
   const region = byId.get(id);
   if (!region) return;
   const wasOpen = Boolean(activeId);
   activeId = id;
+  if (from) openedFrom = from;
   visited.add(id);
   hideTip();
   gsap.killTweensOf(backdrop); // a close that is still fading out must not win
@@ -330,6 +330,7 @@ function open(id, { step = false } = {}) {
   panel.scrollTop = 0;
   const card = qs('.map-panel__card', panel);
   for (const [pid, li] of pins) li.classList.toggle('is-active', pid === id);
+  for (const [tid, tab] of tabs) tab.toggleAttribute('aria-current', tid === id);
   refreshHot();
 
   if (!wasOpen) {
@@ -372,6 +373,7 @@ function close({ restoreFocus = true } = {}) {
   activeId = null;
   trap.deactivate({ returnFocus: false });
   for (const li of pins.values()) li.classList.remove('is-active');
+  for (const tab of tabs.values()) tab.removeAttribute('aria-current');
   refreshHot();
   app.classList.remove('is-open');
   const wasModal = !backdrop.hidden; // a sheet or drawer
@@ -395,7 +397,7 @@ function close({ restoreFocus = true } = {}) {
     finish();
   }
   zoomTo(base, 0.9);
-  if (restoreFocus) drops.get(id)?.focus({ preventScroll: true });
+  if (restoreFocus) (openedFrom === 'tab' ? tabs : drops).get(id)?.focus({ preventScroll: true });
 }
 
 function step(delta) {
@@ -443,40 +445,13 @@ function complete() {
   badge.innerHTML = `<span class="map-badge__seal" aria-hidden="true">${iconSvg('award')}</span>
 <span class="map-badge__text"><span class="map-badge__title">Water Explorer</span><span class="map-badge__sub">All six explored</span></span>
 <a class="btn btn--navy btn--sm" href="#act">Take Action${iconSvg('arrow-right')}</a>`;
-  qs('.map-side', app).appendChild(badge);
+  qs('[data-map-bar]', app).appendChild(badge);
   app.classList.add('is-complete');
   if (motionEnabled()) {
     gsap.fromTo(badge, { scale: 0.6, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.7, ease: 'back.out(1.8)' });
   }
   celebrate(badge.offsetParent ? badge : stage);
   announce('All six hotspots explored. You earned the Water Explorer badge.');
-}
-
-/* --------------------------------------------------------------------------
-   Filters, rivers, list view
-   -------------------------------------------------------------------------- */
-
-const FILTER_NAMES = { supply: 'water supply', quality: 'water quality', sanitation: 'sanitation' };
-
-function applyFilter(next) {
-  qsa('[data-filter]', app).forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.filter === next)));
-  let shown = 0;
-  for (const r of regions) {
-    const match = next === 'all' || r.filters.includes(next);
-    if (match) shown += 1;
-    pins.get(r.id).classList.toggle('is-dim', !match);
-    const card = cards.get(r.id);
-    if (card) card.hidden = !match;
-  }
-  announce(
-    next === 'all'
-      ? `Showing all ${regions.length} hotspots.`
-      : `Highlighting ${shown} of ${regions.length} hotspots about ${FILTER_NAMES[next]}.`,
-  );
-}
-
-function setPressed(button, on) {
-  button.setAttribute('aria-pressed', String(on));
 }
 
 /* --------------------------------------------------------------------------
@@ -533,7 +508,7 @@ export function initMap() {
     pins.set(li.dataset.id, li);
     drops.set(li.dataset.id, qs('.drop', li));
   });
-  qsa('.map-story', app).forEach((card) => cards.set(card.dataset.id, card));
+  qsa('[data-map-tab]', app).forEach((tab) => tabs.set(tab.dataset.mapTab, tab));
 
   trap = createFocusTrap(panel, { onEscape: () => close() });
 
@@ -554,7 +529,7 @@ export function initMap() {
 
   // Drops: click / Enter opens; hover and focus preview; arrows move between drops.
   for (const [id, drop] of drops) {
-    drop.addEventListener('click', () => open(id));
+    drop.addEventListener('click', () => open(id, { from: 'drop' }));
     drop.addEventListener('pointerenter', (e) => e.pointerType !== 'touch' && showTip(id));
     drop.addEventListener('pointerleave', () => hideTip(id));
     drop.addEventListener('focus', () => showTip(id));
@@ -573,6 +548,21 @@ export function initMap() {
     drops.get(ids[(next + ids.length) % ids.length]).focus();
   });
 
+  // Place tabs open a hotspot without touching the map; hovering or focusing one
+  // points out its drop and region.
+  for (const [id, tab] of tabs) {
+    tab.addEventListener('click', () => {
+      if (id !== activeId) open(id, { from: 'tab' });
+    });
+    const preview = (event) => {
+      if (!activeId && event.pointerType !== 'touch') showTip(id);
+    };
+    tab.addEventListener('pointerenter', preview);
+    tab.addEventListener('focus', preview);
+    tab.addEventListener('pointerleave', () => hideTip(id));
+    tab.addEventListener('blur', () => hideTip(id));
+  }
+
   // Panel controls (delegated; content is re-rendered per hotspot).
   panel.addEventListener('click', (event) => {
     if (event.target.closest('[data-close]')) close();
@@ -589,57 +579,18 @@ export function initMap() {
     }
   });
 
-  // A click anywhere outside the panel closes it (another drop switches instead).
+  // A click anywhere outside the panel closes it (another drop or tab switches instead).
   document.addEventListener(
     'pointerdown',
     (event) => {
       if (!activeId) return;
-      if (panel.contains(event.target) || event.target.closest('.drop')) return;
+      if (panel.contains(event.target) || event.target.closest('.drop, [data-map-tab]')) return;
       close({ restoreFocus: false });
     },
     true,
   );
 
-  // Filters and toggles.
-  qsa('[data-filter]', app).forEach((chip) => chip.addEventListener('click', () => applyFilter(chip.dataset.filter)));
-  qs('[data-toggle="rivers"]', app)?.addEventListener('click', (event) => {
-    const on = event.currentTarget.getAttribute('aria-pressed') !== 'true';
-    setPressed(event.currentTarget, on);
-    app.classList.toggle('is-rivers-off', !on);
-    announce(on ? 'Rivers shown.' : 'Rivers hidden.');
-  });
-  qs('[data-toggle="list"]', app)?.addEventListener('click', (event) => {
-    const on = event.currentTarget.getAttribute('aria-pressed') !== 'true';
-    if (on) close({ restoreFocus: false });
-    setPressed(event.currentTarget, on);
-    app.classList.toggle('is-list', on);
-    ScrollTrigger.refresh();
-    announce(on ? 'Showing the six stories as a list.' : 'Showing the map.');
-  });
   qs('[data-world-open]', app)?.addEventListener('click', openWorld);
-
-  // "Zoom out to the world" links elsewhere on the page (Georgia Tech section):
-  // the nav glides to #map, then the world view opens once the map is in view.
-  let pendingWorld = false;
-  document.addEventListener('click', (event) => {
-    if (!event.target.closest('[data-world-link]')) return;
-    pendingWorld = true;
-    window.setTimeout(() => {
-      if (pendingWorld) {
-        pendingWorld = false;
-        openWorld();
-      }
-    }, 2600);
-  });
-  new IntersectionObserver(
-    ([entry]) => {
-      if (entry.isIntersecting && pendingWorld) {
-        pendingWorld = false;
-        window.setTimeout(openWorld, 250);
-      }
-    },
-    { threshold: 0.45 },
-  ).observe(stage);
 
   // Pause the idle loops (pulsing drops, shimmering rivers) when off-screen.
   observeVisibility(app, (visible) => app.classList.toggle('is-offscreen', !visible), '100px');

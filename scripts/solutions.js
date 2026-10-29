@@ -1,7 +1,7 @@
-// Solutions: flip cards (24) and the parking-lot vs EcoCommons slider (25).
+// Solutions: flip cards (24).
 
 import { hasFinePointer, motionEnabled } from './prefs.js';
-import { clamp, qs, qsa } from './utils.js';
+import { qs, qsa } from './utils.js';
 
 /* --------------------------------------------------------------------------
    24. Flip cards: click (or hover on desktop) to turn problem -> solution
@@ -68,57 +68,6 @@ function initFlips() {
   });
 }
 
-/* --------------------------------------------------------------------------
-   25. Before/after slider with a water-drop handle (pointer events)
-   -------------------------------------------------------------------------- */
-
-function initCompare() {
-  const stage = qs('[data-compare]');
-  if (!stage) return;
-  const range = qs('.compare__range', stage);
-
-  const setPos = (percent) => {
-    const value = clamp(percent, 0, 100);
-    stage.style.setProperty('--pos', `${value}%`);
-    range.value = String(Math.round(value));
-    range.setAttribute('aria-valuetext', `${Math.round(value)}% parking lot, ${100 - Math.round(value)}% EcoCommons`);
-  };
-
-  const fromEvent = (event) => {
-    const rect = stage.getBoundingClientRect();
-    return ((event.clientX - rect.left) / rect.width) * 100;
-  };
-
-  let dragging = false;
-  stage.addEventListener('pointerdown', (event) => {
-    if (event.button !== 0) return;
-    dragging = true;
-    stage.setPointerCapture(event.pointerId);
-    stage.classList.add('is-dragging');
-    setPos(fromEvent(event));
-  });
-  stage.addEventListener('pointermove', (event) => {
-    if (dragging) setPos(fromEvent(event));
-  });
-  const stop = (event) => {
-    if (!dragging) return;
-    dragging = false;
-    stage.classList.remove('is-dragging');
-    if (stage.hasPointerCapture?.(event.pointerId)) stage.releasePointerCapture(event.pointerId);
-  };
-  stage.addEventListener('pointerup', stop);
-  stage.addEventListener('pointercancel', stop);
-  stage.addEventListener('lostpointercapture', () => {
-    dragging = false;
-    stage.classList.remove('is-dragging');
-  });
-
-  // Keyboard and assistive tech drive the native range input.
-  range.addEventListener('input', () => setPos(Number(range.value)));
-  setPos(Number(range.value) || 50);
-}
-
 export function initSolutions() {
   initFlips();
-  initCompare();
 }
